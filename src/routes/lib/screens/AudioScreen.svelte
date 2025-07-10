@@ -43,14 +43,16 @@
 </script>
 
 <div class="mb-20 p-4">
-  <!-- Category Filter -->
-  <div class="flex gap-2 flex-wrap pb-2">
+  <div
+    style="scrollbar-width: none;"
+    class="flex gap-2 overflow-scroll items-start pb-4"
+  >
     {#each categories as category}
       <button
         on:click={() => selectCategory(category)}
-        class={`px-3 py-1 text-sm rounded border ${
+        class={`px-3 py-1 rounded border text-nowrap ${
           selectedCategory === category
-            ? 'bg-violet-600 text-white border-violet-600'
+            ? 'bg-[#6257a5] text-white border-[#504596]'
             : 'bg-white dark:bg-slate-800 text-gray-700 dark:text-white border-gray-300'
         }`}
       >
@@ -60,7 +62,7 @@
   </div>
 
   <!-- Audio Grid -->
-  <div class="grid grid-cols-2 gap-3 mt-4">
+  <div class="grid grid-cols-2 gap-3">
     {#if loading}
       {#each Array(5) as _, i}
         <AudioSkeleton />
