@@ -168,9 +168,9 @@
 
 {#if state.isVisible}
   {#if isExpanded}
-    <div class="fixed inset-0 flex bg-[#999c65] p-4 z-30">
+    <div class="fixed inset-0 flex z-30">
       <div
-        class="rounded-xl shadow-lg shadow-black z-50 bg-[#dddddd] dark:bg-slate-900 text-gray-800 dark:text-white flex flex-col w-full max-w-xl mx-auto animate-fade-in"
+        class="rounded z-50 bg-[#dddddd] dark:bg-slate-900 text-gray-800 dark:text-white flex flex-col w-full max-w-xl mx-auto animate-fade-in"
       >
         <div
           class="flex justify-between items-center p-4 border-b border-black/10"

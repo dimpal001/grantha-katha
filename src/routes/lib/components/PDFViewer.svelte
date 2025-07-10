@@ -3,7 +3,7 @@
   import Icon from '@iconify/svelte'
   import { onMount } from 'svelte'
 
-  export let src = 'http://192.168.210.217:8080/static/note.pdf'
+  export let src = '/data/audiobook/ebook.pdf'
 
   let isLoading = true
   let images = []

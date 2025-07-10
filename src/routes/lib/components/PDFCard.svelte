@@ -1,4 +1,5 @@
 <script lang="ts">
+  // @ts-nocheck
   import { navigateTo } from '$lib/navigation'
   export let pdf
   import Icon from '@iconify/svelte'
