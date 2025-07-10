@@ -1,4 +1,5 @@
 <script lang="ts">
+  // @ts-nocheck
   export let audio
   import Icon from '@iconify/svelte'
   import { audioPlayerStore } from '../../../stores/appStore'
@@ -7,11 +8,13 @@
 <div
   role="button"
   on:click={() => {
+    const slug =
+      audio?.url?.split('/').pop() || '1751157521012-deeplina-deka-hit-songs'
     audioPlayerStore.set({
       thumbnail: audio?.thumbnail,
       category: audio?.category,
       title: audio.name,
-      url: audio.url || '1751157521012-deeplina-deka-hit-songs',
+      url: slug,
       artist: audio.artist || 'Unknown',
       isVisible: true,
       isPlaying: true,

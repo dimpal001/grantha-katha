@@ -169,7 +169,7 @@
 
         <Navigation {toggleSidebar} />
       {/if}
-      <FloatingAudioPlayer />
     {/if}
+    <FloatingAudioPlayer />
   </main>
 {/if}

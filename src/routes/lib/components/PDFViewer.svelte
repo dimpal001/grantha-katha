@@ -6,10 +6,27 @@
   export let src = '/data/audiobook/ebook.pdf'
 
   let isLoading = true
-  let images = []
   let currentIndex = 0
+  let totalPages = 0
+  let currentPageImage = null
+  let pdfDoc = null
 
-  async function loadPdfImages(pdfUrl) {
+  async function loadPdfPage(index) {
+    if (!pdfDoc) return
+
+    const page = await pdfDoc.getPage(index + 1) // index is 0-based
+    const viewport = page.getViewport({ scale: 2 })
+
+    const canvas = document.createElement('canvas')
+    const context = canvas.getContext('2d')
+    canvas.width = viewport.width
+    canvas.height = viewport.height
+
+    await page.render({ canvasContext: context, viewport }).promise
+    currentPageImage = canvas.toDataURL('image/png')
+  }
+
+  async function loadPdf(pdfUrl) {
     const pdfjsLib = window.pdfjsLib
 
     if (!pdfjsLib) throw new Error('pdfjsLib not loaded')
@@ -18,36 +35,29 @@
       'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'
 
     const loadingTask = pdfjsLib.getDocument(pdfUrl)
-    const pdf = await loadingTask.promise
+    pdfDoc = await loadingTask.promise
+    totalPages = pdfDoc.numPages
 
-    const result = []
-    for (let i = 1; i <= pdf.numPages; i++) {
-      const page = await pdf.getPage(i)
-      const viewport = page.getViewport({ scale: 2 })
-      const canvas = document.createElement('canvas')
-      const context = canvas.getContext('2d')
-      canvas.width = viewport.width
-      canvas.height = viewport.height
-
-      await page.render({ canvasContext: context, viewport }).promise
-
-      result.push(canvas.toDataURL('image/png'))
-    }
-
-    return result
+    await loadPdfPage(currentIndex)
   }
 
   function next() {
-    if (currentIndex < images.length - 1) currentIndex++
+    if (currentIndex < totalPages - 1) {
+      currentIndex++
+      loadPdfPage(currentIndex)
+    }
   }
 
   function prev() {
-    if (currentIndex > 0) currentIndex--
+    if (currentIndex > 0) {
+      currentIndex--
+      loadPdfPage(currentIndex)
+    }
   }
 
   onMount(async () => {
     try {
-      images = await loadPdfImages(src)
+      await loadPdf(src)
     } catch (e) {
       console.error('PDF Load Failed:', e)
     } finally {
@@ -61,7 +71,9 @@
     <div class="loading min-h-[500px] flex items-center">Loading PDF...</div>
   {:else}
     <div class="pdf-wrapper">
-      <img src={images[currentIndex]} alt="PDF Page" class="pdf-page" />
+      {#if currentPageImage}
+        <img src={currentPageImage} alt="PDF Page" class="pdf-page" />
+      {/if}
     </div>
     <div class="controls">
       <Icon
@@ -69,17 +81,17 @@
         icon="mdi:arrow-left"
         width="38"
         height="38"
-        class="transition-colors bg-gray-200 p-2 rounded"
+        class="transition-colors bg-gray-200 p-2 rounded cursor-pointer"
       />
-      <span class="page-info text-sm"
-        >Page {currentIndex + 1} of {images.length}</span
-      >
+      <span class="page-info text-sm">
+        Page {currentIndex + 1} of {totalPages}
+      </span>
       <Icon
         onclick={next}
         icon="mdi:arrow-right"
         width="38"
         height="38"
-        class="transition-colors bg-gray-200 p-2 rounded"
+        class="transition-colors bg-gray-200 p-2 rounded cursor-pointer"
       />
     </div>
   {/if}
@@ -128,21 +140,6 @@
     align-items: center;
     gap: 1rem;
     padding: 0.5rem;
-  }
-
-  .nav-button {
-    font-size: 1.2rem;
-    padding: 0.4rem 1rem;
-    background: #444;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-
-  .nav-button:disabled {
-    background: #aaa;
-    cursor: not-allowed;
   }
 
   .page-info {

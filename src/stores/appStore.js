@@ -11,6 +11,7 @@ export const audioPlayerStore = writable({
   isVisible: false,
   isPlaying: false,
 })
+
 export const authStore = writable(false)
 export const currentUserStore = writable(null)
 export const currentPageStore = writable('home')

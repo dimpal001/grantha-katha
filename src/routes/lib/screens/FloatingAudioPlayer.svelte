@@ -17,27 +17,47 @@
   let isExpanded = true
   let state
   $: state = $audioPlayerStore
+  let previousUrl = ''
+
+  function getStreamUrl(url: string) {
+    if (!url) return ''
+    const audioId = url.replace(
+      /^(https?:\/\/[^\/]+\/audios\/|http:\/\/localhost:\d+\/)/,
+      ''
+    )
+    return `${baseUrl}/audios/${audioId}/stream`
+  }
+
+  $: if (hasMounted && state.url) {
+    const streamUrl = getStreamUrl(state.url)
+    resetPlayer()
+    waitUntilReady(streamUrl)
+    isExpanded = true
+  }
+
+  function resetPlayer() {
+    if (hls) {
+      hls.destroy()
+      hls = null
+    }
+    if (audioRef) {
+      audioRef.pause()
+      audioRef.removeAttribute('src')
+      audioRef.load()
+    }
+  }
 
   onMount(async () => {
-    hasMounted = true
-
     if (typeof window !== 'undefined' && !Hls) {
-      try {
-        Hls = (await import('hls.js')).default
-      } catch (err) {
-        console.error('Failed to load hls.js:', err)
-      }
-    }
-
-    if (state?.url) {
-      console.log(state.url)
-      waitUntilReady(state.url)
+      Hls = (await import('hls.js')).default
     }
 
     if (audioRef) {
       audioRef.addEventListener('timeupdate', updateTime)
       audioRef.addEventListener('loadedmetadata', updateDuration)
     }
+
+    hasMounted = true
   })
 
   onDestroy(() => {
@@ -63,22 +83,21 @@
     }
   }
 
-  async function waitUntilReady(url: string) {
+  async function waitUntilReady(streamUrl: string) {
     const maxAttempts = 6
     let attempts = 0
-    const streamUrl = url.startsWith('http')
-      ? url
-      : `${baseUrl}/audios/${url}/stream`
 
     const checkReady = async () => {
       try {
+        console.log('Checking stream availability:', streamUrl)
         const res = await fetch(streamUrl, { method: 'HEAD' })
         if (res.ok) {
           playAudio(streamUrl)
         } else {
-          throw new Error('Not ready')
+          throw new Error('Stream not ready')
         }
-      } catch {
+      } catch (err) {
+        console.error('Stream check failed:', err)
         if (++attempts < maxAttempts) {
           setTimeout(checkReady, 5000)
         } else {
@@ -90,35 +109,27 @@
     checkReady()
   }
 
-  function playAudio(url: string) {
-    console.log(url)
-    const streamUrl = url.startsWith('http')
-      ? url
-      : `${baseUrl}/audios/${url}/stream`
+  function playAudio(streamUrl) {
+    if (!audioRef) return
 
-    if (Hls && Hls.isSupported()) {
-      hls = new Hls()
-      hls.loadSource(streamUrl)
-      hls.attachMedia(audioRef)
-      hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        audioPlayerStore.update((s) => ({
-          ...s,
-          isPlaying: true,
-        }))
-        audioRef.play().catch(console.error)
-      })
-    } else if (audioRef.canPlayType('application/vnd.apple.mpegurl')) {
+    return new Promise((resolve, reject) => {
       audioRef.src = streamUrl
-      audioRef.addEventListener('loadedmetadata', () => {
-        audioPlayerStore.update((s) => ({
-          ...s,
-          isPlaying: true,
-        }))
-        audioRef.play().catch(console.error)
-      })
-    } else {
-      console.error('HLS not supported in this browser.')
-    }
+      audioRef.load()
+
+      // Wait for the audio to be ready before trying to play
+      const onCanPlay = () => {
+        audioRef.removeEventListener('canplay', onCanPlay)
+        audioRef
+          .play()
+          .then(resolve)
+          .catch((err) => {
+            console.error('Play failed:', err)
+            reject(err)
+          })
+      }
+
+      audioRef.addEventListener('canplay', onCanPlay)
+    })
   }
 
   function togglePlay() {
@@ -126,7 +137,7 @@
     if (state.isPlaying) {
       audioRef.pause()
     } else {
-      audioRef.play().catch(console.error)
+      audioRef.play().catch((err) => console.error('Playback error:', err))
     }
     audioPlayerStore.update((s) => ({
       ...s,
@@ -259,12 +270,7 @@
           <button><Icon icon="mdi:repeat" width="35" /></button>
         </div>
 
-        <audio
-          bind:this={audioRef}
-          src={state.url}
-          preload="metadata"
-          class="hidden"
-        />
+        <audio bind:this={audioRef} preload="metadata" class="hidden" />
       </div>
     </div>
   {:else}
@@ -323,12 +329,7 @@
         </button>
       </div>
 
-      <audio
-        bind:this={audioRef}
-        src={state.url}
-        preload="metadata"
-        class="hidden"
-      />
+      <audio bind:this={audioRef} preload="metadata" class="hidden" />
     </div>
   {/if}
 {/if}
