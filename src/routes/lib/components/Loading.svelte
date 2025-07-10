@@ -6,7 +6,7 @@
   class="flex flex-col items-center justify-center h-screen bg-white dark:bg-slate-900 text-center"
 >
   <div class="mb-6">
-    <img src="/logo.png" class="w-36 h-3w-36" alt="" />
+    <img src="/logo.png" class="w-3/5 max-w-xs mx-auto" alt="" />
   </div>
 
   <div class="mt-6">

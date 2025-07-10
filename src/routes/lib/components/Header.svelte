@@ -24,14 +24,17 @@
   {#if currentPage !== 'home'}
     <div class="flex items-center gap-3">
       <BackButton onClick={() => navigateTo('home')} />
-      <h2 class="text-xl font-semibold text-slate-800 dark:text-slate-100">
+      <h2 class="text-xl font-bold text-[#6257a5]">
         {pageTitles[currentPage] ?? 'Page'}
       </h2>
     </div>
   {:else}
-    <h1 class="text-xl font-bold text-[#6257a5] tracking-tight">
-      Grantha Katha
-    </h1>
+    <div class="flex justify-center items-center gap-2">
+      <img src="/logo.png" class="w-10 h-10" alt="" />
+      <h1 class="text-2xl font-bold text-[#6257a5] tracking-tight">
+        গ্ৰন্থকথা
+      </h1>
+    </div>
   {/if}
 
   <button
