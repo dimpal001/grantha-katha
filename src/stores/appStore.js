@@ -5,6 +5,7 @@ import { browser } from '$app/environment'
 export const audioPlayerStore = writable({
   title: '',
   thumbnail: '',
+  category: '',
   artist: '',
   url: '',
   isVisible: false,

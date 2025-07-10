@@ -9,8 +9,9 @@
   on:click={() => {
     audioPlayerStore.set({
       thumbnail: audio?.thumbnail,
+      category: audio?.category,
       title: audio.name,
-      url: audio.url || 'http://192.168.210.217:8080/static/data/audio.mp3',
+      url: audio.url || '1751157521012-deeplina-deka-hit-songs',
       artist: audio.artist || 'Unknown',
       isVisible: true,
       isPlaying: true,

@@ -8,8 +8,6 @@
   $: currentPage = $currentPageStore
   $: backPage = $backPageStore
 
-  console.log(currentPage)
-
   const pageTitles = {
     home: 'Grantha Katha',
     profile: 'Profile',
@@ -21,30 +19,31 @@
 </script>
 
 <header
-  class="shadow-sm text-black/80 px-4 py-4 flex items-center justify-between"
+  class="sticky top-0 z-30 flex items-center justify-between px-5 py-3 border-b bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-slate-200 dark:border-slate-700"
 >
   {#if currentPage !== 'home'}
     <div class="flex items-center gap-3">
       <BackButton onClick={() => navigateTo('home')} />
-      <h2 class="text-xl font-semibold">
-        {pageTitles[currentPage]}
+      <h2 class="text-xl font-semibold text-slate-800 dark:text-slate-100">
+        {pageTitles[currentPage] ?? 'Page'}
       </h2>
     </div>
   {:else}
-    <h1 class="text-xl font-bold">Grantha Katha</h1>
+    <h1 class="text-xl font-bold text-[#6257a5] tracking-tight">
+      Grantha Katha
+    </h1>
   {/if}
 
   <button
-    on:click={() => {
-      navigateTo('profile')
-    }}
-    class="ml-auto"
+    on:click={() => navigateTo('profile')}
+    class="ml-auto p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+    aria-label="Go to Profile"
   >
     <Icon
       icon="mdi:account-circle"
-      class="text-[#6257a5]"
-      width="35"
-      height="35"
+      class="text-[#6257a5] dark:text-indigo-400"
+      width="32"
+      height="32"
     />
   </button>
 </header>

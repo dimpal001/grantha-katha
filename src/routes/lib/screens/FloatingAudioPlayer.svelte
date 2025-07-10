@@ -4,27 +4,50 @@
   import { audioPlayerStore } from '../../../stores/appStore'
   import { onMount, onDestroy } from 'svelte'
   import { writable } from 'svelte/store'
+  import SongPlayingAnimation from '../components/SongPlayingAnimation.svelte'
+
+  const baseUrl = 'https://audiostream.backendservices.in'
 
   let audioRef: HTMLAudioElement
-  let hasMounted = false
-  let isExpanded = true
+  let Hls: any = null
+  let hls: any = null
   let currentTime = writable(0)
   let duration = writable(0)
-
+  let hasMounted = false
+  let isExpanded = true
   let state
   $: state = $audioPlayerStore
 
-  onMount(() => {
+  onMount(async () => {
     hasMounted = true
+
+    if (typeof window !== 'undefined' && !Hls) {
+      try {
+        Hls = (await import('hls.js')).default
+      } catch (err) {
+        console.error('Failed to load hls.js:', err)
+      }
+    }
+
+    if (state?.url) {
+      console.log(state.url)
+      waitUntilReady(state.url)
+    }
+
     if (audioRef) {
       audioRef.addEventListener('timeupdate', updateTime)
       audioRef.addEventListener('loadedmetadata', updateDuration)
     }
-    return () => {
-      if (audioRef) {
-        audioRef.removeEventListener('timeupdate', updateTime)
-        audioRef.removeEventListener('loadedmetadata', updateDuration)
-      }
+  })
+
+  onDestroy(() => {
+    if (audioRef) {
+      audioRef.removeEventListener('timeupdate', updateTime)
+      audioRef.removeEventListener('loadedmetadata', updateDuration)
+    }
+    if (hls) {
+      hls.destroy()
+      hls = null
     }
   })
 
@@ -40,10 +63,62 @@
     }
   }
 
-  $: if (hasMounted && state.isVisible && state.isPlaying && audioRef) {
-    audioRef.play().catch((err) => {
-      console.error('Playback failed:', err)
-    })
+  async function waitUntilReady(url: string) {
+    const maxAttempts = 6
+    let attempts = 0
+    const streamUrl = url.startsWith('http')
+      ? url
+      : `${baseUrl}/audios/${url}/stream`
+
+    const checkReady = async () => {
+      try {
+        const res = await fetch(streamUrl, { method: 'HEAD' })
+        if (res.ok) {
+          playAudio(streamUrl)
+        } else {
+          throw new Error('Not ready')
+        }
+      } catch {
+        if (++attempts < maxAttempts) {
+          setTimeout(checkReady, 5000)
+        } else {
+          console.error('Audio stream not ready after multiple attempts.')
+        }
+      }
+    }
+
+    checkReady()
+  }
+
+  function playAudio(url: string) {
+    console.log(url)
+    const streamUrl = url.startsWith('http')
+      ? url
+      : `${baseUrl}/audios/${url}/stream`
+
+    if (Hls && Hls.isSupported()) {
+      hls = new Hls()
+      hls.loadSource(streamUrl)
+      hls.attachMedia(audioRef)
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        audioPlayerStore.update((s) => ({
+          ...s,
+          isPlaying: true,
+        }))
+        audioRef.play().catch(console.error)
+      })
+    } else if (audioRef.canPlayType('application/vnd.apple.mpegurl')) {
+      audioRef.src = streamUrl
+      audioRef.addEventListener('loadedmetadata', () => {
+        audioPlayerStore.update((s) => ({
+          ...s,
+          isPlaying: true,
+        }))
+        audioRef.play().catch(console.error)
+      })
+    } else {
+      console.error('HLS not supported in this browser.')
+    }
   }
 
   function togglePlay() {
@@ -53,7 +128,6 @@
     } else {
       audioRef.play().catch(console.error)
     }
-
     audioPlayerStore.update((s) => ({
       ...s,
       isPlaying: !s.isPlaying,
@@ -62,9 +136,14 @@
 
   function closePlayer() {
     if (audioRef) audioRef.pause()
+    if (hls) {
+      hls.destroy()
+      hls = null
+    }
     audioPlayerStore.set({
       title: '',
       artist: '',
+      category: '',
       url: '',
       isVisible: false,
       isPlaying: false,
@@ -76,7 +155,7 @@
     isExpanded = !isExpanded
   }
 
-  function formatTime(seconds) {
+  function formatTime(seconds: number) {
     const m = Math.floor(seconds / 60)
       .toString()
       .padStart(2, '0')
@@ -94,7 +173,7 @@
         class="rounded-xl shadow-lg shadow-black z-50 bg-[#dddddd] dark:bg-slate-900 text-gray-800 dark:text-white flex flex-col w-full max-w-xl mx-auto animate-fade-in"
       >
         <div
-          class="flex justify-between items-center p-4 border-b dark:border-slate-700"
+          class="flex justify-between items-center p-4 border-b border-black/10"
         >
           <span class="font-bold text-gray-700 dark:text-gray-300"
             >Playing episode 1 of 1</span
@@ -104,12 +183,25 @@
           </button>
         </div>
 
-        <div class="flex justify-center py-14">
+        <div class="flex justify-center py-12">
           <img
             src={state?.thumbnail}
             alt="Thumbnail"
             class="w-48 h-48 shadow-md rounded-full object-cover"
           />
+        </div>
+
+        <div class="flex justify-center mb-5">
+          {#if state.isPlaying}
+            <SongPlayingAnimation />
+          {:else}
+            <Icon
+              icon="mdi:music"
+              class="text-[#6257a5]"
+              width="35"
+              height="35"
+            />
+          {/if}
         </div>
 
         <div class="text-center flex-col flex justify-center px-6">
@@ -129,7 +221,7 @@
               audioRef.currentTime = +e.target.value
               currentTime.set(+e.target.value)
             }}
-            class="w-full h-3 pt-1.5 rounded-lg appearance-none cursor-pointer dark:bg-slate-700 custom-range"
+            class="w-full h-3 pt-1 rounded-lg appearance-none cursor-pointer custom-range"
           />
           <div
             class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1"
@@ -148,7 +240,7 @@
             step="0.01"
             value={audioRef?.volume || 1}
             on:input={(e) => (audioRef.volume = +e.target.value)}
-            class="w-2/4 h-3 pt-1.5 rounded-lg appearance-none cursor-pointer dark:bg-slate-700"
+            class="w-2/4 h-3 pt-1 rounded-lg appearance-none cursor-pointer dark:bg-slate-700 custom-range"
           />
         </div>
 
@@ -177,29 +269,57 @@
     </div>
   {:else}
     <div
-      class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-800 border-t p-5 px-6 shadow-md flex items-center justify-between z-50 transition-all animate-fade-in"
+      class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-800 border-t p-5 px-6 shadow-lg flex items-center justify-between z-50 transition-all animate-fade-in"
       on:click|self={toggleExpand}
     >
-      <div class="flex items-center gap-3 overflow-hidden">
-        <Icon icon="mdi:music" class="text-[#6257a5]" width="24" height="24" />
-        <div>
-          <p class="text-sm font-medium truncate">{state.title}</p>
+      <div class="flex items-center gap-4 overflow-hidden">
+        <div class="relative flex items-center justify-center w-10 h-10">
+          {#if state.isPlaying}
+            <SongPlayingAnimation />
+          {:else}
+            <Icon
+              icon="mdi:music"
+              class="text-[#6257a5]"
+              width="24"
+              height="24"
+            />
+          {/if}
+        </div>
+
+        <div class="truncate">
+          <p
+            class="text-sm font-semibold text-gray-900 dark:text-gray-100 truncate"
+          >
+            {state.title}
+          </p>
           <p class="text-xs text-gray-500 dark:text-gray-400 truncate">
-            {state.artist}
+            {state.category}
           </p>
         </div>
       </div>
 
       <div class="flex items-center gap-3">
-        <button on:click|stopPropagation={togglePlay}>
+        <button
+          on:click|stopPropagation={togglePlay}
+          class="transition-transform hover:scale-110 focus:outline-none"
+        >
           <Icon
             icon={state.isPlaying ? 'mdi:pause-circle' : 'mdi:play-circle'}
-            width="30"
-            height="30"
+            width="37"
+            height="37"
+            class="text-[#6257a5]"
           />
         </button>
-        <button on:click|stopPropagation={closePlayer}>
-          <Icon icon="mdi:close-circle" width="24" height="24" />
+        <button
+          on:click|stopPropagation={closePlayer}
+          class="transition-transform hover:scale-110 focus:outline-none"
+        >
+          <Icon
+            icon="mdi:close"
+            width="24"
+            height="24"
+            class="text-gray-500 dark:text-gray-400"
+          />
         </button>
       </div>
 
@@ -238,19 +358,13 @@
 
   input[type='range'] {
     appearance: none;
-    background: #e2e8f0;
+    background: #0c0c0c;
     border-radius: 9999px;
     height: 6px;
   }
 
   input[type='range'].custom-range {
-    background: linear-gradient(
-      to right,
-      #4f46e5 0%,
-      #4f46e5 calc((var(--value, 0) / var(--max, 1)) * 100%),
-      #e2e8f0 calc((var(--value, 0) / var(--max, 1)) * 100%),
-      #e2e8f0 100%
-    );
+    background: #444444;
   }
 
   input[type='range']::-webkit-slider-thumb {
