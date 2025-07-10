@@ -1,21 +1,22 @@
 <!-- === PopularCategorySection.svelte === -->
 <script lang="ts">
+  //@ts-nocheck
   import Icon from '@iconify/svelte'
   import Label from '../../components/Label.svelte'
   import { navigateTo } from '$lib/navigation'
 
   let categories = [
     {
-      name: 'EBooks',
-      icon: 'mdi:file-document',
-      color: 'bg-blue-100 text-blue-600',
-      link: 'pdfs',
-    },
-    {
-      name: 'EBook Audios',
+      name: 'শ্ৰৱ্য গ্ৰন্থ',
       icon: 'mdi:book-open',
       color: 'bg-purple-100 text-purple-600',
       link: 'audios',
+    },
+    {
+      name: 'ই-গ্ৰন্থ',
+      icon: 'mdi:file-document',
+      color: 'bg-blue-100 text-blue-600',
+      link: 'pdfs',
     },
   ]
 </script>
@@ -31,7 +32,7 @@
         class={`flex items-center gap-3 p-3 rounded ${category.color} shadow-sm cursor-pointer hover:scale-[1.03] transition-all`}
       >
         <Icon icon={category.icon} width="24" height="24" />
-        <span class="font-medium text-base">{category.name}</span>
+        <span class="font-bold text-base">{category.name}</span>
       </div>
     {/each}
   </div>

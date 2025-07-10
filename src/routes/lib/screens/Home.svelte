@@ -15,6 +15,6 @@
 <div class="p-5 max-w-lg mx-auto space-y-5 mb-10">
   <SearchBox />
   <PopularCategorySecion />
-  <MostViewedSection />
   <MostListenedSection />
+  <MostViewedSection />
 </div>
