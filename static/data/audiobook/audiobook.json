@@ -1,0 +1,198 @@
+[
+  {
+    "category": "চুটি গল্প",
+    "name": "ধ্ৰুপদী অসমীয়া ভাষা আৰু আমাৰ কৰণীয়",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/1.jpg",
+    "plays": 14230
+  },
+  {
+    "category": "চুটি গল্প",
+    "name": "নিৰ্বান্ধৱ",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/2.jpg",
+    "plays": 18840
+  },
+  {
+    "category": "চুটি গল্প",
+    "name": "জলকুঁৱৰীৰ ফিছা",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/3.jpg",
+    "plays": 12310
+  },
+  {
+    "category": "চুটি গল্প",
+    "name": "শুনা ভানুমতী",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/4.jpg",
+    "plays": 17200
+  },
+  {
+    "category": "উপন্যাস",
+    "name": "কাঠনিবাৰী ঘাট",
+    "price": "Subscription Required",
+    "thumbnail": "./data/audiobook/5.jpg",
+    "plays": 20850
+  },
+  {
+    "category": "চুটি গল্প",
+    "name": "বে - ঘ - নী - সে - হা - সু - ৰ",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/6.jpg",
+    "plays": 13560
+  },
+  {
+    "category": "চুটি গল্প",
+    "name": "বৰ্ষালগ্নৰ কাঞ্চনজংঘা",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/7.jpg",
+    "plays": 10100
+  },
+  {
+    "category": "চুটি গল্প",
+    "name": "এপোৱা চাউলৰ সাধু",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/8.jpg",
+    "plays": 9500
+  },
+  {
+    "category": "চুটি গল্প",
+    "name": "সিহঁতেও পাহাৰ বগালে",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/9.jpg",
+    "plays": 16480
+  },
+  {
+    "category": "বুৰঞ্জী",
+    "name": "ফ্ৰাং-মৈ-দাম বা চমুকৈ মৈ-দাম",
+    "price": "Subscription Required",
+    "thumbnail": "./data/audiobook/10.jpg",
+    "plays": 19430
+  },
+  {
+    "category": "চুটি গল্প",
+    "name": "জাগনৰ গল্প",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/11.jpg",
+    "plays": 11220
+  },
+  {
+    "category": "চুটি গল্প",
+    "name": "ভঙা টোপনিৰ ৰঙা জোন",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/12.jpg",
+    "plays": 8750
+  },
+  {
+    "category": "চুটি গল্প",
+    "name": "বেদুইন চৰাই",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/13.jpg",
+    "plays": 14560
+  },
+  {
+    "category": "চুটি গল্প",
+    "name": "কবিতা তুমিয়েই",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/14.jpg",
+    "plays": 10800
+  },
+  {
+    "category": "চুটি গল্প",
+    "name": "অন্তঃস্বৰ",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/15.jpg",
+    "plays": 19890
+  },
+  {
+    "category": "চুটি গল্প",
+    "name": "সংশ্ৰৱশূণ্য",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/16.jpg",
+    "plays": 11900
+  },
+  {
+    "category": "চুটি গল্প",
+    "name": "দ্বিখণ্ডিত",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/17.jpg",
+    "plays": 15320
+  },
+  {
+    "category": "চুটি গল্প",
+    "name": "দিনান্তৰ খোজ",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/18.jpg",
+    "plays": 13240
+  },
+  {
+    "category": "চুটি গল্প",
+    "name": "ছবিৰ ভ্ৰম, ভ্ৰমৰ ছবি",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/19.jpg",
+    "plays": 21200
+  },
+  {
+    "category": "চুটি গল্প",
+    "name": "পমি যায় যি",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/20.jpg",
+    "plays": 8600
+  },
+  {
+    "category": "চুটি গল্প",
+    "name": "বিনিময়",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/21.jpg",
+    "plays": 14050
+  },
+  {
+    "category": "চুটি গল্প",
+    "name": "এল পেটাৰ্ণ",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/22.jpg",
+    "plays": 12340
+  },
+  {
+    "category": "চুটি গল্প",
+    "name": "ভিন্ন সমতল",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/23.jpg",
+    "plays": 17490
+  },
+  {
+    "category": "উপন্যাস",
+    "name": "হৃদভাষ",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/24.jpg",
+    "plays": 11670
+  },
+  {
+    "category": "উপন্যাস",
+    "name": "আকাশ চোৱা",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/25.jpg",
+    "plays": 13410
+  },
+  {
+    "category": "ধর্মীয়",
+    "name": "নামঘোষা",
+    "price": "Subscription Required",
+    "thumbnail": "./data/audiobook/26.jpg",
+    "plays": 18700
+  },
+  {
+    "category": "বুৰঞ্জী",
+    "name": "প্ৰাচীন ভাৰতৰ বিশ্ববিদ্যালয়",
+    "price": "Subscription Required",
+    "thumbnail": "./data/audiobook/27.jpg",
+    "plays": 16230
+  },
+  {
+    "category": "উপন্যাস",
+    "name": "নিসঙ্গতা",
+    "price": "FREE",
+    "thumbnail": "./data/audiobook/28.jpg",
+    "plays": 13760
+  }
+]

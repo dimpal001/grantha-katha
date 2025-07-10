@@ -6,7 +6,6 @@
     backPageStore,
     currentPageStore,
     currentUserStore,
-    displayuser_id,
   } from '../../../stores/appStore.js'
   import Icon from '@iconify/svelte'
   import { useAuthUser } from '$lib/authUser.js'
@@ -52,7 +51,6 @@
   <div class="gradient-primary text-white p-6">
     <button
       onclick={() => {
-        displayuser_id.set(user.id)
         navigateTo('userDetails')
       }}
       class="flex items-center gap-4 w-full text-left hover:bg-white/10 rounded-xl p-3 transition-colors"

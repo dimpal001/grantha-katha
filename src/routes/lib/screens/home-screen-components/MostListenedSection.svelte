@@ -7,6 +7,7 @@
   import { fetchMostListenedAudio } from '../../../../events/audioEvents'
   import { onMount } from 'svelte'
   import AudioCard from '../../components/AudioCard.svelte'
+  import AudioSkeleton from '../../components/AudioSkeleton.svelte'
 
   let audios = []
   let loading = true
@@ -23,20 +24,18 @@
 </script>
 
 <div class="mb-20">
-  <Label label="Most Listened Audios" showArrow />
+  <Label
+    label="সৰ্বাধিক শুনা শ্ৰৱ্য গ্ৰন্থ"
+    showArrow
+    onIconClick={() => {
+      navigateTo('audios')
+    }}
+  />
 
-  <div class="space-y-2 mt-2">
+  <div class="grid grid-cols-2 gap-3 mt-2">
     {#if loading}
       {#each Array(5) as _, i}
-        <div
-          class="flex justify-between items-center bg-white dark:bg-slate-800 p-4 rounded shadow-sm border border-gray-200 dark:border-slate-700 animate-pulse"
-        >
-          <div class="flex items-center gap-3">
-            <div class="w-6 h-6 bg-green-300 rounded-full"></div>
-            <div class="h-4 bg-gray-300 dark:bg-slate-600 rounded w-48"></div>
-          </div>
-          <div class="h-3 bg-gray-200 dark:bg-slate-600 rounded w-14"></div>
-        </div>
+        <AudioSkeleton />
       {/each}
     {:else}
       {#each audios as audio}

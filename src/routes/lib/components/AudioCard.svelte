@@ -8,25 +8,46 @@
   role="button"
   on:click={() => {
     audioPlayerStore.set({
+      thumbnail: audio?.thumbnail,
       title: audio.name,
-      url:
-        audio.url ||
-        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+      url: audio.url || 'http://192.168.210.217:8080/static/data/audio.mp3',
       artist: audio.artist || 'Unknown',
       isVisible: true,
       isPlaying: true,
     })
   }}
-  class="p-4 bg-white dark:bg-slate-800 rounded flex justify-between items-center border border-gray-200 dark:border-slate-700 shadow-sm"
+  class="relative aspect-[9/14] rounded overflow-hidden border border-gray-200 dark:border-slate-700 group cursor-pointer shadow-lg"
 >
-  <div class="flex items-center gap-3">
+  <img
+    src={audio.thumbnail ?? `https://picsum.photos/seed/${audio.id}/300/533`}
+    alt="Audio Thumbnail"
+    class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+  />
+
+  <div
+    class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"
+  ></div>
+
+  <div class="absolute top-3 left-3 z-10">
     <Icon
       icon="mdi:music-circle"
-      class="text-green-600"
-      width="24"
-      height="24"
+      class="text-[#6257a5] "
+      width="30"
+      height="30"
     />
-    <span class="text-sm font-medium">{audio.name}</span>
   </div>
-  <div class="text-xs text-gray-500">{audio.plays} plays</div>
+
+  <div class="absolute inset-0 flex items-center justify-center z-10">
+    <div class="p-2 bg-white/20 rounded-full">
+      <Icon icon="mdi:play" class="text-[#6257a5]" width="35" height="35" />
+    </div>
+  </div>
+
+  <div class="absolute bottom-0 left-0 w-full p-3 z-10 text-white">
+    <p class="text-sm font-semibold line-clamp-2">{audio.name}</p>
+    <div class="text-xs text-gray-200 flex items-center gap-1 mt-1">
+      <Icon icon="mdi:music" class="w-3.5 h-3.5 text-gray-300" />
+      {audio.plays} plays
+    </div>
+  </div>
 </div>

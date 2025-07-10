@@ -28,10 +28,10 @@
     class="min-h-full dark:bg-slate-900 text-gray-800 dark:text-white flex flex-col"
   >
     <div class="px-6 pt-8 pb-4 flex items-center gap-4">
-      <div class="bg-blue-100 dark:bg-blue-900 p-3 rounded-full">
+      <div class="bg-blue-100 dark:bg-[#6257a5] p-3 rounded-full">
         <Icon
           icon="mdi:account-circle"
-          class="text-blue-700 dark:text-blue-300"
+          class="text-[#6257a5] dark:text-[#6257a5]"
           width="64"
           height="64"
         />

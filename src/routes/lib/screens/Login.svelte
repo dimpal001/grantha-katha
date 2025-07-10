@@ -36,7 +36,6 @@
 <div
   class="min-h-screen flex flex-col items-center justify-center p-6 dark:bg-slate-900 bg-gray-50"
 >
-  <!-- Top Content -->
   <div class="text-center mb-6">
     <h1 class="text-3xl font-bold text-slate-800 dark:text-white">
       Welcome Back!
@@ -47,11 +46,7 @@
   </div>
 
   <div class="flex justify-center mb-6">
-    <img
-      src="/login.svg"
-      alt="Login Illustration"
-      class="w-3/5 max-w-xs my-2"
-    />
+    <img src="/logo.png" alt="Login Illustration" class="w-3/5 max-w-xs my-2" />
   </div>
 
   <div class="w-full px-2 space-y-3">
@@ -70,7 +65,7 @@
         <input type="checkbox" class="form-checkbox rounded mr-2" />
         Remember me
       </label>
-      <button class="text-blue-600 hover:underline">Forgot password?</button>
+      <button class="text-[#6257a5] hover:underline">Forgot password?</button>
     </div>
 
     {#if success}
@@ -86,7 +81,7 @@
   <p class="mt-6 mb-10 text-sm text-center text-gray-600 dark:text-white/70">
     Don’t have an account?
     <button
-      class="text-blue-600 font-semibold cursor-pointer hover:underline"
+      class="text-[#6257a5] font-semibold cursor-pointer hover:underline"
       on:click={() => navigateTo('register')}
     >
       Register

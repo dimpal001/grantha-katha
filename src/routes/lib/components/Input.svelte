@@ -62,7 +62,7 @@
                 ${trailingIcon ? 'pr-10' : 'pr-4'} 
                 py-4 border dark:border-slate-700 border-gray-300 
                 rounded placeholder-gray-400 
-                focus:outline-none focus:ring-2 focus:ring-blue-500 
+                focus:outline-none focus:ring-2 focus:ring-[#6257a5] 
                 focus:border-blue-500 ${className}`}
     />
 

@@ -2,25 +2,49 @@
   // @ts-nocheck
   import Icon from '@iconify/svelte'
   import { audioPlayerStore } from '../../../stores/appStore'
-  import { onMount } from 'svelte'
+  import { onMount, onDestroy } from 'svelte'
+  import { writable } from 'svelte/store'
 
   let audioRef: HTMLAudioElement
   let hasMounted = false
-  let isExpanded = false
+  let isExpanded = true
+  let currentTime = writable(0)
+  let duration = writable(0)
 
   let state
   $: state = $audioPlayerStore
 
+  onMount(() => {
+    hasMounted = true
+    if (audioRef) {
+      audioRef.addEventListener('timeupdate', updateTime)
+      audioRef.addEventListener('loadedmetadata', updateDuration)
+    }
+    return () => {
+      if (audioRef) {
+        audioRef.removeEventListener('timeupdate', updateTime)
+        audioRef.removeEventListener('loadedmetadata', updateDuration)
+      }
+    }
+  })
+
+  function updateTime() {
+    if (audioRef) {
+      currentTime.set(audioRef.currentTime)
+    }
+  }
+
+  function updateDuration() {
+    if (audioRef) {
+      duration.set(audioRef.duration)
+    }
+  }
+
   $: if (hasMounted && state.isVisible && state.isPlaying && audioRef) {
-    console.log('calling')
     audioRef.play().catch((err) => {
       console.error('Playback failed:', err)
     })
   }
-
-  onMount(() => {
-    hasMounted = true
-  })
 
   function togglePlay() {
     if (!audioRef) return
@@ -51,69 +75,105 @@
   function toggleExpand() {
     isExpanded = !isExpanded
   }
+
+  function formatTime(seconds) {
+    const m = Math.floor(seconds / 60)
+      .toString()
+      .padStart(2, '0')
+    const s = Math.floor(seconds % 60)
+      .toString()
+      .padStart(2, '0')
+    return `${m}:${s}`
+  }
 </script>
 
 {#if state.isVisible}
   {#if isExpanded}
-    <div
-      class="fixed inset-0 z-50 bg-white dark:bg-slate-900 text-gray-800 dark:text-white flex flex-col animate-fade-in"
-    >
+    <div class="fixed inset-0 flex bg-[#999c65] p-4 z-10">
       <div
-        class="p-6 flex justify-between items-center border-b dark:border-slate-700"
+        class="rounded-xl shadow-lg shadow-black z-50 bg-[#dddddd] dark:bg-slate-900 text-gray-800 dark:text-white flex flex-col w-full max-w-xl mx-auto animate-fade-in"
       >
-        <div>
-          <h2 class="text-lg font-bold">{state.title}</h2>
-          <p class="text-sm text-gray-600 dark:text-gray-400">{state.artist}</p>
+        <div
+          class="flex justify-between items-center p-4 border-b dark:border-slate-700"
+        >
+          <span class="font-bold text-gray-700 dark:text-gray-300"
+            >Playing episode 1 of 1</span
+          >
+          <button on:click={toggleExpand}>
+            <Icon icon="mdi:chevron-down" width="28" height="28" />
+          </button>
         </div>
-        <button on:click={toggleExpand}>
-          <Icon icon="mdi:chevron-down" width="28" height="28" />
-        </button>
-      </div>
 
-      <div
-        class="flex-1 flex flex-col items-center justify-center gap-4 px-6 text-center"
-      >
-        <Icon
-          icon="mdi:music-circle"
-          width="80"
-          height="80"
-          class="text-green-500"
+        <div class="flex justify-center py-14">
+          <img
+            src={state?.thumbnail}
+            alt="Thumbnail"
+            class="w-48 h-48 shadow-md rounded-full object-cover"
+          />
+        </div>
+
+        <div class="text-center flex-col flex justify-center px-6">
+          <h2 class="text-3xl font-bold line-clamp-2">{state.title}</h2>
+          <p class="text-lg font-bold text-gray-600 dark:text-gray-400 mt-1">
+            Episode 1
+          </p>
+        </div>
+
+        <div class="w-full px-10 mt-4">
+          <input
+            type="range"
+            min="0"
+            max={$duration || 0}
+            value={$currentTime || 0}
+            on:input={(e) => {
+              audioRef.currentTime = +e.target.value
+              currentTime.set(+e.target.value)
+            }}
+            class="w-full h-3 pt-1.5 rounded-lg appearance-none cursor-pointer dark:bg-slate-700 custom-range"
+          />
+          <div
+            class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1"
+          >
+            <span>{formatTime($currentTime || 0)}</span>
+            <span>{formatTime($duration || 0)}</span>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center px-6 mt-3 gap-3">
+          <Icon icon="mdi:volume-high" width="20" />
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value={audioRef?.volume || 1}
+            on:input={(e) => (audioRef.volume = +e.target.value)}
+            class="w-2/4 h-3 pt-1.5 rounded-lg appearance-none cursor-pointer dark:bg-slate-700"
+          />
+        </div>
+
+        <div class="flex justify-center gap-3 items-center py-6">
+          <button><Icon icon="mdi:shuffle" width="35" /></button>
+          <button><Icon icon="mdi:skip-previous" width="45" /></button>
+          <button on:click={togglePlay}>
+            <Icon
+              icon={state.isPlaying ? 'mdi:pause-circle' : 'mdi:play-circle'}
+              width="80"
+              height="80"
+              class="text-[#6257a5] dark:text-[#6257a5]"
+            />
+          </button>
+          <button><Icon icon="mdi:skip-next" width="45" /></button>
+          <button><Icon icon="mdi:repeat" width="35" /></button>
+        </div>
+
+        <audio
+          bind:this={audioRef}
+          src={state.url}
+          preload="metadata"
+          class="hidden"
         />
-        <h3 class="text-xl font-semibold">{state.title}</h3>
-        <p class="text-sm text-gray-500 dark:text-gray-400">{state.artist}</p>
-        <p class="text-sm mt-2">
-          Enjoy high quality audio streaming. This song is popular and highly
-          rated by listeners.
-        </p>
       </div>
-
-      <div
-        class="flex items-center justify-center gap-6 py-4 border-t dark:border-slate-700"
-      >
-        <button on:click={togglePlay}>
-          <Icon
-            icon={state.isPlaying ? 'mdi:pause-circle' : 'mdi:play-circle'}
-            width="48"
-            height="48"
-            class="text-blue-600 dark:text-blue-400"
-          />
-        </button>
-        <button on:click={closePlayer}>
-          <Icon
-            icon="mdi:close-circle"
-            width="32"
-            height="32"
-            class="text-red-500"
-          />
-        </button>
-      </div>
-
-      <audio
-        bind:this={audioRef}
-        src={state.url}
-        preload="auto"
-        class="hidden"
-      />
     </div>
   {:else}
     <div
@@ -121,7 +181,7 @@
       on:click|self={toggleExpand}
     >
       <div class="flex items-center gap-3 overflow-hidden">
-        <Icon icon="mdi:music" class="text-green-600" width="24" height="24" />
+        <Icon icon="mdi:music" class="text-[#6257a5]" width="24" height="24" />
         <div>
           <p class="text-sm font-medium truncate">{state.title}</p>
           <p class="text-xs text-gray-500 dark:text-gray-400 truncate">
@@ -146,7 +206,7 @@
       <audio
         bind:this={audioRef}
         src={state.url}
-        preload="auto"
+        preload="metadata"
         class="hidden"
       />
     </div>
@@ -174,5 +234,52 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  input[type='range'] {
+    appearance: none;
+    background: #e2e8f0;
+    border-radius: 9999px;
+    height: 6px;
+  }
+
+  input[type='range'].custom-range {
+    background: linear-gradient(
+      to right,
+      #4f46e5 0%,
+      #4f46e5 calc((var(--value, 0) / var(--max, 1)) * 100%),
+      #e2e8f0 calc((var(--value, 0) / var(--max, 1)) * 100%),
+      #e2e8f0 100%
+    );
+  }
+
+  input[type='range']::-webkit-slider-thumb {
+    appearance: none;
+    height: 14px;
+    width: 14px;
+    background: #4f46e5;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -6px;
+  }
+
+  input[type='range']::-moz-range-thumb {
+    height: 14px;
+    width: 14px;
+    background: #4f46e5;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+  }
+
+  input[type='range']::-webkit-slider-runnable-track {
+    height: 6px;
+    border-radius: 9999px;
+  }
+
+  input[type='range']::-moz-range-track {
+    height: 6px;
+    border-radius: 9999px;
+    background: #e2e8f0;
   }
 </style>

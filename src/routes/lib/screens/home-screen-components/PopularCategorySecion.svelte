@@ -5,27 +5,19 @@
 
   let categories = [
     {
-      name: 'PDFs',
+      name: 'EBooks',
       icon: 'mdi:file-document',
       color: 'bg-blue-100 text-blue-600',
     },
     {
-      name: 'Songs',
-      icon: 'mdi:music-note',
-      color: 'bg-green-100 text-green-600',
-    },
-    {
-      name: 'Ebooks',
+      name: 'EBook Audios',
       icon: 'mdi:book-open',
       color: 'bg-purple-100 text-purple-600',
     },
-    { name: 'Podcasts', icon: 'mdi:podcast', color: 'bg-red-100 text-red-600' },
   ]
 </script>
 
 <div class="">
-  <Label label="Popular Categories" />
-
   <div class="grid grid-cols-2 gap-4">
     {#each categories as category}
       <div

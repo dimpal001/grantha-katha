@@ -4,6 +4,7 @@ import { browser } from '$app/environment'
 
 export const audioPlayerStore = writable({
   title: '',
+  thumbnail: '',
   artist: '',
   url: '',
   isVisible: false,
@@ -11,80 +12,13 @@ export const audioPlayerStore = writable({
 })
 export const authStore = writable(false)
 export const currentUserStore = writable(null)
-export const todaysAttendance = writable(null)
 export const currentPageStore = writable('home')
 export const backPageStore = writable('home')
 export const showSidebarStore = writable(false)
 
-export const displayproject_id = writable(null)
-export const displayuser_id = writable(null)
-export const displaydepartment_id = writable(null)
-export const displaytimesheet_id = writable(null)
-
-export const editableDepartment = writable(null)
-export const editableProject = writable(null)
-export const editabletask_id = writable(null)
-export const editableUser = writable(null)
+export const displayPdf = writable(null)
 
 export const usersStore = writable([])
-export const departmentsStore = writable([])
-export const projectsStore = writable([])
-export const tasksStore = writable([])
-export const attendanceStore = writable([])
-export const timesheetsStore = writable([])
-export const activitiesStore = writable([])
-
-export const currentUserDepartments = derived(
-  [currentUserStore, departmentsStore],
-  ([$currentUser, $departments]) => {
-    if (!$currentUser) return []
-
-    if ($currentUser.role === 'admin') {
-      return $departments
-    } else if ($currentUser.role === 'manager') {
-      return $departments.filter((d) => d.manager === $currentUser.id)
-    } else {
-      return $departments.filter((d) => d.user_ids.includes($currentUser.id))
-    }
-  }
-)
-
-export const currentUserProjects = derived(
-  [currentUserStore, projectsStore, departmentsStore],
-  ([$currentUser, $projects, $departments]) => {
-    if (!$currentUser) return []
-
-    if ($currentUser.role === 'admin') {
-      return $projects
-    } else if ($currentUser.role === 'manager') {
-      const managedDepts = $departments.filter(
-        (d) => d.manager === $currentUser.id
-      )
-      const deptIds = managedDepts.map((d) => d.id)
-      return $projects.filter((p) =>
-        p.department_ids.some((id) => deptIds.includes(id))
-      )
-    } else {
-      return $projects.filter((p) => p.assignedUsers.includes($currentUser.id))
-    }
-  }
-)
-
-export const currentUserTasks = derived(
-  [currentUserStore, tasksStore, currentUserProjects],
-  ([$currentUser, $tasks, $userProjects]) => {
-    if (!$currentUser) return []
-
-    if ($currentUser.role === 'admin') {
-      return $tasks
-    } else if ($currentUser.role === 'manager') {
-      const project_ids = $userProjects.map((p) => p.id)
-      return $tasks.filter((t) => project_ids.includes(t.project_id))
-    } else {
-      return $tasks.filter((t) => t.assignedTo === $currentUser.id)
-    }
-  }
-)
 
 let defaultTheme = 'light'
 

@@ -7,12 +7,14 @@
   import { fetchMostViewedPDF } from '../../../../events/pdfEvents'
   import { onMount } from 'svelte'
   import PdfCard from '../../components/PDFCard.svelte'
+  import PdfSkeleton from '../../components/PDFSkeleton.svelte'
 
   let pdfs = []
   let loading = true
 
   const fetchData = async () => {
     const response = await fetchMostViewedPDF()
+    console.log(response.result)
     if (response && !response.err) {
       pdfs = response.result
     }
@@ -23,20 +25,18 @@
 </script>
 
 <div>
-  <Label label="Most Viewed PDFs" showArrow />
+  <Label
+    label="সৰ্বাধিক চোৱা ই-গ্ৰন্থ"
+    showArrow
+    onIconClick={() => {
+      navigateTo('pdfs')
+    }}
+  />
 
-  <div class="space-y-3 mt-2">
+  <div class="grid grid-cols-2 gap-3 mt-2">
     {#if loading}
       {#each Array(5) as _, i}
-        <div
-          class="flex justify-between items-center bg-white dark:bg-slate-800 p-4 rounded shadow-sm border border-gray-200 dark:border-slate-700 animate-pulse"
-        >
-          <div class="flex items-center gap-3">
-            <div class="w-6 h-6 bg-red-300 rounded"></div>
-            <div class="h-4 bg-gray-300 dark:bg-slate-600 rounded w-40"></div>
-          </div>
-          <div class="h-3 bg-gray-200 dark:bg-slate-600 rounded w-16"></div>
-        </div>
+        <PdfSkeleton />
       {/each}
     {:else}
       {#each pdfs as pdf}

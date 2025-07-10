@@ -31,6 +31,7 @@
   "dependencies": {
     "@iconify/svelte": "^5.0.0",
     "axios": "^1.10.0",
+    "hls.js": "^1.6.7",
     "pdfjs-dist": "^3.11.174"
   }
 }

@@ -8,18 +8,19 @@
   import { writable } from 'svelte/store'
   import PdfCard from '../components/PDFCard.svelte'
   import AudioCard from '../components/AudioCard.svelte'
+  import AudioSkeleton from '../components/AudioSkeleton.svelte'
+  import PdfSkeleton from '../components/PDFSkeleton.svelte'
 
   const query = writable('')
   const debouncedQuery = debounced(query, 400)
   let isTyping = false
 
   let suggestions = [
-    'Learn',
-    'Science',
-    'Motivation',
-    'History',
-    'NCERT',
-    'Songs',
+    'বিনিময়',
+    'নামঘোষা',
+    'ভূপেন হাজৰিকা',
+    'শব্দমালা',
+    'বিশ্ববিদ্যালয়',
   ]
 
   let audioResults = []
@@ -107,7 +108,7 @@
       <div class="flex flex-wrap gap-2">
         {#each suggestions as tag}
           <span
-            class="px-3 py-1 bg-blue-100 dark:bg-blue-800 text-blue-700 dark:text-blue-100 rounded text-sm transition hover:scale-105 cursor-pointer"
+            class="px-3 py-1 bg-[#cecae2] dark:bg-[#6257a5] text-[#6257a5] dark:text-[#6257a5] rounded text-sm transition hover:scale-105 cursor-pointer"
             on:click={() => selectSuggestion(tag)}
           >
             #{tag}
@@ -130,24 +131,10 @@
           >
             Audios
           </h4>
-          <div class="space-y-2">
+          <div class="grid grid-cols-2 gap-3">
             {#if loading}
-              {#each Array(3) as _, i}
-                <div
-                  class="p-4 bg-slate-100 dark:bg-slate-800 rounded flex items-center gap-4 animate-pulse"
-                >
-                  <div
-                    class="w-6 h-6 bg-green-400 dark:bg-green-700 rounded-full"
-                  ></div>
-                  <div class="flex-1 space-y-2">
-                    <div
-                      class="w-40 h-3 bg-gray-300 dark:bg-slate-600 rounded"
-                    ></div>
-                    <div
-                      class="w-24 h-2 bg-gray-200 dark:bg-slate-700 rounded"
-                    ></div>
-                  </div>
-                </div>
+              {#each Array(2) as _, i}
+                <AudioSkeleton />
               {/each}
             {:else if audioResults.length > 0}
               {#each audioResults as audio}
@@ -167,22 +154,10 @@
           >
             PDFs
           </h4>
-          <div class="space-y-2">
+          <div class="grid grid-cols-2 gap-3">
             {#if loading}
-              {#each Array(3) as _, i}
-                <div
-                  class="p-4 bg-slate-100 dark:bg-slate-800 rounded flex items-center gap-4 animate-pulse"
-                >
-                  <div class="w-6 h-6 bg-red-400 dark:bg-red-700 rounded"></div>
-                  <div class="flex-1 space-y-2">
-                    <div
-                      class="w-44 h-3 bg-gray-300 dark:bg-slate-600 rounded"
-                    ></div>
-                    <div
-                      class="w-20 h-2 bg-gray-200 dark:bg-slate-700 rounded"
-                    ></div>
-                  </div>
-                </div>
+              {#each Array(2) as _, i}
+                <PdfSkeleton />
               {/each}
             {:else if pdfResults.length > 0}
               {#each pdfResults as pdf}

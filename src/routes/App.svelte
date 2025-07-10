@@ -18,10 +18,12 @@
   import Home from './lib/screens/Home.svelte'
   import Login from './lib/screens/Login.svelte'
   import FloatingAudioPlayer from './lib/screens/FloatingAudioPlayer.svelte'
-  import PdfScreen from './lib/screens/PDFScreen.svelte'
   import Header from './lib/components/Header.svelte'
   import Profile from './lib/screens/Profile.svelte'
   import Search from './lib/screens/Search.svelte'
+  import PdfViewer from './lib/components/PDFViewer.svelte'
+  import AudioScreen from './lib/screens/AudioScreen.svelte'
+  import PdfsScreen from './lib/screens/PdfsScreen.svelte'
 
   let isAuthenticated = false
   let currentUser = null
@@ -36,13 +38,6 @@
 
   function toggleSidebar() {
     showSidebarStore.update((value) => !value)
-  }
-
-  $: pageTitles = {
-    home: 'Grantha Katha',
-    departments: 'Login',
-    register: 'Register',
-    viewPDF: 'View PDF',
   }
 
   onMount(() => {
@@ -98,6 +93,11 @@
 </script>
 
 <svelte:head>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"
+  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
@@ -127,24 +127,11 @@
     class="min-h-screen bg-gray-50 dark:bg-slate-900 relative text-black/70 dark:text-white"
   >
     {#if !isAuthenticated}
-      <!-- <header
-        class="bg-blue-700 shadow-sm border-indigo-100 px-4 py-4 flex items-center justify-between"
-      >
-        <div class="flex items-center gap-3">
-          <BackButton onClick={() => navigateTo('login')} />
-          <h2 class="text-xl font-semibold text-white">
-            {pageTitles[$currentPageStore] || 'Login'}
-          </h2>
-        </div>
-      </header> -->
-
       <div class="flex-1 overflow-y-auto mb-12">
         {#if $currentPageStore === 'login'}
           <Login />
         {:else if $currentPageStore === 'register'}
           <Registration />
-        {:else if $currentPageStore === 'viewPDF'}
-          <PdfScreen />
         {/if}
       </div>
     {:else}
@@ -163,6 +150,12 @@
             <Profile />
           {:else if $currentPageStore === 'search'}
             <Search />
+          {:else if $currentPageStore === 'viewPdf'}
+            <PdfViewer />
+          {:else if $currentPageStore === 'audios'}
+            <AudioScreen />
+          {:else if $currentPageStore === 'pdfs'}
+            <PdfsScreen />
           {/if}
         </div>
       </div>

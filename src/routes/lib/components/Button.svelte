@@ -20,7 +20,7 @@
   {type}
   disabled={disabled || isLoading}
   on:click={handleClick}
-  class={`${className} w-full flex items-center justify-center py-3 bg-blue-600 text-white ${pill ? 'rounded-full' : 'rounded'} hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed transition-colors text-lg font-semibold`}
+  class={`${className} w-full flex items-center justify-center py-3 bg-[#6257a5] text-white ${pill ? 'rounded-full' : 'rounded'} hover:bg-[#524991] disabled:opacity-60 disabled:cursor-not-allowed transition-colors text-lg font-semibold`}
 >
   {#if isLoading}
     <span class="spinner my-2"></span>

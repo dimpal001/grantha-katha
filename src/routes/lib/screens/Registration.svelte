@@ -81,7 +81,7 @@
 
   <div class="flex justify-center mb-6">
     <img
-      src="/register.svg"
+      src="/logo.png"
       alt="Registration Illustration"
       class="w-3/6 max-w-xs my-2"
     />
@@ -110,7 +110,7 @@
   <p class="mt-6 mb-10 text-sm text-center text-gray-600 dark:text-white/70">
     Already have an account?
     <button
-      class="text-blue-600 font-semibold cursor-pointer hover:underline"
+      class="text-[#6257a5] font-semibold cursor-pointer hover:underline"
       on:click={() => navigateTo('login')}
     >
       Login

@@ -8,17 +8,15 @@
   $: currentPage = $currentPageStore
   $: backPage = $backPageStore
 
+  console.log(currentPage)
+
   const pageTitles = {
     home: 'Grantha Katha',
-    departments: 'Login',
-    register: 'Register',
-    viewPDF: 'View PDF',
     profile: 'Profile',
     search: 'Search',
-  }
-
-  function goToProfile() {
-    navigateTo('profile')
+    viewPdf: 'শ্ৰৱ্য গ্ৰন্থ',
+    audios: 'শ্ৰৱ্য গ্ৰন্থ',
+    pdfs: 'ই-গ্ৰন্থ',
   }
 </script>
 
@@ -36,10 +34,15 @@
     <h1 class="text-xl font-bold">Grantha Katha</h1>
   {/if}
 
-  <button on:click={goToProfile} class="ml-auto">
+  <button
+    on:click={() => {
+      navigateTo('profile')
+    }}
+    class="ml-auto"
+  >
     <Icon
       icon="mdi:account-circle"
-      class="text-blue-600"
+      class="text-[#6257a5]"
       width="35"
       height="35"
     />
