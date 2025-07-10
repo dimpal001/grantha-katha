@@ -11,25 +11,62 @@
 
   let pdfs = []
   let loading = true
+  let selectedCategory = 'All'
 
-  const fetchData = async () => {
-    const response = await fetchAllPdfs()
-    console.log(response.result)
+  const categories = [
+    'All',
+    'উপন্যাস',
+    'জীবনী',
+    'বুৰঞ্জী',
+    'ধর্মীয়',
+    'অকাল্পনিক',
+    'চুটি গল্প',
+  ]
+
+  const fetchData = async (category = 'All') => {
+    loading = true
+    const response = await fetchAllPdfs(category === 'All' ? null : category)
     if (response && !response.err) {
       pdfs = response.result
+    } else {
+      pdfs = []
     }
     loading = false
   }
 
-  onMount(fetchData)
+  function selectCategory(category) {
+    selectedCategory = category
+    fetchData(category)
+  }
+
+  onMount(() => fetchData())
 </script>
 
 <div class="p-4">
-  <div class="grid grid-cols-2 gap-3 mt-2">
+  <div class="flex gap-2 flex-wrap pb-2">
+    {#each categories as category}
+      <button
+        on:click={() => selectCategory(category)}
+        class={`px-3 py-1 text-sm rounded border ${
+          selectedCategory === category
+            ? 'bg-violet-600 text-white border-violet-600'
+            : 'bg-white dark:bg-slate-800 text-gray-700 dark:text-white border-gray-300'
+        }`}
+      >
+        {category}
+      </button>
+    {/each}
+  </div>
+
+  <div class="grid grid-cols-2 gap-3 mt-4">
     {#if loading}
       {#each Array(5) as _, i}
         <PdfSkeleton />
       {/each}
+    {:else if pdfs.length === 0}
+      <div class="col-span-2 text-center text-gray-400 py-10">
+        No PDFs found in this category.
+      </div>
     {:else}
       {#each pdfs as pdf}
         <PdfCard {pdf} />

@@ -2,17 +2,20 @@
 <script lang="ts">
   import Icon from '@iconify/svelte'
   import Label from '../../components/Label.svelte'
+  import { navigateTo } from '$lib/navigation'
 
   let categories = [
     {
       name: 'EBooks',
       icon: 'mdi:file-document',
       color: 'bg-blue-100 text-blue-600',
+      link: 'pdfs',
     },
     {
       name: 'EBook Audios',
       icon: 'mdi:book-open',
       color: 'bg-purple-100 text-purple-600',
+      link: 'audios',
     },
   ]
 </script>
@@ -21,6 +24,10 @@
   <div class="grid grid-cols-2 gap-4">
     {#each categories as category}
       <div
+        role="button"
+        onclick={() => {
+          navigateTo(category.link)
+        }}
         class={`flex items-center gap-3 p-3 rounded ${category.color} shadow-sm cursor-pointer hover:scale-[1.03] transition-all`}
       >
         <Icon icon={category.icon} width="24" height="24" />

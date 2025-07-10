@@ -48,15 +48,19 @@ export async function fetchPdfs(searchQuery) {
     return { result: [], err: true }
   }
 }
-
-export async function fetchAllPdfs() {
+export async function fetchAllPdfs(category) {
   try {
     const data = await fetch('/data/ebook/ebooks.json')
     const allPdfs = await data.json()
 
-    return { result: allPdfs, err: false }
+    const filteredPdfs =
+      category && category !== 'All'
+        ? allPdfs.filter((pdf) => pdf.category === category)
+        : allPdfs
+
+    return { result: filteredPdfs, err: false }
   } catch (error) {
-    console.error('Error :', error)
+    console.error('Error:', error)
     return { result: [], err: true }
   }
 }

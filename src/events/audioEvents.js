@@ -46,14 +46,19 @@ export async function fetchAudios(searchQuery) {
   }
 }
 
-export async function fetchAllAudios() {
+export async function fetchAllAudios(category) {
   try {
     const data = await fetch('/data/audiobook/audiobook.json')
     const allAudios = await data.json()
 
-    return { result: allAudios, err: false }
+    const filteredAudios =
+      category && category !== 'All'
+        ? allAudios.filter((audio) => audio.category === category)
+        : allAudios
+
+    return { result: filteredAudios, err: false }
   } catch (error) {
-    console.error('Error :', error)
+    console.error('Error:', error)
     return { result: [], err: true }
   }
 }
