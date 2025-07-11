@@ -8,7 +8,7 @@
   let categories = [
     {
       name: 'শ্ৰৱ্য গ্ৰন্থ',
-      icon: 'mdi:book-open',
+      icon: 'mdi:headphones',
       color: 'bg-purple-100 text-purple-600',
       link: 'audios',
     },
