@@ -89,7 +89,6 @@
 
     const checkReady = async () => {
       try {
-        console.log('Checking stream availability:', streamUrl)
         const res = await fetch(streamUrl, { method: 'HEAD' })
         if (res.ok) {
           playAudio(streamUrl)
@@ -99,7 +98,7 @@
       } catch (err) {
         console.error('Stream check failed:', err)
         if (++attempts < maxAttempts) {
-          setTimeout(checkReady, 5000)
+          setTimeout(checkReady, 500)
         } else {
           console.error('Audio stream not ready after multiple attempts.')
         }
