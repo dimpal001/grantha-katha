@@ -42,7 +42,7 @@
   onMount(() => fetchData())
 </script>
 
-<div class="p-4">
+<div class="p-4 min-h-screen">
   <div
     style="scrollbar-width: none;"
     class="flex gap-2 overflow-scroll items-start pb-4"
@@ -50,7 +50,7 @@
     {#each categories as category}
       <button
         on:click={() => selectCategory(category)}
-        class={`px-3 py-1 rounded border text-nowrap ${
+        class={`px-3 py-1 rounded border font-serif text-nowrap ${
           selectedCategory === category
             ? 'bg-[#6257a5] text-white border-[#504596]'
             : 'bg-white dark:bg-slate-800 text-gray-700 dark:text-white border-gray-300'

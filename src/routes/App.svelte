@@ -24,6 +24,7 @@
   import PdfViewer from './lib/components/PDFViewer.svelte'
   import AudioScreen from './lib/screens/AudioScreen.svelte'
   import PdfsScreen from './lib/screens/PdfsScreen.svelte'
+  import Footer from './lib/components/Footer.svelte'
 
   let isAuthenticated = false
   let currentUser = null
@@ -71,7 +72,7 @@
       onDestroy(() => {
         document.removeEventListener('click', handleClickOutside)
       })
-    }, 2000)
+    }, 500)
   })
 
   function handleLogout() {
@@ -137,7 +138,6 @@
     {:else}
       <div class="flex flex-col h-screen">
         <Header />
-
         <div
           class="flex-1 overflow-y-auto mb-12"
           style="scrollbar-width: none;"
@@ -157,6 +157,7 @@
           {:else if $currentPageStore === 'pdfs'}
             <PdfsScreen />
           {/if}
+          <Footer />
         </div>
       </div>
 

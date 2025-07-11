@@ -66,7 +66,7 @@
   })
 </script>
 
-<div class="viewer-container p-2">
+<div class="viewer-container p-2 mb-10">
   {#if isLoading}
     <div class="loading min-h-[500px] flex items-center">Loading PDF...</div>
   {:else}

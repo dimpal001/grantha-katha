@@ -24,7 +24,7 @@
   onMount(fetchData)
 </script>
 
-<div>
+<div class="pt-4">
   <Label
     label="সৰ্বাধিক চোৱা ই-গ্ৰন্থ"
     showArrow

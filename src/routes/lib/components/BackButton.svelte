@@ -10,9 +10,9 @@
 <Icon
   onclick={handleClick}
   icon="mdi:arrow-left"
-  width="38"
-  height="38"
-  class="transition-colors text-[#6257a5] bg-gray-200 p-2 rounded"
+  width="35"
+  height="35"
+  class="transition-colors text-[#6257a5] bg-transparent p-1 rounded"
 />
 
 <style>

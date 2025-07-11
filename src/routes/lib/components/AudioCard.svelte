@@ -48,7 +48,7 @@
   </div>
 
   <div class="absolute bottom-0 left-0 w-full p-3 z-10 text-white">
-    <p class="text-sm font-semibold line-clamp-2">{audio.name}</p>
+    <p class="text-sm font-semibold line-clamp-2 font-serif">{audio.name}</p>
     <div class="text-xs text-gray-200 flex items-center gap-1 mt-1">
       <Icon icon="mdi:music" class="w-3.5 h-3.5 text-gray-300" />
       {audio.plays} plays

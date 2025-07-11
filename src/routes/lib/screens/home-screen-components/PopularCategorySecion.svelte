@@ -32,7 +32,7 @@
         class={`flex items-center gap-3 p-3 rounded ${category.color} shadow-sm cursor-pointer hover:scale-[1.03] transition-all`}
       >
         <Icon icon={category.icon} width="24" height="24" />
-        <span class="font-bold text-base">{category.name}</span>
+        <span class="font-bold font-serif text-base">{category.name}</span>
       </div>
     {/each}
   </div>

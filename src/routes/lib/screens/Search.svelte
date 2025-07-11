@@ -80,7 +80,7 @@
     />
     <input
       bind:value={$query}
-      placeholder="Search Ebooks, audio books......"
+      placeholder="Search audio books, e-books..."
       class="bg-transparent outline-none w-full placeholder:text-gray-400 text-base"
       on:focus={handleFocus}
       on:blur={handleBlur}
@@ -108,7 +108,7 @@
       <div class="flex flex-wrap gap-2">
         {#each suggestions as tag}
           <span
-            class="px-3 py-1 bg-[#cecae2] dark:bg-[#6257a5] text-[#6257a5] dark:text-[#6257a5] rounded text-sm transition hover:scale-105 cursor-pointer"
+            class="px-3 py-1 font-serif bg-[#cecae2] dark:bg-[#6257a5] text-[#6257a5] dark:text-[#6257a5] rounded text-sm transition hover:scale-105 cursor-pointer"
             on:click={() => selectSuggestion(tag)}
           >
             #{tag}

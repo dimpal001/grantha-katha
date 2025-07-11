@@ -1,5 +1,4 @@
 <script>
-  import { navigateTo } from '$lib/navigation'
   import { onMount } from 'svelte'
   import MostListenedSection from './home-screen-components/MostListenedSection.svelte'
   import MostViewedSection from './home-screen-components/MostViewedSection.svelte'
@@ -13,7 +12,7 @@
   })
 </script>
 
-<div class="p-5 max-w-lg mx-auto space-y-5 mb-10">
+<div class="p-5 max-w-lg mx-auto space-y-7 mb-10">
   <SearchBox />
   <ImageCarousel />
   <PopularCategorySecion />

@@ -194,7 +194,9 @@
         </div>
 
         <div class="text-center flex-col flex justify-center px-6">
-          <h2 class="text-3xl font-bold line-clamp-2">{state.title}</h2>
+          <h2 class="text-3xl font-bold line-clamp-2 font-serif">
+            {state.title}
+          </h2>
           <p class="text-lg font-bold text-gray-600 dark:text-gray-400 mt-1">
             Episode 1
           </p>

@@ -42,7 +42,7 @@
       </div>
     </div>
 
-    <section class="px-6 py-4 space-y-2">
+    <!-- <section class="px-6 py-4 space-y-2">
       <Label label="Account Settings" />
 
       <div
@@ -67,9 +67,9 @@
           />
         </div>
       </div>
-    </section>
+    </section> -->
 
-    <section class="px-6 py-4 space-y-2">
+    <!-- <section class="px-6 py-4 space-y-2">
       <Label label="Your Favourites" />
 
       <div
@@ -94,7 +94,7 @@
           />
         </div>
       </div>
-    </section>
+    </section> -->
 
     <div class="flex-grow"></div>
 
