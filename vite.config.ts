@@ -15,8 +15,8 @@ export default defineConfig({
       ],
       manifest: {
         name: 'Grantha Katha',
-        short_name: 'Grantha',
-        description: 'An immersive reading and audio experience',
+        short_name: 'Grantha Katha',
+        description: 'Assamese audiobooks and eBooks on Grantha Katha – your destination for Assamese literature, articles, and newsletters. Immerse yourself in Assam’s literary heritage!',
         theme_color: '#6257a5',
         background_color: '#ffffff',
         display: 'standalone',
