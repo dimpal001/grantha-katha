@@ -1,11 +1,12 @@
+// vite.config.ts
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
-import { VitePWA } from 'vite-plugin-pwa';
+import { SvelteKitPWA } from '@vite-pwa/sveltekit';
 
 export default defineConfig({
   plugins: [
     sveltekit(),
-    VitePWA({
+    SvelteKitPWA({
       registerType: 'autoUpdate',
       includeAssets: [
         'favicon.ico',
@@ -39,6 +40,9 @@ export default defineConfig({
             purpose: 'any maskable'
           }
         ]
+      },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,svg,png,woff2,ttf,woff,json}']
       }
     })
   ]
