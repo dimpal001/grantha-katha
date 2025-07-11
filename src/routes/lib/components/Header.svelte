@@ -16,8 +16,6 @@
     audios: 'শ্ৰৱ্য গ্ৰন্থ',
     pdfs: 'ই-গ্ৰন্থ',
   }
-
-  const isEnglish = (text) => /^[\x00-\x7F]+$/.test(text)
 </script>
 
 <header
@@ -26,9 +24,7 @@
   {#if currentPage !== 'home'}
     <div class="flex items-center gap-3">
       <BackButton onClick={() => navigateTo('home')} />
-      <h2
-        class={`text-xl font-bold text-[#6257a5] font-serif ${isEnglish(pageTitles[currentPage]) === true && 'font-serif'}`}
-      >
+      <h2 class="text-xl font-bold text-[#6257a5] font-serif">
         {pageTitles[currentPage] ?? 'Page'}
       </h2>
     </div>
@@ -41,7 +37,7 @@
 
   <button
     on:click={() => navigateTo('profile')}
-    class="ml-auto p-1 rounded-full bg-slate-100 dark:hover:bg-slate-800 transition"
+    class="ml-auto p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition"
     aria-label="Go to Profile"
   >
     <Icon
