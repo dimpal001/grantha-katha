@@ -37,6 +37,8 @@
 
     if (needsNewPlay) {
       playAudio(streamUrl)
+      audioRef.addEventListener('timeupdate', updateTime)
+      audioRef.addEventListener('loadedmetadata', updateDuration)
       lastPlayedUrl = state.url
     } else if (audioRef.paused) {
       audioRef.play().catch(console.error)
@@ -49,11 +51,6 @@
     if (audioRef && state.url) {
       const streamUrl = getStreamUrl(state.url)
       playAudio(streamUrl)
-    }
-
-    if (audioRef) {
-      audioRef.addEventListener('timeupdate', updateTime)
-      audioRef.addEventListener('loadedmetadata', updateDuration)
     }
   })
 
