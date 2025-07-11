@@ -8,17 +8,19 @@
 <div
   role="button"
   on:click={() => {
-    const slug =
-      audio?.url?.split('/').pop() || '1751157521012-deeplina-deka-hit-songs'
-    audioPlayerStore.set({
-      thumbnail: audio?.thumbnail,
-      category: audio?.category,
-      title: audio.name,
-      url: slug,
-      artist: audio.artist || 'Unknown',
-      isVisible: true,
-      isPlaying: true,
-    })
+    if (audio.price.toLowerCase() === 'free') {
+      const slug =
+        audio?.url?.split('/').pop() || '1751157521012-deeplina-deka-hit-songs'
+      audioPlayerStore.set({
+        thumbnail: audio?.thumbnail,
+        category: audio?.category,
+        title: audio.name,
+        url: slug,
+        artist: audio.artist || 'Unknown',
+        isVisible: true,
+        isPlaying: true,
+      })
+    }
   }}
   class="relative aspect-[9/14] rounded overflow-hidden border border-gray-200 dark:border-slate-700 group cursor-pointer shadow-lg"
 >
@@ -40,6 +42,11 @@
       height="30"
     />
   </div>
+  {#if audio.price.toLowerCase() !== 'free'}
+    <div class="absolute bottom-3 right-3 z-10">
+      <Icon icon="mdi:crown" class="text-yellow-500 " width="30" height="30" />
+    </div>
+  {/if}
 
   <div class="absolute inset-0 flex items-center justify-center z-10">
     <div class="p-2 bg-white/20 rounded-full">

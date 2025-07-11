@@ -8,7 +8,9 @@
 <div
   role="button"
   on:click={() => {
-    navigateTo('viewPdf')
+    if (pdf.price.toLowerCase() === 'free') {
+      navigateTo('viewPdf')
+    }
   }}
   class="relative w-full aspect-[9/14] rounded overflow-hidden shadow-lg border border-gray-200 dark:border-slate-700 group cursor-pointer"
 >
@@ -25,6 +27,11 @@
   <div class="absolute top-3 left-3 z-10 rounded-full p-1">
     <Icon icon="mdi:file-pdf-box" class="text-red-600" width="30" height="30" />
   </div>
+  {#if pdf.price.toLowerCase() !== 'free'}
+    <div class="absolute bottom-3 right-3 z-10">
+      <Icon icon="mdi:crown" class="text-yellow-500 " width="30" height="30" />
+    </div>
+  {/if}
 
   <div class="absolute bottom-0 left-0 w-full p-3 z-10 text-white">
     <p class="text-sm font-semibold line-clamp-2 font-serif">{pdf.name}</p>

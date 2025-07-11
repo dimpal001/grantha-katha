@@ -1,4 +1,3 @@
-<!-- === PopularCategorySection.svelte === -->
 <script lang="ts">
   //@ts-nocheck
   import Icon from '@iconify/svelte'
@@ -14,7 +13,7 @@
     },
     {
       name: 'ই-গ্ৰন্থ',
-      icon: 'mdi:file-document',
+      icon: 'ri:book-2-line',
       color: 'bg-blue-100 text-blue-600',
       link: 'pdfs',
     },

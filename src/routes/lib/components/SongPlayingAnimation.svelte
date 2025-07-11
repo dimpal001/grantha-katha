@@ -23,7 +23,7 @@
     align-items: flex-end;
     justify-content: center;
     gap: 4px;
-    height: 30px;
+    height: 40px;
     width: fit-content;
   }
 

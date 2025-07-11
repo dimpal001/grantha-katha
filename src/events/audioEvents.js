@@ -12,8 +12,6 @@ export async function fetchMostListenedAudio() {
     const data = await fetch('/data/audiobook/audiobook.json')
     const audios = await data.json()
 
-    audios.sort((a, b) => (b.plays || 0) - (a.plays || 0))
-
     return { result: audios.slice(0, 6), err: false }
   } catch (error) {
     console.error('Error :', error)

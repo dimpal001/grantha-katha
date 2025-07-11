@@ -25,6 +25,7 @@
 
 <div class="mb-20">
   <Label
+    leftIcon="mdi:headphones"
     label="সৰ্বাধিক শুনা শ্ৰৱ্য গ্ৰন্থ"
     showArrow
     onIconClick={() => {
@@ -34,7 +35,7 @@
 
   <div class="grid grid-cols-2 gap-3 mt-2">
     {#if loading}
-      {#each Array(5) as _, i}
+      {#each Array(4) as _, i}
         <AudioSkeleton />
       {/each}
     {:else}

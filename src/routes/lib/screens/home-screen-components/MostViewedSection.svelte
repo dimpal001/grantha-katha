@@ -26,6 +26,7 @@
 
 <div class="pt-4">
   <Label
+    leftIcon="ri:book-2-line"
     label="সৰ্বাধিক চোৱা ই-গ্ৰন্থ"
     showArrow
     onIconClick={() => {
@@ -35,7 +36,7 @@
 
   <div class="grid grid-cols-2 gap-3 mt-2">
     {#if loading}
-      {#each Array(5) as _, i}
+      {#each Array(4) as _, i}
         <PdfSkeleton />
       {/each}
     {:else}

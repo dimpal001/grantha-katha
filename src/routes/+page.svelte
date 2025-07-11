@@ -11,12 +11,4 @@
   })
 </script>
 
-<svelte:head>
-  <title>Grantha Katha - Powered by Tale tuneX</title>
-  <meta
-    name="description"
-    content="Assamese audiobooks and eBooks on Grantha Katha – your destination for Assamese literature, articles, and newsletters. Immerse yourself in Assam’s literary heritage!"
-  />
-</svelte:head>
-
 <App />

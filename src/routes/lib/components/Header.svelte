@@ -37,7 +37,7 @@
 
   <button
     on:click={() => navigateTo('profile')}
-    class="ml-auto p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+    class="ml-auto p-1 rounded-full bg-slate-200 dark:hover:bg-slate-800 transition"
     aria-label="Go to Profile"
   >
     <Icon

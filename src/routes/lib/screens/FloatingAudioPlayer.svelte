@@ -176,7 +176,7 @@
           <img
             src={state?.thumbnail}
             alt="Thumbnail"
-            class="w-48 h-48 shadow-md rounded-full object-cover"
+            class={`w-56 h-56 shadow-md rounded-full object-cover ${state.isPlaying && 'rotate'} border-2 shadow-lg border-white/80`}
           />
         </div>
 
@@ -386,5 +386,18 @@
     height: 6px;
     border-radius: 9999px;
     background: #e2e8f0;
+  }
+
+  .rotate {
+    animation: rotate 5s linear infinite;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
 </style>
