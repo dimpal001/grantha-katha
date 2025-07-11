@@ -13,11 +13,10 @@
   let hls: any = null
   let currentTime = writable(0)
   let duration = writable(0)
-  let hasMounted = false
   let isExpanded = true
+  let lastPlayedUrl = null
   let state
   $: state = $audioPlayerStore
-  let previousUrl = ''
 
   function getStreamUrl(url: string) {
     if (!url) return ''
@@ -28,36 +27,34 @@
     return `${baseUrl}/audios/${audioId}/stream`
   }
 
-  $: if (hasMounted && state.url) {
+  $: if (state.url && state.isPlaying && audioRef) {
     const streamUrl = getStreamUrl(state.url)
-    resetPlayer()
-    waitUntilReady(streamUrl)
-    isExpanded = true
-  }
 
-  function resetPlayer() {
-    if (hls) {
-      hls.destroy()
-      hls = null
-    }
-    if (audioRef) {
-      audioRef.pause()
-      audioRef.removeAttribute('src')
-      audioRef.load()
+    isExpanded = true
+
+    const needsNewPlay =
+      state.url !== lastPlayedUrl || !audioRef.src || audioRef.src === ''
+
+    if (needsNewPlay) {
+      playAudio(streamUrl)
+      lastPlayedUrl = state.url
+    } else if (audioRef.paused) {
+      audioRef.play().catch(console.error)
     }
   }
 
   onMount(async () => {
-    if (typeof window !== 'undefined' && !Hls) {
-      Hls = (await import('hls.js')).default
+    Hls = (await import('hls.js')).default
+
+    if (audioRef && state.url) {
+      const streamUrl = getStreamUrl(state.url)
+      playAudio(streamUrl)
     }
 
     if (audioRef) {
       audioRef.addEventListener('timeupdate', updateTime)
       audioRef.addEventListener('loadedmetadata', updateDuration)
     }
-
-    hasMounted = true
   })
 
   onDestroy(() => {
@@ -72,85 +69,64 @@
   })
 
   function updateTime() {
-    if (audioRef) {
-      currentTime.set(audioRef.currentTime)
-    }
+    currentTime.set(audioRef?.currentTime || 0)
   }
 
   function updateDuration() {
-    if (audioRef) {
-      duration.set(audioRef.duration)
-    }
-  }
-
-  async function waitUntilReady(streamUrl: string) {
-    const maxAttempts = 6
-    let attempts = 0
-
-    const checkReady = async () => {
-      try {
-        const res = await fetch(streamUrl, { method: 'HEAD' })
-        if (res.ok) {
-          playAudio(streamUrl)
-        } else {
-          throw new Error('Stream not ready')
-        }
-      } catch (err) {
-        console.error('Stream check failed:', err)
-        if (++attempts < maxAttempts) {
-          setTimeout(checkReady, 500)
-        } else {
-          console.error('Audio stream not ready after multiple attempts.')
-        }
-      }
-    }
-
-    checkReady()
+    duration.set(audioRef?.duration || 0)
   }
 
   function playAudio(streamUrl: string) {
-    if (!audioRef) return
+    if (!audioRef || !Hls?.isSupported()) return
 
-    if (Hls.isSupported()) {
-      hls = new Hls()
-      hls.loadSource(streamUrl)
-      hls.attachMedia(audioRef)
-      hls.on(Hls.Events.MANIFEST_PARSED, function () {
-        audioRef.play().catch((err) => {
-          console.error('HLS playback failed:', err)
-        })
-      })
-    } else if (audioRef.canPlayType('application/vnd.apple.mpegurl')) {
-      audioRef.src = streamUrl
-      audioRef.addEventListener('loadedmetadata', function () {
-        audioRef.play().catch((err) => {
-          console.error('Native HLS playback failed:', err)
-        })
-      })
-    } else {
-      alert('HLS is not supported in this browser.')
+    if (hls) {
+      console.log('destroy')
+      hls.destroy()
+      hls = null
     }
+
+    hls = new Hls()
+    console.log('Should play')
+    hls.loadSource(streamUrl)
+    hls.attachMedia(audioRef)
+
+    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+      audioRef.play().catch(console.error)
+    })
   }
 
   function togglePlay() {
     if (!audioRef) return
+
     if (state.isPlaying) {
       audioRef.pause()
     } else {
-      audioRef.play().catch((err) => console.error('Playback error:', err))
+      if (audioRef.src === '' || audioRef.readyState === 0) {
+        const streamUrl = getStreamUrl(state.url)
+        playAudio(streamUrl)
+        lastPlayedUrl = state.url
+      } else {
+        audioRef.play().catch(console.error)
+      }
     }
-    audioPlayerStore.update((s) => ({
-      ...s,
-      isPlaying: !s.isPlaying,
-    }))
+
+    audioPlayerStore.update((s) => ({ ...s, isPlaying: !s.isPlaying }))
   }
 
   function closePlayer() {
-    if (audioRef) audioRef.pause()
+    if (audioRef) {
+      audioRef.pause()
+      audioRef.src = ''
+      audioRef.load()
+    }
+
     if (hls) {
       hls.destroy()
       hls = null
     }
+
+    lastPlayedUrl = null
+
     audioPlayerStore.set({
       title: '',
       artist: '',
@@ -159,11 +135,16 @@
       isVisible: false,
       isPlaying: false,
     })
+
     isExpanded = false
   }
 
   function toggleExpand() {
-    isExpanded = !isExpanded
+    if (isExpanded) {
+      closePlayer()
+    } else {
+      isExpanded = true
+    }
   }
 
   function formatTime(seconds: number) {
@@ -190,7 +171,7 @@
             >Playing episode 1 of 1</span
           >
           <button on:click={toggleExpand}>
-            <Icon icon="mdi:chevron-down" width="28" height="28" />
+            <Icon icon="mdi:close" width="28" height="28" />
           </button>
         </div>
 
@@ -270,7 +251,12 @@
           <button><Icon icon="mdi:repeat" width="35" /></button>
         </div>
 
-        <audio bind:this={audioRef} preload="metadata" class="hidden" />
+        <audio
+          bind:this={audioRef}
+          preload="metadata"
+          id="player"
+          class="hidden"
+        />
       </div>
     </div>
   {:else}
@@ -329,7 +315,12 @@
         </button>
       </div>
 
-      <audio bind:this={audioRef} preload="metadata" class="hidden" />
+      <audio
+        bind:this={audioRef}
+        preload="metadata"
+        id="player"
+        class="hidden"
+      />
     </div>
   {/if}
 {/if}
