@@ -108,27 +108,28 @@
     checkReady()
   }
 
-  function playAudio(streamUrl) {
+  function playAudio(streamUrl: string) {
     if (!audioRef) return
 
-    return new Promise((resolve, reject) => {
+    if (Hls.isSupported()) {
+      hls = new Hls()
+      hls.loadSource(streamUrl)
+      hls.attachMedia(audioRef)
+      hls.on(Hls.Events.MANIFEST_PARSED, function () {
+        audioRef.play().catch((err) => {
+          console.error('HLS playback failed:', err)
+        })
+      })
+    } else if (audioRef.canPlayType('application/vnd.apple.mpegurl')) {
       audioRef.src = streamUrl
-      audioRef.load()
-
-      // Wait for the audio to be ready before trying to play
-      const onCanPlay = () => {
-        audioRef.removeEventListener('canplay', onCanPlay)
-        audioRef
-          .play()
-          .then(resolve)
-          .catch((err) => {
-            console.error('Play failed:', err)
-            reject(err)
-          })
-      }
-
-      audioRef.addEventListener('canplay', onCanPlay)
-    })
+      audioRef.addEventListener('loadedmetadata', function () {
+        audioRef.play().catch((err) => {
+          console.error('Native HLS playback failed:', err)
+        })
+      })
+    } else {
+      alert('HLS is not supported in this browser.')
+    }
   }
 
   function togglePlay() {
