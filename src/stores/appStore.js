@@ -3,6 +3,7 @@ import { writable, derived } from 'svelte/store'
 import { browser } from '$app/environment'
 
 export const audioPlayerStore = writable({
+  id: null,
   title: '',
   thumbnail: '',
   category: '',
@@ -10,6 +11,7 @@ export const audioPlayerStore = writable({
   url: '',
   isVisible: false,
   isPlaying: false,
+  isFavourite: false,
 })
 
 export const authStore = writable(false)

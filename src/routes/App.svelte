@@ -25,6 +25,7 @@
   import AudioScreen from './lib/screens/AudioScreen.svelte'
   import PdfsScreen from './lib/screens/PdfsScreen.svelte'
   import Footer from './lib/components/Footer.svelte'
+  import ForgotPassword from './lib/screens/ForgotPassword.svelte'
 
   let isAuthenticated = false
   let currentUser = null
@@ -124,53 +125,57 @@
 {#if isLoading}
   <Loading />
 {:else}
-  <main
-    class="min-h-screen bg-gray-50 dark:bg-slate-900 relative text-black/70 dark:text-white"
-  >
-    {#if !isAuthenticated}
-      <div class="flex-1 overflow-y-auto mb-12">
-        {#if $currentPageStore === 'login'}
-          <Login />
-        {:else if $currentPageStore === 'register'}
-          <Registration />
-        {/if}
-      </div>
-    {:else}
-      <div class="flex flex-col h-screen">
-        <Header />
-        <div
-          class="flex-1 overflow-y-auto mb-12"
-          style="scrollbar-width: none;"
-        >
-          {#if $currentPageStore === 'home'}
-            <Home />
+  <main class="bg-black">
+    <div
+      class="min-h-screen max-w-md mx-auto bg-gray-50 dark:bg-slate-900 relative text-black/70 dark:text-white"
+    >
+      {#if !isAuthenticated}
+        <div class="flex-1 overflow-y-auto mb-12">
+          {#if $currentPageStore === 'login'}
+            <Login />
           {:else if $currentPageStore === 'register'}
             <Registration />
-          {:else if $currentPageStore === 'profile'}
-            <Profile />
-          {:else if $currentPageStore === 'search'}
-            <Search />
-          {:else if $currentPageStore === 'viewPdf'}
-            <PdfViewer />
-          {:else if $currentPageStore === 'audios'}
-            <AudioScreen />
-          {:else if $currentPageStore === 'pdfs'}
-            <PdfsScreen />
+          {:else if $currentPageStore === 'forgotPassword'}
+            <ForgotPassword />
           {/if}
-          <Footer />
         </div>
-      </div>
+      {:else}
+        <div class="flex flex-col h-screen">
+          <Header />
+          <div
+            class="flex-1 overflow-y-auto mb-12"
+            style="scrollbar-width: none;"
+          >
+            {#if $currentPageStore === 'home'}
+              <Home />
+            {:else if $currentPageStore === 'register'}
+              <Registration />
+            {:else if $currentPageStore === 'profile'}
+              <Profile />
+            {:else if $currentPageStore === 'search'}
+              <Search />
+            {:else if $currentPageStore === 'viewPdf'}
+              <PdfViewer />
+            {:else if $currentPageStore === 'audios'}
+              <AudioScreen />
+            {:else if $currentPageStore === 'pdfs'}
+              <PdfsScreen />
+            {/if}
+            <Footer />
+          </div>
+        </div>
 
-      {#if $showSidebarStore}
-        <div
-          class="fixed inset-0 bg-black/30 z-30"
-          on:click={toggleSidebar}
-          aria-hidden="true"
-        ></div>
+        {#if $showSidebarStore}
+          <div
+            class="fixed inset-0 bg-black/30 z-30"
+            on:click={toggleSidebar}
+            aria-hidden="true"
+          ></div>
 
-        <Navigation {toggleSidebar} />
+          <Navigation {toggleSidebar} />
+        {/if}
       {/if}
-    {/if}
-    <FloatingAudioPlayer />
+      <FloatingAudioPlayer />
+    </div>
   </main>
 {/if}

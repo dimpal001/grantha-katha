@@ -5,6 +5,7 @@
   import { onMount, onDestroy } from 'svelte'
   import { writable } from 'svelte/store'
   import SongPlayingAnimation from '../components/SongPlayingAnimation.svelte'
+  import { toggleFavourite } from '../../../events/audioEvents'
 
   const baseUrl = 'https://audiostream.backendservices.in'
 
@@ -52,6 +53,7 @@
       const streamUrl = getStreamUrl(state.url)
       playAudio(streamUrl)
     }
+    console.log(state)
   })
 
   onDestroy(() => {
@@ -125,12 +127,14 @@
     lastPlayedUrl = null
 
     audioPlayerStore.set({
+      id: null,
       title: '',
       artist: '',
       category: '',
       url: '',
       isVisible: false,
       isPlaying: false,
+      isFavourite: false,
     })
 
     isExpanded = false
@@ -153,13 +157,31 @@
       .padStart(2, '0')
     return `${m}:${s}`
   }
+
+  async function toggleIsFavourite() {
+    const response = await toggleFavourite(state.id, !state.is_favourite)
+    console.log(response)
+    if (!response.err) {
+      audioPlayerStore.set({
+        id: state.id,
+        title: state.title,
+        artist: state.artist,
+        category: state.category,
+        isPlaying: state.isPlaying,
+        isVisible: state.isVisible,
+        thumbnail: state.thumbnail,
+        url: state.url,
+        isFavourite: !state.is_favourite,
+      })
+    }
+  }
 </script>
 
 {#if state.isVisible}
   {#if isExpanded}
-    <div class="fixed inset-0 flex z-30">
+    <div class="fixed inset-0 flex z-30 mx-auto max-w-md">
       <div
-        class="rounded z-50 bg-[#dddddd] dark:bg-slate-900 text-gray-800 dark:text-white flex flex-col w-full max-w-xl mx-auto animate-fade-in"
+        class="rounded z-50 bg-white dark:bg-slate-900 text-gray-800 flex flex-col w-full max-w-xl mx-auto animate-fade-in"
       >
         <div
           class="flex justify-between items-center p-4 border-b border-black/10"
@@ -167,9 +189,20 @@
           <span class="font-bold text-gray-700 dark:text-gray-300"
             >Playing episode 1 of 1</span
           >
-          <button on:click={toggleExpand}>
-            <Icon icon="mdi:close" width="28" height="28" />
-          </button>
+          <div class="flex items-center justify-end gap-4">
+            <Icon
+              onclick={toggleIsFavourite}
+              icon={`${state.isFavourite ? 'mdi:bookmark' : 'mdi:bookmark-outline'}`}
+              width="28"
+              height="28"
+            />
+            <Icon
+              onclick={toggleExpand}
+              icon="mdi:close"
+              width="28"
+              height="28"
+            />
+          </div>
         </div>
 
         <div class="flex justify-center py-12">

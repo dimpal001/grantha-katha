@@ -75,7 +75,7 @@
       Join Us Today!
     </h1>
     <p class="text-gray-600 dark:text-gray-300 mt-2">
-      Create your account to access eBooks, PDFs, audio, and more.
+      Create your account to access eBooks, audio books and more.
     </p>
   </div>
 

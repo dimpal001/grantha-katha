@@ -37,10 +37,10 @@
   class="min-h-screen flex flex-col items-center justify-center p-6 dark:bg-slate-900 bg-gray-50"
 >
   <div class="text-center mb-6">
-    <h1 class="text-3xl font-bold text-slate-800 dark:text-white">
+    <h1 class="text-3xl font-bold text-black/80 dark:text-white">
       Welcome Back!
     </h1>
-    <p class="text-gray-600 dark:text-gray-300 mt-2">
+    <p class="text-black/60 dark:text-gray-300 mt-2">
       Log in to access your dashboard and learning resources.
     </p>
   </div>
@@ -58,14 +58,13 @@
       onInput={(val) => (password = val)}
     />
 
-    <div
-      class="flex items-center justify-between text-sm text-gray-600 dark:text-white/70"
-    >
-      <label class="inline-flex items-center">
-        <input type="checkbox" class="form-checkbox rounded mr-2" />
-        Remember me
-      </label>
-      <button class="text-[#6257a5] hover:underline">Forgot password?</button>
+    <div class="text-right">
+      <button
+        class="text-sm text-[#6257a5] font-semibold"
+        on:click={() => navigateTo('forgotPassword')}
+      >
+        Forgot Password?
+      </button>
     </div>
 
     {#if success}

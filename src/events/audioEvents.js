@@ -1,5 +1,6 @@
 // @ts-nocheck
 
+import { useAuthUser } from '$lib/authUser'
 import Api from '../utils/Api'
 
 export async function fetchMostListenedAudio() {
@@ -46,6 +47,13 @@ export async function fetchAudios(searchQuery) {
 
 export async function fetchAllAudios(category) {
   try {
+    // let options
+    // if (category.toLowerCase() !== 'all') {
+    //   options.search = `category:${category}`
+    // }
+    // const response = await Api.get('/audios', options)
+    // return response
+
     const data = await fetch('/data/audiobook/audiobook.json')
     const allAudios = await data.json()
 
@@ -58,5 +66,44 @@ export async function fetchAllAudios(category) {
   } catch (error) {
     console.error('Error:', error)
     return { result: [], err: true }
+  }
+}
+
+export async function toggleFavourite(id, value) {
+  const user = useAuthUser()
+  try {
+    console.log(id, value)
+    // let response
+    // if (value) {
+    //   response = await Api.post(`/favourites`, {
+    //     body: {
+    //       audio: id,
+    //       user: user.id,
+    //     },
+    //   })
+    // } else {
+    //   const existingData = await Api.get('/favourites', {
+    //     search: `user:${user.id},audio:${id}`,
+    //   })
+    //   response = await Api.delete(`/favourites/${existingData.result[0].id}`)
+    // }
+    // return response
+
+    const response = await fetch('/data/audiobook/audiobook.json')
+    const allAudios = await response.json()
+
+    const updatedAudios = allAudios.map((item) => {
+      if (item.id === id) {
+        return { ...item, is_favourite: value }
+      }
+      return item
+    })
+    console.log(updatedAudios)
+
+    return {
+      err: false,
+    }
+  } catch (error) {
+    return { err: true, message: error.message }
   }
 }
