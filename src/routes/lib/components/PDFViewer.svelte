@@ -68,7 +68,9 @@
 
 <div class="viewer-container p-2 mb-10">
   {#if isLoading}
-    <div class="loading min-h-[500px] flex items-center">Loading PDF...</div>
+    <div class="loading min-h-[500px] flex items-center">
+      <Icon icon="mdi:loading" class="animate-spin text-[#6257a5] w-12 h-12" />
+    </div>
   {:else}
     <div class="pdf-wrapper">
       {#if currentPageImage}

@@ -39,7 +39,10 @@
     fetchData(category)
   }
 
-  onMount(() => fetchData())
+  onMount(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' })
+    fetchData()
+  })
 </script>
 
 <div class="p-4 min-h-screen">

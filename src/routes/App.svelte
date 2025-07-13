@@ -32,6 +32,7 @@
   let currentPage = 'login'
   let sidebarElement
   let isLoading = true
+  let scrollContainer
 
   $: isAuthenticated = $authStore
   $: currentUser = $currentUserStore
@@ -40,6 +41,10 @@
 
   function toggleSidebar() {
     showSidebarStore.update((value) => !value)
+  }
+
+  $: if (scrollContainer && $currentPageStore) {
+    scrollContainer.scrollTo({ top: 0, behavior: 'auto' })
   }
 
   onMount(() => {
@@ -142,7 +147,11 @@
       {:else}
         <div class="flex flex-col h-screen">
           <Header />
-          <div class="flex-1 overflow-y-auto" style="scrollbar-width: none;">
+          <div
+            bind:this={scrollContainer}
+            class="flex-1 overflow-y-auto"
+            style="scrollbar-width: none;"
+          >
             {#if $currentPageStore === 'home'}
               <Home />
             {:else if $currentPageStore === 'register'}
