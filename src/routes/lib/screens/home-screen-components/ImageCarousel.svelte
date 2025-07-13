@@ -24,7 +24,7 @@
     style="transform: translateX(-{currentIndex * 100}%)"
   >
     {#each images as img}
-      <img src={img} alt="" class="w-full h-auto rounded" />
+      <img src={img} alt="" class="w-full h-auto rounded-md" />
     {/each}
   </div>
 </div>

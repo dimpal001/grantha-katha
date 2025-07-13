@@ -33,14 +33,14 @@
 
       <div class="flex justify-end gap-3 pt-4">
         <button
-          class="px-4 py-2 disabled:opacity-50 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200 border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+          class="px-4 py-2 disabled:opacity-50 rounded-md text-sm font-medium text-gray-700 dark:text-gray-200 border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
           on:click={cancel}
           disabled={loading}
         >
           Cancel
         </button>
         <button
-          class="px-4 py-2 rounded-lg text-sm font-medium text-white bg-red-600 hover:bg-red-700 disabled:opacity-60"
+          class="px-4 py-2 rounded-md text-sm font-medium text-white bg-red-600 hover:bg-red-700 disabled:opacity-60"
           on:click={confirm}
           disabled={loading}
         >

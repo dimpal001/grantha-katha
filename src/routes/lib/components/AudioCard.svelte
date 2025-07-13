@@ -24,7 +24,7 @@
       })
     }
   }}
-  class="relative aspect-[9/14] rounded overflow-hidden border border-gray-200 dark:border-slate-700 group cursor-pointer shadow-lg"
+  class="relative aspect-[9/14] rounded-md overflow-hidden border border-gray-200 dark:border-slate-700 group cursor-pointer shadow-lg"
 >
   <img
     src={audio.thumbnail ?? `https://picsum.photos/seed/${audio.id}/300/533`}

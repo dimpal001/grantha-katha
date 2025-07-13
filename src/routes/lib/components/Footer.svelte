@@ -47,12 +47,12 @@
     {/each}
   </div>
 
-  <div
-    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-8 text font-serif"
-  >
+  <div class="grid grid-cols-1 gap-4 max-w-4xl mx-auto mb-8 text font-serif">
     {#each links as link}
-      <a href={link.href} class="hover:text-orange-500 transition"
-        >{link.label}</a
+      <a
+        href={link.href}
+        target="_blank"
+        class="hover:text-orange-500 transition">{link.label}</a
       >
     {/each}
   </div>

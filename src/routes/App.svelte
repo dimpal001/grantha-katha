@@ -142,10 +142,7 @@
       {:else}
         <div class="flex flex-col h-screen">
           <Header />
-          <div
-            class="flex-1 overflow-y-auto mb-12"
-            style="scrollbar-width: none;"
-          >
+          <div class="flex-1 overflow-y-auto" style="scrollbar-width: none;">
             {#if $currentPageStore === 'home'}
               <Home />
             {:else if $currentPageStore === 'register'}

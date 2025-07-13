@@ -181,7 +181,7 @@
   {#if isExpanded}
     <div class="fixed inset-0 flex z-30 mx-auto max-w-md">
       <div
-        class="rounded z-50 bg-white dark:bg-slate-900 text-gray-800 flex flex-col w-full max-w-xl mx-auto animate-fade-in"
+        class="rounded-md z-50 bg-white dark:bg-slate-900 text-gray-800 flex flex-col w-full max-w-xl mx-auto animate-fade-in"
       >
         <div
           class="flex justify-between items-center p-4 border-b border-black/10"
@@ -190,12 +190,12 @@
             >Playing episode 1 of 1</span
           >
           <div class="flex items-center justify-end gap-4">
-            <Icon
+            <!-- <Icon
               onclick={toggleIsFavourite}
               icon={`${state.isFavourite ? 'mdi:bookmark' : 'mdi:bookmark-outline'}`}
               width="28"
               height="28"
-            />
+            /> -->
             <Icon
               onclick={toggleExpand}
               icon="mdi:close"
@@ -205,11 +205,11 @@
           </div>
         </div>
 
-        <div class="flex justify-center py-12">
+        <div class="flex justify-center py-12 md:py-8">
           <img
             src={state?.thumbnail}
             alt="Thumbnail"
-            class={`w-56 h-56 shadow-md rounded-full object-cover ${state.isPlaying && 'rotate'} border-2 shadow-lg border-white/80`}
+            class={`w-56 h-56 md:w-40 md:h-40 shadow-md rounded-full object-cover ${state.isPlaying && 'rotate'} border-2 shadow-lg border-white/80`}
           />
         </div>
 
@@ -220,14 +220,16 @@
             <Icon
               icon="mdi:music"
               class="text-[#6257a5]"
-              width="35"
-              height="35"
+              width="40"
+              height="40"
             />
           {/if}
         </div>
 
         <div class="text-center flex-col flex justify-center px-6">
-          <h2 class="text-3xl font-bold line-clamp-2 font-serif">
+          <h2
+            class="text-3xl md:text-xl font-bold line-clamp-2 font-serif pt-5"
+          >
             {state.title}
           </h2>
           <p class="text-lg font-bold text-gray-600 dark:text-gray-400 mt-1">
@@ -235,7 +237,7 @@
           </p>
         </div>
 
-        <div class="w-full px-10 mt-4">
+        <div class="w-full px-10 mt-4 md:mt-2">
           <input
             type="range"
             min="0"
@@ -245,7 +247,7 @@
               audioRef.currentTime = +e.target.value
               currentTime.set(+e.target.value)
             }}
-            class="w-full h-3 pt-1 rounded-lg appearance-none cursor-pointer custom-range"
+            class="w-full h-3 pt-1 rounded-md appearance-none cursor-pointer custom-range"
           />
           <div
             class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1"
@@ -264,7 +266,7 @@
             step="0.01"
             value={audioRef?.volume || 1}
             on:input={(e) => (audioRef.volume = +e.target.value)}
-            class="w-2/4 h-3 pt-1 rounded-lg appearance-none cursor-pointer dark:bg-slate-700 custom-range"
+            class="w-2/4 h-3 pt-1 rounded-md appearance-none cursor-pointer dark:bg-slate-700 custom-range"
           />
         </div>
 

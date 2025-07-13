@@ -25,7 +25,7 @@
 
 {#if user}
   <main
-    class="min-h-full dark:bg-slate-900 text-gray-800 dark:text-white flex flex-col"
+    class="min-h-[calc(100vh-105px)] dark:bg-slate-900 text-gray-800 dark:text-white flex flex-col"
   >
     <div class="px-6 pt-8 pb-4 flex items-center gap-4">
       <div class="bg-blue-100 dark:bg-[#6257a5] p-3 rounded-full">
@@ -46,7 +46,7 @@
       <Label label="Account Settings" />
 
       <div
-        class="bg-gray-200 dark:bg-slate-800 rounded shadow-sm divide-y divide-gray-300 dark:divide-gray-700"
+        class="bg-gray-200 dark:bg-slate-800 rounded-md shadow-sm divide-y divide-gray-300 dark:divide-gray-700"
       >
         <div class="flex items-center justify-between px-5 py-4">
           <span>Change Password</span>
@@ -73,7 +73,7 @@
       <Label label="Your Favourites" />
 
       <div
-        class="bg-gray-200 dark:bg-slate-800 rounded shadow-sm divide-y divide-gray-300 dark:divide-gray-700"
+        class="bg-gray-200 dark:bg-slate-800 rounded-md shadow-sm divide-y divide-gray-300 dark:divide-gray-700"
       >
         <div class="flex items-center justify-between px-5 py-4">
           <span>Favourite Books</span>
@@ -101,7 +101,7 @@
     <div class="px-6 py-7">
       <button
         on:click={logout}
-        class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded shadow-md transition"
+        class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-md shadow-md transition"
       >
         <Icon icon="mdi:logout" class="inline mr-2" width="20" height="20" />
         Logout

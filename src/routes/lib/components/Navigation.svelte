@@ -84,7 +84,7 @@
           onclick={() => navigateTo(item.page)}
           class="mobile-nav-item w-full"
         >
-          <div class="p-2 rounded-lg transition-colors">
+          <div class="p-2 rounded-md transition-colors">
             <Icon icon={item.icon} width="20" height="20" />
           </div>
           <span class="font-medium">{item.label}</span>
@@ -103,7 +103,7 @@
               onclick={() => navigateTo(item.page)}
               class="mobile-nav-item w-full"
             >
-              <div class="p-2 rounded-lg transition-colors">
+              <div class="p-2 Grantha Katha transition-colors">
                 <Icon icon={item.icon} width="20" height="20" />
               </div>
               <span class="font-medium">{item.label}</span>

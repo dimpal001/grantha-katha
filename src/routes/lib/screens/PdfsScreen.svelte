@@ -50,7 +50,7 @@
     {#each categories as category}
       <button
         on:click={() => selectCategory(category)}
-        class={`px-3 py-1 rounded border font-serif text-nowrap ${
+        class={`px-3 py-1 rounded-md border font-serif text-nowrap ${
           selectedCategory === category
             ? 'bg-[#6257a5] text-white border-[#504596]'
             : 'bg-white dark:bg-slate-800 text-gray-700 dark:text-white border-gray-300'

@@ -12,7 +12,7 @@
       navigateTo('viewPdf')
     }
   }}
-  class="relative w-full aspect-[9/14] rounded overflow-hidden shadow-lg border border-gray-200 dark:border-slate-700 group cursor-pointer"
+  class="relative w-full aspect-[9/14] rounded-md overflow-hidden shadow-lg border border-gray-200 dark:border-slate-700 group cursor-pointer"
 >
   <img
     src={pdf.thumbnail ?? `https://picsum.photos/seed/${pdf.id}/300/450`}

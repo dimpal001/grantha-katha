@@ -70,7 +70,7 @@
   class="min-h-screen dark:bg-slate-900 text-gray-800 dark:text-white p-5 space-y-4 transition-all duration-300 ease-in-out"
 >
   <div
-    class="flex items-center gap-2 py-3 px-4 bg-gray-200 dark:bg-slate-800 rounded shadow-sm transition-all duration-200"
+    class="flex items-center gap-2 py-3 px-4 bg-gray-200 dark:bg-slate-800 rounded-md shadow-sm transition-all duration-200"
   >
     <Icon
       icon="mdi:magnify"
@@ -88,7 +88,7 @@
     {#if $query}
       <button
         on:click={() => query.set('')}
-        class="p-1 rounded hover:bg-gray-200 dark:hover:bg-slate-700"
+        class="p-1 rounded-md hover:bg-gray-200 dark:hover:bg-slate-700"
       >
         <Icon
           icon="mdi:close-circle"
@@ -108,7 +108,7 @@
       <div class="flex flex-wrap gap-2">
         {#each suggestions as tag}
           <span
-            class="px-3 py-1 font-serif bg-[#cecae2] dark:bg-[#6257a5] text-[#6257a5] dark:text-[#6257a5] rounded text-sm transition hover:scale-105 cursor-pointer"
+            class="px-3 py-1 font-serif bg-[#cecae2] dark:bg-[#6257a5] text-[#6257a5] dark:text-[#6257a5] rounded-md text-sm transition hover:scale-105 cursor-pointer"
             on:click={() => selectSuggestion(tag)}
           >
             #{tag}

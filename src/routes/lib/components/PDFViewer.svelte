@@ -81,7 +81,7 @@
         icon="mdi:arrow-left"
         width="38"
         height="38"
-        class="transition-colors bg-gray-200 p-2 rounded cursor-pointer"
+        class="transition-colors bg-gray-200 p-2 rounded-md cursor-pointer"
       />
       <span class="page-info text-sm">
         Page {currentIndex + 1} of {totalPages}
@@ -91,7 +91,7 @@
         icon="mdi:arrow-right"
         width="38"
         height="38"
-        class="transition-colors bg-gray-200 p-2 rounded cursor-pointer"
+        class="transition-colors bg-gray-200 p-2 rounded-md cursor-pointer"
       />
     </div>
   {/if}

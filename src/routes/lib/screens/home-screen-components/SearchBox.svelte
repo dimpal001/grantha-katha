@@ -4,7 +4,7 @@
 </script>
 
 <div
-  class="flex items-center bg-white dark:bg-slate-800 p-4 rounded shadow-sm border border-gray-200 dark:border-slate-700 cursor-pointer"
+  class="flex items-center bg-white dark:bg-slate-800 p-4 rounded-md shadow-sm border border-gray-200 dark:border-slate-700 cursor-pointer"
   on:click={() => navigateTo('search')}
 >
   <Icon icon="mdi:magnify" class="text-gray-500" width="22" height="22" />

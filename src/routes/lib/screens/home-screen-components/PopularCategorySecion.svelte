@@ -28,7 +28,7 @@
         onclick={() => {
           navigateTo(category.link)
         }}
-        class={`flex items-center gap-3 p-3 rounded ${category.color} shadow-sm cursor-pointer hover:scale-[1.03] transition-all`}
+        class={`flex items-center gap-3 p-3 rounded-md ${category.color} shadow-sm cursor-pointer hover:scale-[1.03] transition-all`}
       >
         <Icon icon={category.icon} width="24" height="24" />
         <span class="font-bold font-serif text-base">{category.name}</span>

@@ -3,5 +3,5 @@
 </script>
 
 <div
-  class={`bg-gray-200 dark:bg-slate-700 animate-pulse rounded ${className}`}
+  class={`bg-gray-200 dark:bg-slate-700 animate-pulse rounded-md ${className}`}
 ></div>

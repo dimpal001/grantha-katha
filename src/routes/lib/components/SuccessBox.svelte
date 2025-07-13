@@ -6,7 +6,7 @@
 
 {#if success}
   <div
-    class="success-box flex items-center gap-3 px-4 py-3 rounded border border-green-600 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-200 text-sm font-medium shadow-sm"
+    class="success-box flex items-center gap-3 px-4 py-3 rounded-md border border-green-600 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-200 text-sm font-medium shadow-sm"
   >
     <Icon
       icon="mdi:check-circle"
