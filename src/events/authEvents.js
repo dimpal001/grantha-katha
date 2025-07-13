@@ -14,7 +14,7 @@ export async function login(body) {
     if (!user) {
       return {
         err: true,
-        result: 'User not found.',
+        result: 'No account found with this email address.',
       }
     }
 
@@ -23,7 +23,7 @@ export async function login(body) {
     if (!isMatch) {
       return {
         err: true,
-        result: 'Password does not match.',
+        result: 'The entered passwords do not match.',
       }
     } else {
       const response = await Api.post('/auth-users', {
