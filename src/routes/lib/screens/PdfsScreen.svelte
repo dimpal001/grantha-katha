@@ -68,7 +68,7 @@
       {/each}
     {:else if pdfs.length === 0}
       <div class="col-span-2 text-center text-gray-400 py-10">
-        No PDFs found in this category.
+        No eBooks found in this category.
       </div>
     {:else}
       {#each pdfs as pdf}

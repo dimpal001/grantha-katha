@@ -9,6 +9,6 @@
 >
   <Icon icon="mdi:magnify" class="text-gray-500" width="22" height="22" />
   <span class="ml-3 text-gray-500 dark:text-gray-300 text-base"
-    >Search audio books, e-books...</span
+    >Search audio books, eBooks...</span
   >
 </div>

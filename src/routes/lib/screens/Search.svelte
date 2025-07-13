@@ -80,7 +80,7 @@
     />
     <input
       bind:value={$query}
-      placeholder="Search audio books, e-books..."
+      placeholder="Search audio books, eBooks..."
       class="bg-transparent outline-none w-full placeholder:text-gray-400 text-base"
       on:focus={handleFocus}
       on:blur={handleBlur}
