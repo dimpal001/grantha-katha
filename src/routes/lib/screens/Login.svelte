@@ -45,8 +45,8 @@
     </p>
   </div>
 
-  <div class="flex justify-center mb-6">
-    <img src="/logo.png" alt="Login Illustration" class="w-3/5 max-w-xs my-2" />
+  <div class="flex justify-center mb-4">
+    <img src="/logo.png" alt="Logo" class="w-[45%] max-w-xs my-0" />
   </div>
 
   <div class="w-full px-2 space-y-3">
@@ -77,7 +77,7 @@
     <Button label="Login" onClick={loginUser} isLoading={submitting} />
   </div>
 
-  <p class="mt-6 mb-10 text-sm text-center text-gray-600 dark:text-white/70">
+  <p class="mt-3 mb-10 text-sm text-center text-gray-600 dark:text-white/70">
     Don’t have an account?
     <button
       class="text-[#6257a5] font-semibold cursor-pointer hover:underline"

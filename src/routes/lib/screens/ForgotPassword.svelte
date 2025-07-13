@@ -104,21 +104,27 @@
     </p>
   </div>
 
-  <div class="flex justify-center mb-6">
+  <div class="flex justify-center mb-4">
     <img
       src="/logo.png"
-      alt="Forgot Password Illustration"
-      class="w-3/6 max-w-xs my-2"
+      alt="Registration Illustration"
+      class="w-[45%] max-w-xs my-0"
     />
   </div>
 
-  <div class="w-full px-2 max-w-md space-y-3">
+  <div class="w-full px-2 max-w-md space-y-2">
     {#if step === 1}
       <Input
         placeholder="Email"
         value={email}
         onInput={(val) => (email = val)}
       />
+      {#if success}
+        <SuccessBox {success} />
+      {/if}
+      {#if error}
+        <ErrorBox {error} />
+      {/if}
       <Button label="Send OTP" onClick={handleSendOtp} isLoading={submitting} />
     {/if}
 
@@ -136,22 +142,21 @@
         value={confirmPassword}
         onInput={(val) => (confirmPassword = val)}
       />
+      {#if success}
+        <SuccessBox {success} />
+      {/if}
+      {#if error}
+        <ErrorBox {error} />
+      {/if}
       <Button
         label="Reset Password"
         onClick={resetPassword}
         isLoading={submitting}
       />
     {/if}
-
-    {#if success}
-      <SuccessBox {success} />
-    {/if}
-    {#if error}
-      <ErrorBox {error} />
-    {/if}
   </div>
 
-  <p class="mt-6 mb-10 text-sm text-center text-gray-600 dark:text-white/70">
+  <p class="mt-3 mb-10 text-sm text-center text-gray-600 dark:text-white/70">
     Remember your password?
     <button
       class="text-[#6257a5] font-semibold cursor-pointer hover:underline"

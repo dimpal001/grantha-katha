@@ -79,15 +79,11 @@
     </p>
   </div>
 
-  <div class="flex justify-center mb-6">
-    <img
-      src="/logo.png"
-      alt="Registration Illustration"
-      class="w-3/6 max-w-xs my-2"
-    />
+  <div class="flex justify-center mb-4">
+    <img src="/logo.png" alt="Logo" class="w-[45%] max-w-xs my-0" />
   </div>
 
-  <div class="w-full px-2 max-w-md space-y-3">
+  <div class="w-full px-2 max-w-md space-y-2">
     <Input placeholder="Name" value={name} onInput={(val) => (name = val)} />
     <Input placeholder="Email" value={email} onInput={(val) => (email = val)} />
     <Input
@@ -107,7 +103,7 @@
     <Button label="Register" onClick={registerUser} isLoading={submitting} />
   </div>
 
-  <p class="mt-6 mb-10 text-sm text-center text-gray-600 dark:text-white/70">
+  <p class="mt-3 mb-10 text-sm text-center text-gray-600 dark:text-white/70">
     Already have an account?
     <button
       class="text-[#6257a5] font-semibold cursor-pointer hover:underline"

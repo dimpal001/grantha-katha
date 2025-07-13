@@ -56,11 +56,19 @@ function uniqueKey(input: string) {
   return toBase64(Math.abs(code)).substring(0, 8);
 }
 
+function cleanUrlPath(urlPath: String){
+  let urlPathArr = urlPath.split('/')
+  if(urlPathArr.length > 2){
+    urlPathArr.pop()
+  }
+  return urlPathArr.join('/')
+}
+
 function getKey(method: HttpMethod, url: string, options: RequestOptions) {
   if (!localServer) throw new Error("localServer is not defined");
   const _url = localServer + url;
   const parsed_url = new URL(_url);
-  const pathname = parsed_url.pathname;
+  const pathname = cleanUrlPath(parsed_url.pathname);
 
   const request: any = {
     fields: options?.fields,
