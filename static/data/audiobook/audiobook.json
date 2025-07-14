@@ -5,9 +5,9 @@
     "name": "ধ্ৰুপদী অসমীয়া ভাষা আৰু আমাৰ কৰণীয়",
     "price": "FREE",
     "thumbnail": "./data/audiobook/1.jpg",
-    "plays": 14230,
+    "plays": 1423,
     "url": "1752244150974-f68598830e7456cb6993a48b72f1dd7b",
-    "is_favourite": 1
+    "is_favourite": 0
   },
   {
     "id": 2,
@@ -15,7 +15,7 @@
     "name": "নিৰ্বান্ধৱ",
     "price": "FREE",
     "thumbnail": "./data/audiobook/2.jpg",
-    "plays": 18840,
+    "plays": 1884,
     "url": "1752352882275-62fe461e155886a68022c267c45c4f54",
     "is_favourite": 0
   },
@@ -25,9 +25,9 @@
     "name": "জলকুঁৱৰীৰ ফিছা",
     "price": "FREE",
     "thumbnail": "./data/audiobook/3.jpg",
-    "plays": 12310,
+    "plays": 1231,
     "url": "1752352928961-344f6314f33530fdd22b5199e4f793c0",
-    "is_favourite": 1
+    "is_favourite": 0
   },
   {
     "id": 4,
@@ -35,7 +35,7 @@
     "name": "শুনা ভানুমতী",
     "price": "FREE",
     "thumbnail": "./data/audiobook/4.jpg",
-    "plays": 17200,
+    "plays": 1720,
     "url": "1752352824063-11c5f259bbb7e6dddf2b73213c256c93",
     "is_favourite": 0
   },
@@ -45,9 +45,9 @@
     "name": "কাঠনিবাৰী ঘাট",
     "price": "Subscription Required",
     "thumbnail": "./data/audiobook/5.jpg",
-    "plays": 20850,
+    "plays": 2085,
     "url": "1751157521012-deeplina-deka-hit-songs",
-    "is_favourite": 1
+    "is_favourite": 0
   },
   {
     "id": 6,
@@ -55,7 +55,7 @@
     "name": "বে - ঘ - নী - সে - হা - সু - ৰ",
     "price": "FREE",
     "thumbnail": "./data/audiobook/6.jpg",
-    "plays": 13560,
+    "plays": 1356,
     "url": "1751157521012-deeplina-deka-hit-songs",
     "is_favourite": 0
   },
@@ -65,7 +65,7 @@
     "name": "বৰ্ষালগ্নৰ কাঞ্চনজংঘা",
     "price": "FREE",
     "thumbnail": "./data/audiobook/7.jpg",
-    "plays": 10100,
+    "plays": 1010,
     "url": "1751157521012-deeplina-deka-hit-songs",
     "is_favourite": 0
   },
@@ -75,9 +75,9 @@
     "name": "এপোৱা চাউলৰ সাধু",
     "price": "FREE",
     "thumbnail": "./data/audiobook/8.jpg",
-    "plays": 9500,
+    "plays": 950,
     "url": "1751157521012-deeplina-deka-hit-songs",
-    "is_favourite": 1
+    "is_favourite": 0
   },
   {
     "id": 9,
@@ -85,7 +85,7 @@
     "name": "সিহঁতেও পাহাৰ বগালে",
     "price": "FREE",
     "thumbnail": "./data/audiobook/9.jpg",
-    "plays": 16480,
+    "plays": 1648,
     "url": "1751157521012-deeplina-deka-hit-songs",
     "is_favourite": 0
   },
@@ -95,9 +95,9 @@
     "name": "ফ্ৰাং-মৈ-দাম বা চমুকৈ মৈ-দাম",
     "price": "Subscription Required",
     "thumbnail": "./data/audiobook/10.jpg",
-    "plays": 19430,
+    "plays": 1943,
     "url": "1751157521012-deeplina-deka-hit-songs",
-    "is_favourite": 1
+    "is_favourite": 0
   },
   {
     "id": 11,
@@ -105,9 +105,9 @@
     "name": "জাগনৰ গল্প",
     "price": "FREE",
     "thumbnail": "./data/audiobook/11.jpg",
-    "plays": 11220,
+    "plays": 1122,
     "url": "1751157521012-deeplina-deka-hit-songs",
-    "is_favourite": 1
+    "is_favourite": 0
   },
   {
     "id": 12,
@@ -115,7 +115,7 @@
     "name": "ভঙা টোপনিৰ ৰঙা জোন",
     "price": "FREE",
     "thumbnail": "./data/audiobook/12.jpg",
-    "plays": 8750,
+    "plays": 875,
     "url": "1751157521012-deeplina-deka-hit-songs",
     "is_favourite": 0
   },
@@ -125,7 +125,7 @@
     "name": "বেদুইন চৰাই",
     "price": "FREE",
     "thumbnail": "./data/audiobook/13.jpg",
-    "plays": 14560,
+    "plays": 1456,
     "url": "1751157521012-deeplina-deka-hit-songs",
     "is_favourite": 0
   },
@@ -135,9 +135,9 @@
     "name": "কবিতা তুমিয়েই",
     "price": "FREE",
     "thumbnail": "./data/audiobook/14.jpg",
-    "plays": 10800,
+    "plays": 1080,
     "url": "1751157521012-deeplina-deka-hit-songs",
-    "is_favourite": 1
+    "is_favourite": 0
   },
   {
     "id": 15,
@@ -145,7 +145,7 @@
     "name": "অন্তঃস্বৰ",
     "price": "FREE",
     "thumbnail": "./data/audiobook/15.jpg",
-    "plays": 19890,
+    "plays": 1989,
     "url": "1751157521012-deeplina-deka-hit-songs",
     "is_favourite": 0
   },
@@ -155,9 +155,9 @@
     "name": "সংশ্ৰৱশূণ্য",
     "price": "FREE",
     "thumbnail": "./data/audiobook/16.jpg",
-    "plays": 11900,
+    "plays": 1190,
     "url": "1751157521012-deeplina-deka-hit-songs",
-    "is_favourite": 1
+    "is_favourite": 0
   },
   {
     "id": 17,
@@ -165,7 +165,7 @@
     "name": "দ্বিখণ্ডিত",
     "price": "FREE",
     "thumbnail": "./data/audiobook/17.jpg",
-    "plays": 15320,
+    "plays": 1532,
     "url": "1751157521012-deeplina-deka-hit-songs",
     "is_favourite": 0
   },
@@ -175,7 +175,7 @@
     "name": "দিনান্তৰ খোজ",
     "price": "FREE",
     "thumbnail": "./data/audiobook/18.jpg",
-    "plays": 13240,
+    "plays": 1324,
     "url": "1751157521012-deeplina-deka-hit-songs",
     "is_favourite": 0
   },
@@ -185,9 +185,9 @@
     "name": "ছবিৰ ভ্ৰম, ভ্ৰমৰ ছবি",
     "price": "FREE",
     "thumbnail": "./data/audiobook/19.jpg",
-    "plays": 21200,
+    "plays": 2120,
     "url": "1752244193576-fab462bba383a09bb9a9cff5f6407979",
-    "is_favourite": 1
+    "is_favourite": 0
   },
   {
     "id": 20,
@@ -195,9 +195,9 @@
     "name": "পমি যায় যি",
     "price": "FREE",
     "thumbnail": "./data/audiobook/20.jpg",
-    "plays": 8600,
+    "plays": 860,
     "url": "1751157521012-deeplina-deka-hit-songs",
-    "is_favourite": 1
+    "is_favourite": 0
   },
   {
     "id": 21,
@@ -205,7 +205,7 @@
     "name": "বিনিময়",
     "price": "FREE",
     "thumbnail": "./data/audiobook/21.jpg",
-    "plays": 14050,
+    "plays": 1405,
     "url": "1751157521012-deeplina-deka-hit-songs",
     "is_favourite": 0
   },
@@ -215,7 +215,7 @@
     "name": "এল পেটাৰ্ণ",
     "price": "FREE",
     "thumbnail": "./data/audiobook/22.jpg",
-    "plays": 12340,
+    "plays": 1234,
     "url": "1751157521012-deeplina-deka-hit-songs",
     "is_favourite": 0
   },
@@ -225,9 +225,9 @@
     "name": "ভিন্ন সমতল",
     "price": "FREE",
     "thumbnail": "./data/audiobook/23.jpg",
-    "plays": 17490,
+    "plays": 1749,
     "url": "1751157521012-deeplina-deka-hit-songs",
-    "is_favourite": 1
+    "is_favourite": 0
   },
   {
     "id": 24,
@@ -235,7 +235,7 @@
     "name": "হৃদভাষ",
     "price": "FREE",
     "thumbnail": "./data/audiobook/24.jpg",
-    "plays": 11670,
+    "plays": 1167,
     "url": "1751157521012-deeplina-deka-hit-songs",
     "is_favourite": 0
   },
@@ -245,9 +245,9 @@
     "name": "আকাশ চোৱা",
     "price": "FREE",
     "thumbnail": "./data/audiobook/25.jpg",
-    "plays": 13410,
+    "plays": 1341,
     "url": "1751157521012-deeplina-deka-hit-songs",
-    "is_favourite": 1
+    "is_favourite": 0
   },
   {
     "id": 26,
@@ -255,9 +255,9 @@
     "name": "নামঘোষা",
     "price": "Subscription Required",
     "thumbnail": "./data/audiobook/26.jpg",
-    "plays": 18700,
+    "plays": 1870,
     "url": "1751157521012-deeplina-deka-hit-songs",
-    "is_favourite": 1
+    "is_favourite": 0
   },
   {
     "id": 27,
@@ -265,7 +265,7 @@
     "name": "প্ৰাচীন ভাৰতৰ বিশ্ববিদ্যালয়",
     "price": "Subscription Required",
     "thumbnail": "./data/audiobook/27.jpg",
-    "plays": 16230,
+    "plays": 1623,
     "url": "1751157521012-deeplina-deka-hit-songs",
     "is_favourite": 0
   },
@@ -275,8 +275,8 @@
     "name": "নিসঙ্গতা",
     "price": "FREE",
     "thumbnail": "./data/audiobook/28.jpg",
-    "plays": 13760,
+    "plays": 1376,
     "url": "1751157521012-deeplina-deka-hit-songs",
-    "is_favourite": 1
+    "is_favourite": 0
   }
 ]

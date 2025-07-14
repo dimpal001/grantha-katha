@@ -4,15 +4,15 @@
     "name": "জিজ্ঞাসাৰ অন্বেষণত",
     "price": "130 Rs",
     "thumbnail": "./data/ebook/1.jpg",
-    "views": 15789,
-    "is_favourite": 1
+    "views": 1578,
+    "is_favourite": 0
   },
   {
     "category": "বুৰঞ্জী",
     "name": "মেগাস্থেনিচৰ ভাৰত বিৱৰণ",
     "price": "FREE",
     "thumbnail": "./data/ebook/2.jpg",
-    "views": 8421,
+    "views": 842,
     "is_favourite": 0
   },
   {
@@ -20,15 +20,15 @@
     "name": "সুধাকণ্ঠ ভূপেন হাজৰিকা",
     "price": "FREE",
     "thumbnail": "./data/ebook/3.jpg",
-    "views": 13450,
-    "is_favourite": 1
+    "views": 1345,
+    "is_favourite": 0
   },
   {
     "category": "উপন্যাস",
     "name": "কৃত্ৰিম বুদ্ধিমত্তাৰ যুগৰ এখন ডাইনী গাওঁৰ সন্ধানত",
     "price": "FREE",
     "thumbnail": "./data/ebook/4.jpg",
-    "views": 19102,
+    "views": 1910,
     "is_favourite": 0
   },
   {
@@ -36,15 +36,15 @@
     "name": "কুলাংগাৰ",
     "price": "FREE",
     "thumbnail": "./data/ebook/5.jpg",
-    "views": 10234,
-    "is_favourite": 1
+    "views": 1023,
+    "is_favourite": 0
   },
   {
     "category": "বুৰঞ্জী",
     "name": "প্ৰাচীন ভাৰতৰ বিশ্ববিদ্যালয়",
     "price": "FREE",
     "thumbnail": "./data/ebook/6.jpeg",
-    "views": 12389,
+    "views": 1238,
     "is_favourite": 0
   },
   {
@@ -52,15 +52,15 @@
     "name": "অনুভৱৰ এমুঠি শব্দমালা",
     "price": "FREE",
     "thumbnail": "./data/ebook/7.jpeg",
-    "views": 14600,
-    "is_favourite": 1
+    "views": 1460,
+    "is_favourite": 0
   },
   {
     "category": "জীবনী",
     "name": "মোৰ জীৱন সোঁৱৰণ",
     "price": "FREE",
     "thumbnail": "./data/ebook/8.jpeg",
-    "views": 11055,
+    "views": 1105,
     "is_favourite": 0
   },
   {
@@ -68,15 +68,15 @@
     "name": "সাহিত্যিক সঁচাৰি",
     "price": "FREE",
     "thumbnail": "./data/ebook/9.jpeg",
-    "views": 9800,
-    "is_favourite": 1
+    "views": 980,
+    "is_favourite": 0
   },
   {
     "category": "উপন্যাস",
     "name": "অক্লান্ত তুৰংগ দস্তাবেজৰ এপৃষ্ঠা",
     "price": "FREE",
     "thumbnail": "./data/ebook/10.png",
-    "views": 16872,
+    "views": 1682,
     "is_favourite": 0
   }
 ]
