@@ -1,82 +1,102 @@
 [
   {
+    "id": 0,
     "category": "অকাল্পনিক",
     "name": "জিজ্ঞাসাৰ অন্বেষণত",
     "price": "130 Rs",
     "thumbnail": "./data/ebook/1.jpg",
     "views": 1578,
+    "url": "./data/pdf/01.pdf",
     "is_favourite": 0
   },
   {
+    "id": 1,
     "category": "বুৰঞ্জী",
     "name": "মেগাস্থেনিচৰ ভাৰত বিৱৰণ",
     "price": "FREE",
     "thumbnail": "./data/ebook/2.jpg",
     "views": 842,
+    "url": "./data/pdf/01.pdf",
     "is_favourite": 0
   },
   {
+    "id": 2,
     "category": "জীবনী",
     "name": "সুধাকণ্ঠ ভূপেন হাজৰিকা",
     "price": "FREE",
     "thumbnail": "./data/ebook/3.jpg",
     "views": 1345,
+    "url": "./data/pdf/02.pdf",
     "is_favourite": 0
   },
   {
+    "id": 3,
     "category": "উপন্যাস",
     "name": "কৃত্ৰিম বুদ্ধিমত্তাৰ যুগৰ এখন ডাইনী গাওঁৰ সন্ধানত",
     "price": "FREE",
     "thumbnail": "./data/ebook/4.jpg",
     "views": 1910,
+    "url": "./data/pdf/03.pdf",
     "is_favourite": 0
   },
   {
+    "id": 4,
     "category": "উপন্যাস",
     "name": "কুলাংগাৰ",
     "price": "FREE",
     "thumbnail": "./data/ebook/5.jpg",
     "views": 1023,
+    "url": "./data/pdf/04.pdf",
     "is_favourite": 0
   },
   {
+    "id": 5,
     "category": "বুৰঞ্জী",
     "name": "প্ৰাচীন ভাৰতৰ বিশ্ববিদ্যালয়",
     "price": "FREE",
     "thumbnail": "./data/ebook/6.jpeg",
     "views": 1238,
+    "url": "./data/pdf/05.pdf",
     "is_favourite": 0
   },
   {
+    "id": 6,
     "category": "চুটি গল্প",
     "name": "অনুভৱৰ এমুঠি শব্দমালা",
     "price": "FREE",
     "thumbnail": "./data/ebook/7.jpeg",
     "views": 1460,
+    "url": "./data/pdf/06.pdf",
     "is_favourite": 0
   },
   {
+    "id": 7,
     "category": "জীবনী",
     "name": "মোৰ জীৱন সোঁৱৰণ",
     "price": "FREE",
     "thumbnail": "./data/ebook/8.jpeg",
     "views": 1105,
+    "url": "./data/pdf/07.pdf",
     "is_favourite": 0
   },
   {
+    "id": 8,
     "category": "উপন্যাস",
     "name": "সাহিত্যিক সঁচাৰি",
     "price": "FREE",
     "thumbnail": "./data/ebook/9.jpeg",
     "views": 980,
+    "url": "./data/pdf/08.pdf",
     "is_favourite": 0
   },
   {
+    "id": 9,
     "category": "উপন্যাস",
     "name": "অক্লান্ত তুৰংগ দস্তাবেজৰ এপৃষ্ঠা",
     "price": "FREE",
     "thumbnail": "./data/ebook/10.png",
     "views": 1682,
+    "url": "./data/pdf/09.pdf",
     "is_favourite": 0
   }
 ]

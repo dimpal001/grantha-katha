@@ -42,6 +42,7 @@
   onMount(() => {
     window.scrollTo({ top: 0, behavior: 'auto' })
     fetchData()
+    backPageStore.set('home')
   })
 </script>
 

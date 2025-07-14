@@ -2,6 +2,8 @@
   // @ts-nocheck
   import Icon from '@iconify/svelte'
   import { onMount } from 'svelte'
+  import { get } from 'svelte/store'
+  import { displayPdfStore } from '../../../stores/appStore'
 
   export let src = '/data/audiobook/ebook.pdf'
 
@@ -14,7 +16,7 @@
   async function loadPdfPage(index) {
     if (!pdfDoc) return
 
-    const page = await pdfDoc.getPage(index + 1) // index is 0-based
+    const page = await pdfDoc.getPage(index + 1)
     const viewport = page.getViewport({ scale: 2 })
 
     const canvas = document.createElement('canvas')
@@ -57,7 +59,8 @@
 
   onMount(async () => {
     try {
-      await loadPdf(src)
+      const pdf = get(displayPdfStore)
+      await loadPdf(pdf.url || '/data/audiobook/ebook.pdf')
     } catch (e) {
       console.error('PDF Load Failed:', e)
     } finally {

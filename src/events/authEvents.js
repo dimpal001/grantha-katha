@@ -1,6 +1,7 @@
 // @ts-nocheck
 
 import { useAuthUser } from '$lib/authUser'
+import { currentUserStore, favouriteStore } from '../stores/appStore'
 import Api from '../utils/Api'
 import bcrypt from 'bcryptjs'
 
@@ -37,7 +38,10 @@ export async function login(body) {
     }
   } catch (error) {
     console.error('Error :', error)
-    throw error
+    return {
+      err: true,
+      result: 'An unexpected error occurred. Please try again.',
+    }
   }
 }
 
@@ -55,7 +59,70 @@ export async function register(body) {
     return response
   } catch (error) {
     console.error('Error :', error)
-    throw error
+    return {
+      err: true,
+      result: 'An unexpected error occurred. Please try again.',
+    }
+  }
+}
+
+export async function changePassword(currentPassword, newPassword) {
+  try {
+    const user = useAuthUser()
+    if (!user || !user.email) {
+      return {
+        err: true,
+        result: 'User is not authenticated.',
+      }
+    }
+
+    const userResponse = await Api.get('/users', {
+      search: `email:${user.email}`,
+    })
+
+    if (!userResponse?.result || userResponse.result.length === 0) {
+      return {
+        err: true,
+        result: 'User not found.',
+      }
+    }
+
+    const storedHashedPassword = userResponse.result[0].password
+    const isPasswordMatch = await bcrypt.compare(
+      currentPassword,
+      storedHashedPassword
+    )
+
+    if (!isPasswordMatch) {
+      return {
+        err: true,
+        result: 'Current password is incorrect.',
+      }
+    }
+
+    const newHashedPassword = await bcrypt.hash(newPassword, 10)
+
+    const updateResponse = await Api.put(`/users/${user.id}`, {
+      body: { otp: '', password: newHashedPassword },
+    })
+
+    if (updateResponse?.err) {
+      return {
+        err: true,
+        result: 'Failed to update the password. Please try again later.',
+      }
+    }
+
+    return {
+      err: false,
+      result: 'Password has been updated successfully.',
+    }
+  } catch (error) {
+    console.error('Password change error:', error)
+    return {
+      err: true,
+      result: 'An unexpected error occurred. Please try again.',
+    }
   }
 }
 
@@ -113,7 +180,7 @@ export async function sendOtp(email) {
     console.error('Error in sendOtp:', error)
     return {
       err: true,
-      result: 'Something went wrong while sending the OTP email.',
+      result: 'An unexpected error occurred. Please try again.',
     }
   }
 }
@@ -144,8 +211,73 @@ export async function verifyOtpAndUpdatePassword(email, otp, password) {
     console.error('Error in updating password:', error)
     return {
       err: true,
-      result:
-        'An error occurred while resetting your password. Please try again.',
+      result: 'An unexpected error occurred. Please try again.',
+    }
+  }
+}
+
+export async function updateName(newName) {
+  try {
+    const user = useAuthUser()
+
+    if (!user || !user.id) {
+      return {
+        err: true,
+        result: 'User is not authenticated.',
+      }
+    }
+
+    if (!newName || typeof newName !== 'string' || newName.trim().length < 5) {
+      return {
+        err: true,
+        result: 'Please provide a valid name.',
+      }
+    }
+
+    const response = await Api.put(`/users/${user.id}`, {
+      body: { name: newName.trim() },
+    })
+
+    if (response?.err) {
+      return {
+        err: true,
+        result: 'Failed to update the name. Please try again later.',
+      }
+    }
+
+    const userData = await Api.get(`/users/${user.id}`, {
+      hidden: 'password, otp',
+    })
+
+    currentUserStore.set(userData.result[0])
+    localStorage.setItem('currentUser', JSON.stringify(userData.result[0]))
+
+    return {
+      err: false,
+      result: 'Name updated successfully.',
+    }
+  } catch (error) {
+    console.error('Name update error:', error)
+    return {
+      err: true,
+      result: 'An unexpected error occurred while updating the name.',
+    }
+  }
+}
+
+export async function getFavourites() {
+  const user = useAuthUser()
+  try {
+    const response = await Api.get('/favourites', {
+      search: `user:${user.id}`,
+    })
+    favouriteStore.set(response.result)
+    localStorage.setItem('favourites', JSON.stringify(response.result))
+  } catch (error) {
+    console.error('Name update error:', error)
+    return {
+      err: true,
+      result: 'An unexpected error occurred while updating the name.',
     }
   }
 }

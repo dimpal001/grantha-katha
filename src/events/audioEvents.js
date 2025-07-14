@@ -104,6 +104,9 @@ export async function toggleFavourite(id, value) {
       err: false,
     }
   } catch (error) {
-    return { err: true, message: error.message }
+    return {
+      err: true,
+      result: 'An unexpected error occurred. Please try again.',
+    }
   }
 }

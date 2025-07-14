@@ -4,6 +4,7 @@
   import BackButton from './BackButton.svelte'
   import { currentPageStore, backPageStore } from '../../../stores/appStore'
   import { navigateTo } from '$lib/navigation'
+  import FavouriteEBookButton from './FavouriteEBookButton.svelte'
 
   $: currentPage = $currentPageStore
   $: backPage = $backPageStore
@@ -11,11 +12,15 @@
   const pageTitles = {
     home: 'Grantha Katha',
     profile: 'Profile',
+    changePassword: 'Change Password',
+    updateName: 'Update Name',
     search: 'Search',
     viewPdf: 'শ্ৰৱ্য গ্ৰন্থ',
     audios: 'শ্ৰৱ্য গ্ৰন্থ',
     pdfs: 'ই-গ্ৰন্থ',
   }
+  const isNonLatin =
+    pageTitles[currentPage] && !/^[\x00-\x7F]*$/.test(pageTitles[currentPage])
 </script>
 
 <header
@@ -23,9 +28,12 @@
 >
   {#if currentPage !== 'home'}
     <div class="flex items-center gap-3">
-      <BackButton onClick={() => navigateTo('home')} />
-      <h2 class="text-xl font-bold text-[#6257a5] font-serif">
-        {pageTitles[currentPage] ?? 'Page'}
+      <BackButton onClick={() => navigateTo(backPage || 'home')} />
+      <h2
+        class="text-xl font-bold text-[#6257a5]"
+        class:font-serif={isNonLatin}
+      >
+        {pageTitles[currentPage] ?? ''}
       </h2>
     </div>
   {:else}
@@ -35,6 +43,9 @@
     </div>
   {/if}
 
+  <!-- {#if currentPage === 'viewPdf'}
+    <FavouriteEBookButton />
+  {:else} -->
   <button
     on:click={() => navigateTo('profile')}
     class="ml-auto p-1 rounded-full bg-slate-200 dark:hover:bg-slate-800 transition"
@@ -47,4 +58,5 @@
       height="32"
     />
   </button>
+  <!-- {/if} -->
 </header>

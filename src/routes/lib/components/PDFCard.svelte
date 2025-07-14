@@ -3,12 +3,22 @@
   import { navigateTo } from '$lib/navigation'
   export let pdf
   import Icon from '@iconify/svelte'
+  import {
+    backPageStore,
+    currentPageStore,
+    displayPdfStore,
+  } from '../../../stores/appStore'
+
+  $: currentPage = $currentPageStore
 </script>
 
-<div
-  role="button"
+<button
   on:click={() => {
     if (pdf.price.toLowerCase() === 'free') {
+      if (currentPage === 'pdfs') {
+        backPageStore.set('pdfs')
+      }
+      displayPdfStore.set(pdf)
       navigateTo('viewPdf')
     }
   }}
@@ -40,4 +50,4 @@
       {pdf.views}
     </div>
   </div>
-</div>
+</button>

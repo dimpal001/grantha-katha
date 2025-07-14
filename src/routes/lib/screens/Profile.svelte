@@ -8,6 +8,7 @@
   } from '../../../stores/appStore'
   import Label from '../components/Label.svelte'
   import { useAuthUser } from '$lib/authUser'
+  import { navigateTo } from '$lib/navigation'
 
   $: user = useAuthUser()
 
@@ -48,7 +49,10 @@
       <div
         class="bg-gray-200 dark:bg-slate-800 rounded-md shadow-sm divide-y divide-gray-300 dark:divide-gray-700"
       >
-        <div class="flex items-center justify-between px-5 py-4">
+        <button
+          on:click={() => navigateTo('changePassword')}
+          class="flex items-center justify-between px-5 py-4 w-full"
+        >
           <span>Change Password</span>
           <Icon
             icon="mdi:chevron-right"
@@ -56,8 +60,11 @@
             width="20"
             height="20"
           />
-        </div>
-        <div class="flex items-center justify-between px-5 py-4">
+        </button>
+        <button
+          on:click={() => navigateTo('updateName')}
+          class="flex items-center justify-between px-5 py-4 w-full"
+        >
           <span>Update Name</span>
           <Icon
             icon="mdi:chevron-right"
@@ -65,7 +72,7 @@
             width="20"
             height="20"
           />
-        </div>
+        </button>
       </div>
     </section> -->
 

@@ -5,19 +5,24 @@
   export let showArrow: boolean = false
   export let onIconClick: (() => void) | null = null
   export let leftIcon: string | null = null
+
+  const isNonLatin = label && !/^[\x00-\x7F]*$/.test(label)
 </script>
 
 {#if label}
   <div
     role="button"
     on:click={() => onIconClick?.()}
-    class="flex items-center justify-between w-full mb-4 py-2"
+    class="flex items-center justify-between w-full mb-3 py-2"
   >
     <div class="flex items-center gap-2">
       {#if leftIcon}
         <Icon icon={leftIcon} class="w-6 h-6 text-[#6257a5]" />
       {/if}
-      <h2 class="font-semibold text-xl text-[#6257a5] font-serif">
+      <h2
+        class="font-semibold text-xl text-[#6257a5]"
+        class:font-serif={isNonLatin}
+      >
         {label}
       </h2>
     </div>

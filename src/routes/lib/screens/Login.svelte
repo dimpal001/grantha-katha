@@ -2,7 +2,7 @@
   import { navigateTo } from '$lib/navigation'
   import Input from '../components/Input.svelte'
   import Button from '../components/Button.svelte'
-  import { login } from '../../../events/authEvents'
+  import { getFavourites, login } from '../../../events/authEvents'
   import SuccessBox from '../components/SuccessBox.svelte'
   import ErrorBox from '../components/ErrorBox.svelte'
   import { authStore, currentUserStore } from '../../../stores/appStore'
@@ -25,6 +25,7 @@
         currentUserStore.set(response.result)
         localStorage.setItem('currentUser', JSON.stringify(response.result))
         navigateTo('home')
+        await getFavourites()
       } else {
         error = response.result || 'Unable to login'
       }

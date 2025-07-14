@@ -5,8 +5,7 @@
   import { audioPlayerStore } from '../../../stores/appStore'
 </script>
 
-<div
-  role="button"
+<button
   on:click={() => {
     if (audio.price.toLowerCase() === 'free') {
       const slug =
@@ -63,4 +62,4 @@
       {audio.plays} plays
     </div>
   </div>
-</div>
+</button>

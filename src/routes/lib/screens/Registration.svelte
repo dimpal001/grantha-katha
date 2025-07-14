@@ -57,7 +57,11 @@
         success = 'Registration Successful'
         navigateTo('login')
       } else {
-        error = response.result || 'Unable to register'
+        if (response.result.toLowerCase().includes('duplicate')) {
+          error = 'Entered email address is already registered.'
+        } else {
+          error = 'Unable to register'
+        }
       }
     } catch (err) {
       error = 'Something went wrong during registration'

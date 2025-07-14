@@ -20,9 +20,30 @@ export const currentPageStore = writable('home')
 export const backPageStore = writable('home')
 export const showSidebarStore = writable(false)
 
-export const displayPdf = writable(null)
+export const displayPdfStore = writable(null)
+export const displayAudioStore = writable(null)
 
 export const usersStore = writable([])
+
+let initialFavourites = []
+try {
+  const stored = localStorage.getItem('favourites')
+  if (stored) {
+    initialFavourites = JSON.parse(stored)
+  }
+} catch (error) {
+  console.warn('Failed to parse favouriteStore from localStorage:', error)
+}
+
+export const favouriteStore = writable(initialFavourites)
+
+favouriteStore.subscribe((value) => {
+  try {
+    localStorage.setItem('favourites', JSON.stringify(value))
+  } catch (error) {
+    console.error('Failed to save favouriteStore to localStorage:', error)
+  }
+})
 
 let defaultTheme = 'light'
 

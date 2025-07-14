@@ -26,6 +26,8 @@
   import PdfsScreen from './lib/screens/PdfsScreen.svelte'
   import Footer from './lib/components/Footer.svelte'
   import ForgotPassword from './lib/screens/ForgotPassword.svelte'
+  import ChangePassword from './lib/screens/ChangePassword.svelte'
+  import UpdateName from './lib/screens/UpdateName.svelte'
 
   let isAuthenticated = false
   let currentUser = null
@@ -166,6 +168,10 @@
               <AudioScreen />
             {:else if $currentPageStore === 'pdfs'}
               <PdfsScreen />
+            {:else if $currentPageStore === 'changePassword'}
+              <ChangePassword />
+            {:else if $currentPageStore === 'updateName'}
+              <UpdateName />
             {/if}
             <Footer />
           </div>
