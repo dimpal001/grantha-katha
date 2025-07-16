@@ -16,7 +16,7 @@
     },
     {
       name: translations[$language]?.category2,
-      icon: 'ri:book-2-line',
+      icon: 'mdi:book-open-page-variant-outline',
       color: 'bg-blue-100 text-blue-600',
       link: 'pdfs',
     },

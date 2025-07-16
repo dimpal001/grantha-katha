@@ -231,67 +231,65 @@
 
 {#if state.isVisible}
   {#if isExpanded}
-    <div class="fixed inset-0 flex z-30 mx-auto max-w-md">
+    <div class="fixed inset-0 z-30 max-w-md mx-auto overflow-hidden">
       <div
-        class="rounded-md z-50 bg-white dark:bg-slate-900 text-gray-800 flex flex-col w-full max-w-xl mx-auto animate-fade-in"
+        class="absolute max-w-md mx-auto inset-0 z-10 bg-cover bg-center filter blur-md brightness-75"
+        style="background-image: url('{state?.thumbnail}')"
+      ></div>
+
+      <div
+        class="absolute max-w-md mx-auto inset-0 z-20 bg-gradient-to-b from-black/70 via-black/50 to-[#1e1b4b]/80"
+      ></div>
+
+      <div
+        class="relative z-30 h-full shadow-xl w-full max-w-md mx-auto text-white overflow-hidden animate-fade-in backdrop-blur-md bg-white/10 border border-white/10"
       >
         <div
-          class="flex justify-between items-center p-4 border-b border-black/10"
+          class="flex justify-between items-center p-4 border-b border-white/10"
         >
-          <span class="font-bold text-gray-700 dark:text-gray-300"
-            >Playing episode 1 of 1</span
-          >
-          <div
-            class="flex items-center justify-end gap-4 text-black/80 dark:text-white/70"
-          >
-            <!-- <Icon
-              onclick={toggleIsFavourite}
-              icon={`${state.isFavourite ? 'mdi:bookmark' : 'mdi:bookmark-outline'}`}
-              width="28"
-              height="28"
-            /> -->
+          <span class="font-semibold text-sm text-white/80">
+            Playing episode 1 of 1
+          </span>
+          <div class="flex items-center gap-4">
             <Icon
               onclick={toggleExpand}
               icon="mdi:close"
-              width="28"
-              height="28"
+              width="24"
+              height="24"
+              class="cursor-pointer hover:text-white"
             />
           </div>
         </div>
 
-        <div class="flex justify-center py-12 md:py-8">
+        <div class="flex justify-center py-8">
           <img
             src={state?.thumbnail}
             alt="Thumbnail"
-            class={`w-56 h-56 md:w-40 md:h-40 shadow-md rounded-full object-cover ${state.isPlaying && 'rotate'} border-2 shadow-lg border-white/80`}
+            class={`w-64 h-64 md:w-40 md:h-40 rounded-xl shadow-2xl object-cover border-4 border-white/30 `}
           />
         </div>
 
-        <div class="flex justify-center mb-5">
+        <div class="flex justify-center mb-4">
           {#if state.isPlaying}
             <SongPlayingAnimation />
           {:else}
             <Icon
               icon="mdi:music"
-              class="text-[#6257a5]"
-              width="40"
-              height="40"
+              width="32"
+              height="32"
+              class="text-white/70"
             />
           {/if}
         </div>
 
-        <div class="text-center flex-col flex justify-center px-6">
-          <h2
-            class="text-3xl md:text-xl dark:text-white/90 font-bold line-clamp-2 font-serif pt-5"
-          >
+        <div class="text-center px-6 mb-4">
+          <h2 class="text-2xl font-bold font-serif line-clamp-2">
             {state.title}
           </h2>
-          <p class="text-lg font-bold text-gray-600 dark:text-white/70 mt-1">
-            Episode 1
-          </p>
+          <p class="text-sm font-medium text-white/60 mt-1">Episode 1</p>
         </div>
 
-        <div class="w-full px-10 mt-4 md:mt-2">
+        <div class="w-full px-6">
           <input
             type="range"
             min="0"
@@ -304,39 +302,51 @@
             style="--progress: {progress}%"
             class="w-full h-3 pt-1 rounded-md appearance-none cursor-pointer custom-range"
           />
-          <div
-            class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1"
-          >
+          <div class="flex justify-between text-xs text-white/60 mt-1">
             <span>{formatTime($currentTime || 0)}</span>
             <span>{formatTime($duration || 0)}</span>
           </div>
         </div>
 
-        <div class="flex justify-center gap-5 items-center py-6">
+        <div class="flex items-center justify-center gap-6 py-6">
           <button on:click={() => seekBackward(15)}>
             <Icon
-              icon="mdi:rewind-15"
-              width="30"
-              class="text-[#6257a5] dark:text-[#6257a5]"
+              icon="mdi:skip-backward-outline"
+              width="28"
+              class="text-white hover:scale-110 transition-transform"
             />
           </button>
 
           <button on:click={togglePlay}>
             <Icon
               icon={state.isPlaying ? 'mdi:pause-circle' : 'mdi:play-circle'}
-              width="80"
-              height="80"
-              class="text-[#6257a5] dark:text-[#6257a5]"
+              width="70"
+              height="70"
+              class="text-white hover:scale-105 transition-transform"
             />
           </button>
 
           <button on:click={() => seekForward(15)}>
             <Icon
-              icon="mdi:fast-forward-15"
-              width="30"
-              class="text-[#6257a5] dark:text-[#6257a5]"
+              icon="mdi:skip-forward-outline"
+              width="28"
+              class="text-white hover:scale-110 transition-transform"
             />
           </button>
+        </div>
+
+        <div class="flex items-center justify-center gap-3 pb-6 px-6">
+          <Icon icon="mdi:volume-low" width="20" class="text-white/70" />
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value={audioRef?.volume}
+            on:input={(e) => (audioRef.volume = +e.target.value)}
+            class="w-32 h-1 appearance-none rounded-full bg-white/30 accent-white"
+          />
+          <Icon icon="mdi:volume-high" width="20" class="text-white/70" />
         </div>
 
         <audio
@@ -349,7 +359,7 @@
     </div>
   {:else}
     <div
-      class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-800 border-t p-5 px-6 shadow-lg flex items-center justify-between z-50 transition-all animate-fade-in"
+      class="fixed bottom-0 left-0 z-50 right-0 bg-white dark:bg-slate-800 border-t p-5 px-6 shadow-lg flex items-center justify-between z-50 transition-all animate-fade-in"
       on:click|self={toggleExpand}
     >
       <div class="flex items-center gap-4 overflow-hidden">

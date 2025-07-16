@@ -24,7 +24,6 @@
   import PdfViewer from './lib/components/PDFViewer.svelte'
   import AudioScreen from './lib/screens/AudioScreen.svelte'
   import PdfsScreen from './lib/screens/PdfsScreen.svelte'
-  import Footer from './lib/components/Footer.svelte'
   import ForgotPassword from './lib/screens/ForgotPassword.svelte'
   import ChangePassword from './lib/screens/ChangePassword.svelte'
   import UpdateName from './lib/screens/UpdateName.svelte'
@@ -173,7 +172,6 @@
             {:else if $currentPageStore === 'updateName'}
               <UpdateName />
             {/if}
-            <Footer />
           </div>
         </div>
 
@@ -187,6 +185,7 @@
           <Navigation {toggleSidebar} />
         {/if}
       {/if}
+
       <FloatingAudioPlayer />
     </div>
   </main>

@@ -2,6 +2,7 @@
   import Icon from '@iconify/svelte'
 
   export let label: string = ''
+  export let className: string = ''
   export let showArrow: boolean = false
   export let onIconClick: (() => void) | null = null
   export let leftIcon: string | null = null
@@ -13,14 +14,14 @@
   <div
     role="button"
     on:click={() => onIconClick?.()}
-    class="flex items-center justify-between w-full mb-3 py-2"
+    class={`${className} flex items-center justify-between w-full py-2`}
   >
     <div class="flex items-center gap-2">
       {#if leftIcon}
         <Icon icon={leftIcon} class="w-6 h-6 text-[#6257a5] dark:text-white" />
       {/if}
       <h2
-        class="font-semibold text-lg text-[#6257a5] dark:text-white"
+        class="font-semibold text-[#6257a5] dark:text-white"
         class:font-serif={isNonLatin}
       >
         {label}

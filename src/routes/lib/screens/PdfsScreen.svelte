@@ -8,6 +8,7 @@
   import { onMount } from 'svelte'
   import PdfCard from '../components/PDFCard.svelte'
   import PdfSkeleton from '../components/PDFSkeleton.svelte'
+  import BottomNavigation from '../components/BottomNavigation.svelte'
 
   let pdfs = []
   let loading = true
@@ -46,7 +47,7 @@
   })
 </script>
 
-<div class="p-4 min-h-screen">
+<div class="p-4 min-h-screen pb-40">
   <div
     style="scrollbar-width: none;"
     class="flex gap-2 overflow-scroll items-start pb-4"
@@ -54,10 +55,10 @@
     {#each categories as category}
       <button
         on:click={() => selectCategory(category)}
-        class={`px-3 py-1 rounded-md border font-serif text-nowrap ${
+        class={`px-4 text-sm py-1.5 rounded-md border font-serif text-nowrap ${
           selectedCategory === category
             ? 'bg-[#6257a5] text-white border-[#504596]'
-            : 'bg-white dark:bg-slate-800 text-gray-700 dark:text-white border-gray-300'
+            : 'bg-white dark:bg-slate-800 text-gray-700 dark:text-white border-gray-300 dark:border-slate-600'
         }`}
       >
         {category}
@@ -80,6 +81,8 @@
       {/each}
     {/if}
   </div>
+
+  <BottomNavigation />
 </div>
 
 <style>

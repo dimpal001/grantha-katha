@@ -16,8 +16,36 @@
   import Button from '../components/Button.svelte'
   import ErrorBox from '../components/ErrorBox.svelte'
   import { deleteAccount } from '../../../events/authEvents'
+  import BottomNavigation from '../components/BottomNavigation.svelte'
 
   $: user = useAuthUser()
+
+  let footerLinks = [
+    {
+      label: 'About Us',
+      href: 'https://granthakatha.com/aboutus',
+    },
+    {
+      label: 'Terms & Conditions',
+      href: 'https://granthakatha.com/termsandconditions',
+    },
+    {
+      label: 'Privacy Policy',
+      href: 'https://granthakatha.com/privacypolicy',
+    },
+    {
+      label: 'Contact Us',
+      href: 'https://granthakatha.com/contacts',
+    },
+    {
+      label: 'How to Order',
+      href: 'https://granthakatha.com/howtoorder',
+    },
+    {
+      label: 'Our Team',
+      href: 'https://granthakatha.com/ourteam',
+    },
+  ]
 
   let showDeleteAccountSheet = false
   let error = null
@@ -55,7 +83,7 @@
 
 {#if user}
   <main
-    class="min-h-[calc(100vh-105px)] dark:bg-slate-900 text-gray-800 dark:text-white flex flex-col"
+    class="dark:bg-slate-900 text-gray-800 dark:text-white flex flex-col pb-32"
   >
     <div class="px-6 pt-8 pb-4 flex items-center gap-4">
       <div class="bg-blue-100 dark:bg-[#6257a5] p-3 rounded-full">
@@ -72,7 +100,7 @@
       </div>
     </div>
 
-    <section class="px-6 py-4 space-y-2">
+    <section class="px-6 py-3">
       <Label label="Settings" />
 
       <div
@@ -134,14 +162,40 @@
         </button> -->
       </div>
     </section>
-    <section class="px-6 py-4 space-y-2">
+
+    <section class="px-6 py-3">
+      <Label label="Explore" />
+
+      <div
+        class="bg-gray-200 dark:bg-slate-800 text-sm rounded-md shadow-sm divide-y divide-gray-300 dark:divide-gray-700"
+      >
+        {#each footerLinks as link}
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-between px-5 py-5 hover:bg-gray-300 dark:hover:bg-slate-700 transition-colors duration-150"
+          >
+            <span>{link.label}</span>
+            <Icon
+              icon="mdi:chevron-right"
+              class="text-gray-400"
+              width="20"
+              height="20"
+            />
+          </a>
+        {/each}
+      </div>
+    </section>
+
+    <section class="px-6 py-3">
       <Label label="Accounts" />
       <div
         class="bg-gray-200 dark:bg-slate-800 rounded-md shadow-sm divide-y divide-gray-300 dark:divide-gray-700 overflow-hidden"
       >
         <button
           on:click={() => (showDeleteAccountSheet = !showDeleteAccountSheet)}
-          class="flex items-center justify-between px-5 text-red-600 py-4 w-full"
+          class="flex items-center justify-between px-5 font-semibold text-red-600 py-4 w-full"
         >
           <span>Delete Account</span>
           <Icon
@@ -191,33 +245,6 @@
       </div>
     </section>
 
-    <!-- <section class="px-6 py-4 space-y-2">
-      <Label label="Your Favourites" />
-
-      <div
-        class="bg-gray-200 dark:bg-slate-800 rounded-md shadow-sm divide-y divide-gray-300 dark:divide-gray-700"
-      >
-        <div class="flex items-center justify-between px-5 py-4">
-          <span>Favourite Books</span>
-          <Icon
-            icon="mdi:chevron-right"
-            class="text-gray-400"
-            width="20"
-            height="20"
-          />
-        </div>
-        <div class="flex items-center justify-between px-5 py-4">
-          <span>Favourite Songs</span>
-          <Icon
-            icon="mdi:chevron-right"
-            class="text-gray-400"
-            width="20"
-            height="20"
-          />
-        </div>
-      </div>
-    </section> -->
-
     <div class="flex-grow"></div>
 
     <div class="px-6">
@@ -235,5 +262,7 @@
         Logout
       </button>
     </div>
+
+    <BottomNavigation />
   </main>
 {/if}
