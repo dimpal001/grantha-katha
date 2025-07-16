@@ -1,11 +1,11 @@
 <script lang="ts">
   // @ts-nocheck
-  import Icon from '@iconify/svelte'
   import { audioPlayerStore } from '../../../stores/appStore'
   import { onMount, onDestroy } from 'svelte'
   import { writable } from 'svelte/store'
   import SongPlayingAnimation from '../components/SongPlayingAnimation.svelte'
   import { toggleFavourite } from '../../../events/audioEvents'
+  import Icon from '@iconify/svelte'
 
   const baseUrl = 'https://audiostream.backendservices.in'
 
@@ -18,6 +18,7 @@
   let lastPlayedUrl = null
   let state
   $: state = $audioPlayerStore
+  $: progress = $duration ? ($currentTime / $duration) * 100 : 0
 
   function getStreamUrl(url: string) {
     if (!url) return ''
@@ -86,7 +87,7 @@
 
       hls = new Hls({
         enableWorker: true,
-        maxBufferLength: 30, // optional optimization
+        maxBufferLength: 30,
       })
 
       hls.loadSource(streamUrl)
@@ -300,6 +301,7 @@
               audioRef.currentTime = +e.target.value
               currentTime.set(+e.target.value)
             }}
+            style="--progress: {progress}%"
             class="w-full h-3 pt-1 rounded-md appearance-none cursor-pointer custom-range"
           />
           <div
@@ -434,60 +436,17 @@
     text-overflow: ellipsis;
   }
 
-  input[type='range'] {
-    appearance: none;
-    background: #0c0c0c;
-    border-radius: 9999px;
-    height: 6px;
-  }
-
-  input[type='range'].custom-range {
-    background: #444444;
-  }
-
-  input[type='range']::-webkit-slider-thumb {
-    appearance: none;
-    height: 14px;
-    width: 14px;
-    background: #4f46e5;
-    border-radius: 50%;
-    cursor: pointer;
-    margin-top: -6px;
-  }
-
-  input[type='range']::-moz-range-thumb {
-    height: 14px;
-    width: 14px;
-    background: #4f46e5;
-    border-radius: 50%;
-    cursor: pointer;
-    border: none;
-  }
-
-  input[type='range']::-webkit-slider-runnable-track {
-    height: 6px;
-    border-radius: 9999px;
-  }
-
-  input[type='range']::-moz-range-track {
-    height: 6px;
-    border-radius: 9999px;
-    background: #e2e8f0;
-  }
-
-  .rotate {
-    animation: rotate 5s linear infinite;
-  }
-
   input[type='range'].custom-range {
     --track-height: 6px;
-    --thumb-size: 20px;
-    --thumb-active-size: 24px;
-    --fill-color: #f78f18;
-  }
-
-  input[type='range'].custom-range::-webkit-slider-runnable-track {
+    --thumb-size: 14px;
+    --thumb-active-size: 18px;
+    --fill-color: #4f46e5;
+    --track-color: #e2e8f0;
+    appearance: none;
+    width: 100%;
     height: var(--track-height);
+    border-radius: 9999px;
+    cursor: pointer;
     background: linear-gradient(
       to right,
       var(--fill-color) 0%,
@@ -495,17 +454,17 @@
       var(--track-color) var(--progress, 0%),
       var(--track-color) 100%
     );
-    border-radius: 999px;
   }
 
   input[type='range'].custom-range::-webkit-slider-thumb {
     appearance: none;
-    height: var(--thumb-size);
-    width: var(--thumb-size);
+    height: 20px;
+    width: 20px;
     background: var(--fill-color);
-    border: 2px solid var(--fill-color);
+    border: 2px solid #ffffff;
     border-radius: 50%;
-    margin-top: calc((var(--track-height) - var(--thumb-size)) / 1.5);
+    cursor: pointer;
+    margin-top: calc((var(--track-height) - var(--thumb-size)) / 2);
     transition: transform 0.2s ease;
   }
 
@@ -516,26 +475,30 @@
   input[type='range'].custom-range::-moz-range-track {
     height: var(--track-height);
     background: var(--track-color);
-    border-radius: 999px;
+    border-radius: 9999px;
   }
 
   input[type='range'].custom-range::-moz-range-progress {
     background: var(--fill-color);
     height: var(--track-height);
-    border-radius: 999px;
+    border-radius: 9999px;
   }
 
   input[type='range'].custom-range::-moz-range-thumb {
     height: var(--thumb-size);
     width: var(--thumb-size);
     background: var(--fill-color);
-    border: 2px solid var(--fill-color);
+    border: 2px solid #ffffff;
     border-radius: 50%;
     transition: transform 0.2s ease;
   }
 
   input[type='range'].custom-range:active::-moz-range-thumb {
-    transform: scale(2.5);
+    transform: scale(1.2);
+  }
+
+  .rotate {
+    animation: rotate 5s linear infinite;
   }
 
   @keyframes rotate {
