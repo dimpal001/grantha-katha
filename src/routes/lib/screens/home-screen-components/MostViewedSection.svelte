@@ -3,11 +3,12 @@
   import Icon from '@iconify/svelte'
   import Label from '../../components/Label.svelte'
   import { navigateTo } from '$lib/navigation'
-  import { backPageStore } from '../../../../stores/appStore'
+  import { backPageStore, language } from '../../../../stores/appStore'
   import { fetchMostViewedPDF } from '../../../../events/pdfEvents'
   import { onMount } from 'svelte'
   import PdfCard from '../../components/PDFCard.svelte'
   import PdfSkeleton from '../../components/PDFSkeleton.svelte'
+  import { translations } from '../../../../utils/translations'
 
   let pdfs = []
   let loading = true
@@ -27,7 +28,7 @@
 <div class="pt-4">
   <Label
     leftIcon="ri:book-2-line"
-    label="সৰ্বাধিক চোৱা ই-গ্ৰন্থ"
+    label={translations[$language]?.label2}
     showArrow
     onIconClick={() => {
       navigateTo('pdfs')

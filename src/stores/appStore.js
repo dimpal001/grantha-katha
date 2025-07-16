@@ -25,6 +25,24 @@ export const displayAudioStore = writable(null)
 
 export const usersStore = writable([])
 
+let storedLang = 'en'
+
+try {
+  storedLang = localStorage.getItem('language') || 'en'
+} catch (error) {
+  console.error('Error accessing localStorage for language:', error)
+}
+
+export const language = writable(storedLang)
+
+language.subscribe((value) => {
+  try {
+    localStorage.setItem('language', value)
+  } catch (error) {
+    console.error('Error setting language in localStorage:', error)
+  }
+})
+
 let initialFavourites = []
 try {
   const stored = localStorage.getItem('favourites')

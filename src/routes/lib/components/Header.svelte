@@ -2,9 +2,14 @@
   // @ts-nocheck
   import Icon from '@iconify/svelte'
   import BackButton from './BackButton.svelte'
-  import { currentPageStore, backPageStore } from '../../../stores/appStore'
+  import {
+    currentPageStore,
+    backPageStore,
+    language,
+  } from '../../../stores/appStore'
   import { navigateTo } from '$lib/navigation'
   import FavouriteEBookButton from './FavouriteEBookButton.svelte'
+  import { translations } from '../../../utils/translations'
 
   $: currentPage = $currentPageStore
   $: backPage = $backPageStore
@@ -15,9 +20,9 @@
     changePassword: 'Change Password',
     updateName: 'Update Name',
     search: 'Search',
-    viewPdf: 'শ্ৰৱ্য গ্ৰন্থ',
-    audios: 'শ্ৰৱ্য গ্ৰন্থ',
-    pdfs: 'ই-গ্ৰন্থ',
+    viewPdf: translations[$language].header2,
+    audios: translations[$language].header1,
+    pdfs: translations[$language].header2,
   }
   const isNonLatin =
     pageTitles[currentPage] && !/^[\x00-\x7F]*$/.test(pageTitles[currentPage])
@@ -30,7 +35,7 @@
     <div class="flex items-center gap-3">
       <BackButton onClick={() => navigateTo(backPage || 'home')} />
       <h2
-        class="text-xl font-bold text-[#6257a5]"
+        class="text-xl font-bold text-[#6257a5] dark:text-white"
         class:font-serif={isNonLatin}
       >
         {pageTitles[currentPage] ?? ''}
@@ -38,8 +43,14 @@
     </div>
   {:else}
     <div class="flex justify-center items-center gap-2">
-      <img src="/logo.png" class="w-10 h-10" alt="" />
-      <h1 class="text-2xl font-bold text-[#6257a5] font-serif">গ্ৰন্থকথা</h1>
+      <img
+        src="/logo.png"
+        class="w-10 h-10 dark:filter dark:brightness-0 dark:invert"
+        alt=""
+      />
+      <h1 class="text-2xl font-bold text-[#6257a5] dark:text-white font-serif">
+        গ্ৰন্থকথা
+      </h1>
     </div>
   {/if}
 

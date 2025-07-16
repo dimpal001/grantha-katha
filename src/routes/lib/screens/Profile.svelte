@@ -5,12 +5,23 @@
     authStore,
     currentPageStore,
     currentUserStore,
+    language,
+    themeStore,
   } from '../../../stores/appStore'
   import Label from '../components/Label.svelte'
   import { useAuthUser } from '$lib/authUser'
   import { navigateTo } from '$lib/navigation'
+  import DropdownSheet from '../components/DropdownSheet.svelte'
+  import BottomSheet from '../components/BottomSheet.svelte'
+  import Button from '../components/Button.svelte'
+  import ErrorBox from '../components/ErrorBox.svelte'
+  import { deleteAccount } from '../../../events/authEvents'
 
   $: user = useAuthUser()
+
+  let showDeleteAccountSheet = false
+  let error = null
+  let deleting = false
 
   function logout() {
     authStore.set(false)
@@ -22,6 +33,24 @@
   function goToFavourites() {
     currentPageStore.set('favourites')
   }
+
+  const handleDelete = async () => {
+    try {
+      deleting = true
+      const response = await deleteAccount()
+      if (response.err) {
+        error =
+          response.result || 'Unable to delete your account, Please try again.'
+      } else {
+        logout()
+      }
+    } catch (error) {
+      error = 'Unable to delete your account, Please try again.'
+    } finally {
+      deleting = false
+      showDeleteAccountSheet = false
+    }
+  }
 </script>
 
 {#if user}
@@ -32,7 +61,7 @@
       <div class="bg-blue-100 dark:bg-[#6257a5] p-3 rounded-full">
         <Icon
           icon="mdi:account-circle"
-          class="text-[#6257a5] dark:text-[#6257a5]"
+          class="text-[#6257a5] dark:text-white"
           width="64"
           height="64"
         />
@@ -43,13 +72,43 @@
       </div>
     </div>
 
-    <!-- <section class="px-6 py-4 space-y-2">
-      <Label label="Account Settings" />
+    <section class="px-6 py-4 space-y-2">
+      <Label label="Settings" />
 
       <div
         class="bg-gray-200 dark:bg-slate-800 rounded-md shadow-sm divide-y divide-gray-300 dark:divide-gray-700"
       >
-        <button
+        <DropdownSheet
+          label="App Language"
+          options={[
+            { id: 'as', name: 'Assamese' },
+            { id: 'en', name: 'English' },
+          ]}
+          optionLabel="name"
+          optionValue="id"
+          showLabel={false}
+          value={$language}
+          onChange={(val) => {
+            language.set(val)
+          }}
+          className="w-full"
+        />
+        <DropdownSheet
+          label="App Theme"
+          options={[
+            { id: 'dark', name: 'Dark Theme' },
+            { id: 'light', name: 'Light Theme' },
+          ]}
+          optionLabel="name"
+          optionValue="id"
+          showLabel={false}
+          value={$themeStore}
+          onChange={(val) => {
+            themeStore.set(val)
+          }}
+          className="w-full"
+        />
+        <!-- <button
           on:click={() => navigateTo('changePassword')}
           class="flex items-center justify-between px-5 py-4 w-full"
         >
@@ -72,9 +131,65 @@
             width="20"
             height="20"
           />
-        </button>
+        </button> -->
       </div>
-    </section> -->
+    </section>
+    <section class="px-6 py-4 space-y-2">
+      <Label label="Accounts" />
+      <div
+        class="bg-gray-200 dark:bg-slate-800 rounded-md shadow-sm divide-y divide-gray-300 dark:divide-gray-700 overflow-hidden"
+      >
+        <button
+          on:click={() => (showDeleteAccountSheet = !showDeleteAccountSheet)}
+          class="flex items-center justify-between px-5 text-red-600 py-4 w-full"
+        >
+          <span>Delete Account</span>
+          <Icon
+            icon="mdi:chevron-right"
+            class="text-gray-400"
+            width="20"
+            height="20"
+          />
+        </button>
+        <BottomSheet
+          showSheet={showDeleteAccountSheet}
+          closeOnOverlayClick={false}
+          label="Delete Account?"
+        >
+          <div
+            class="space-y-4 text-center text-sm text-gray-700 dark:text-gray-300"
+          >
+            <div class="flex justify-center">
+              <Icon icon="mdi:alert-circle" class="w-10 h-10 text-red-600" />
+            </div>
+
+            <p class="text-base font-semibold text-red-700 dark:text-red-400">
+              This action is irreversible.
+            </p>
+
+            <p>
+              Deleting your account will permanently remove all your data,
+              including subscriptions and saved content. Are you sure you want
+              to continue?
+            </p>
+
+            <Button
+              isLoading={deleting}
+              onClick={handleDelete}
+              className="bg-red-600 hover:bg-red-800 text-sm"
+              label="Yes, Delete My Account"
+            />
+
+            <button
+              on:click={() => (showDeleteAccountSheet = false)}
+              class="w-full px-4 py-2 text-gray-600 dark:text-gray-300 mt-2"
+            >
+              Cancel
+            </button>
+          </div>
+        </BottomSheet>
+      </div>
+    </section>
 
     <!-- <section class="px-6 py-4 space-y-2">
       <Label label="Your Favourites" />
@@ -104,6 +219,12 @@
     </section> -->
 
     <div class="flex-grow"></div>
+
+    <div class="px-6">
+      {#if error}
+        <ErrorBox {error} />
+      {/if}
+    </div>
 
     <div class="px-6 py-7">
       <button

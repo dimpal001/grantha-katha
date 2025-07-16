@@ -281,3 +281,23 @@ export async function getFavourites() {
     }
   }
 }
+
+export async function deleteAccount() {
+  const user = useAuthUser()
+  try {
+    const favouriteResponse = await Api.get('/favourites', {
+      search: `user:${user.id}`,
+    })
+    await Api.delete(
+      `/favourites/${favouriteResponse.result.map((item) => item.id).join(',')}`
+    )
+    const response = await Api.delete(`/users/${user.id}`)
+    return response
+  } catch (error) {
+    console.error('Name update error:', error)
+    return {
+      err: true,
+      result: 'An unexpected error occurred while deleting your account.',
+    }
+  }
+}

@@ -76,22 +76,48 @@
   }
 
   function playAudio(streamUrl: string) {
-    if (!audioRef || !Hls?.isSupported()) return
+    if (!audioRef) return
 
-    if (hls) {
-      console.log('destroy')
-      hls.destroy()
-      hls = null
+    if (Hls.isSupported()) {
+      if (hls) {
+        hls.destroy()
+        hls = null
+      }
+
+      hls = new Hls({
+        enableWorker: true,
+        maxBufferLength: 30, // optional optimization
+      })
+
+      hls.loadSource(streamUrl)
+      hls.attachMedia(audioRef)
+
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        audioRef.play().catch((err) => console.error('play() error:', err))
+      })
+
+      hls.on(Hls.Events.ERROR, (event, data) => {
+        console.error('HLS error:', data)
+        if (data.fatal) {
+          switch (data.type) {
+            case Hls.ErrorTypes.NETWORK_ERROR:
+              hls.startLoad()
+              break
+            case Hls.ErrorTypes.MEDIA_ERROR:
+              hls.recoverMediaError()
+              break
+            default:
+              hls.destroy()
+              break
+          }
+        }
+      })
+    } else if (audioRef.canPlayType('application/vnd.apple.mpegurl')) {
+      audioRef.src = streamUrl
+      audioRef.addEventListener('loadedmetadata', () => {
+        audioRef.play()
+      })
     }
-
-    hls = new Hls()
-    console.log('Should play')
-    hls.loadSource(streamUrl)
-    hls.attachMedia(audioRef)
-
-    hls.on(Hls.Events.MANIFEST_PARSED, () => {
-      audioRef.play().catch(console.error)
-    })
   }
 
   function togglePlay() {
@@ -175,6 +201,31 @@
       })
     }
   }
+
+  function seekForward(seconds: number) {
+    if (!audioRef) return
+    const newTime = Math.min(
+      audioRef.currentTime + seconds,
+      audioRef.duration || Infinity
+    )
+    audioRef.currentTime = newTime
+    currentTime.set(newTime)
+    if (state.isPlaying) {
+      audioRef.play().catch((e) => console.error('Seek forward play error:', e))
+    }
+  }
+
+  function seekBackward(seconds: number) {
+    if (!audioRef) return
+    const newTime = Math.max(audioRef.currentTime - seconds, 0)
+    audioRef.currentTime = newTime
+    currentTime.set(newTime)
+    if (state.isPlaying) {
+      audioRef
+        .play()
+        .catch((e) => console.error('Seek backward play error:', e))
+    }
+  }
 </script>
 
 {#if state.isVisible}
@@ -189,7 +240,9 @@
           <span class="font-bold text-gray-700 dark:text-gray-300"
             >Playing episode 1 of 1</span
           >
-          <div class="flex items-center justify-end gap-4">
+          <div
+            class="flex items-center justify-end gap-4 text-black/80 dark:text-white/70"
+          >
             <!-- <Icon
               onclick={toggleIsFavourite}
               icon={`${state.isFavourite ? 'mdi:bookmark' : 'mdi:bookmark-outline'}`}
@@ -228,11 +281,11 @@
 
         <div class="text-center flex-col flex justify-center px-6">
           <h2
-            class="text-3xl md:text-xl font-bold line-clamp-2 font-serif pt-5"
+            class="text-3xl md:text-xl dark:text-white/90 font-bold line-clamp-2 font-serif pt-5"
           >
             {state.title}
           </h2>
-          <p class="text-lg font-bold text-gray-600 dark:text-gray-400 mt-1">
+          <p class="text-lg font-bold text-gray-600 dark:text-white/70 mt-1">
             Episode 1
           </p>
         </div>
@@ -257,22 +310,15 @@
           </div>
         </div>
 
-        <div class="flex items-center justify-center px-6 mt-3 gap-3">
-          <Icon icon="mdi:volume-high" width="20" />
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.01"
-            value={audioRef?.volume || 1}
-            on:input={(e) => (audioRef.volume = +e.target.value)}
-            class="w-2/4 h-3 pt-1 rounded-md appearance-none cursor-pointer dark:bg-slate-700 custom-range"
-          />
-        </div>
+        <div class="flex justify-center gap-5 items-center py-6">
+          <button on:click={() => seekBackward(15)}>
+            <Icon
+              icon="mdi:rewind-15"
+              width="30"
+              class="text-[#6257a5] dark:text-[#6257a5]"
+            />
+          </button>
 
-        <div class="flex justify-center gap-3 items-center py-6">
-          <button><Icon icon="mdi:shuffle" width="35" /></button>
-          <button><Icon icon="mdi:skip-previous" width="45" /></button>
           <button on:click={togglePlay}>
             <Icon
               icon={state.isPlaying ? 'mdi:pause-circle' : 'mdi:play-circle'}
@@ -281,8 +327,14 @@
               class="text-[#6257a5] dark:text-[#6257a5]"
             />
           </button>
-          <button><Icon icon="mdi:skip-next" width="45" /></button>
-          <button><Icon icon="mdi:repeat" width="35" /></button>
+
+          <button on:click={() => seekForward(15)}>
+            <Icon
+              icon="mdi:fast-forward-15"
+              width="30"
+              class="text-[#6257a5] dark:text-[#6257a5]"
+            />
+          </button>
         </div>
 
         <audio
@@ -425,6 +477,65 @@
 
   .rotate {
     animation: rotate 5s linear infinite;
+  }
+
+  input[type='range'].custom-range {
+    --track-height: 6px;
+    --thumb-size: 20px;
+    --thumb-active-size: 24px;
+    --fill-color: #f78f18;
+  }
+
+  input[type='range'].custom-range::-webkit-slider-runnable-track {
+    height: var(--track-height);
+    background: linear-gradient(
+      to right,
+      var(--fill-color) 0%,
+      var(--fill-color) var(--progress, 0%),
+      var(--track-color) var(--progress, 0%),
+      var(--track-color) 100%
+    );
+    border-radius: 999px;
+  }
+
+  input[type='range'].custom-range::-webkit-slider-thumb {
+    appearance: none;
+    height: var(--thumb-size);
+    width: var(--thumb-size);
+    background: var(--fill-color);
+    border: 2px solid var(--fill-color);
+    border-radius: 50%;
+    margin-top: calc((var(--track-height) - var(--thumb-size)) / 1.5);
+    transition: transform 0.2s ease;
+  }
+
+  input[type='range'].custom-range:active::-webkit-slider-thumb {
+    transform: scale(1.5);
+  }
+
+  input[type='range'].custom-range::-moz-range-track {
+    height: var(--track-height);
+    background: var(--track-color);
+    border-radius: 999px;
+  }
+
+  input[type='range'].custom-range::-moz-range-progress {
+    background: var(--fill-color);
+    height: var(--track-height);
+    border-radius: 999px;
+  }
+
+  input[type='range'].custom-range::-moz-range-thumb {
+    height: var(--thumb-size);
+    width: var(--thumb-size);
+    background: var(--fill-color);
+    border: 2px solid var(--fill-color);
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+  }
+
+  input[type='range'].custom-range:active::-moz-range-thumb {
+    transform: scale(2.5);
   }
 
   @keyframes rotate {

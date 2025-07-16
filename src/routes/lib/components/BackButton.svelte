@@ -12,7 +12,7 @@
   icon="mdi:arrow-left"
   width="35"
   height="35"
-  class="transition-colors text-[#6257a5] bg-transparent p-1 rounded-md"
+  class="transition-colors text-[#6257a5] dark:text-white bg-transparent p-1 rounded-md"
 />
 
 <style>

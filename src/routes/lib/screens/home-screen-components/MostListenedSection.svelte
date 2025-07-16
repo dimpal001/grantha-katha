@@ -3,11 +3,16 @@
   import Icon from '@iconify/svelte'
   import Label from '../../components/Label.svelte'
   import { navigateTo } from '$lib/navigation'
-  import { audioPlayerStore, backPageStore } from '../../../../stores/appStore'
+  import {
+    audioPlayerStore,
+    backPageStore,
+    language,
+  } from '../../../../stores/appStore'
   import { fetchMostListenedAudio } from '../../../../events/audioEvents'
   import { onMount } from 'svelte'
   import AudioCard from '../../components/AudioCard.svelte'
   import AudioSkeleton from '../../components/AudioSkeleton.svelte'
+  import { translations } from '../../../../utils/translations'
 
   let audios = []
   let loading = true
@@ -26,7 +31,7 @@
 <div class="mb-20">
   <Label
     leftIcon="mdi:headphones"
-    label="সৰ্বাধিক শুনা শ্ৰৱ্য গ্ৰন্থ"
+    label={translations[$language]?.label1}
     showArrow
     onIconClick={() => {
       navigateTo('audios')

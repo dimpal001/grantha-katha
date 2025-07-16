@@ -17,10 +17,10 @@
   >
     <div class="flex items-center gap-2">
       {#if leftIcon}
-        <Icon icon={leftIcon} class="w-6 h-6 text-[#6257a5]" />
+        <Icon icon={leftIcon} class="w-6 h-6 text-[#6257a5] dark:text-white" />
       {/if}
       <h2
-        class="font-semibold text-xl text-[#6257a5]"
+        class="font-semibold text-lg text-[#6257a5] dark:text-white"
         class:font-serif={isNonLatin}
       >
         {label}

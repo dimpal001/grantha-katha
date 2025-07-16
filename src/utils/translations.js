@@ -1,0 +1,36 @@
+export const translations = {
+  en: {
+    category1: 'Audiobooks',
+    category2: 'E-Books',
+    label1: 'Most listened audio books',
+    label2: 'Most viewed EBooks',
+    header1: 'Audio Books',
+    header2: 'EBooks',
+    footer: {
+      about: 'About Us',
+      terms: 'Terms and Conditions',
+      privacy: 'Privacy Policy',
+      contact: 'Contact',
+      howToOrder: 'How to Order',
+      team: 'Our Team',
+      copyright: 'Copyright © 2025. All rights reserved. GranthaKatha',
+    },
+  },
+  as: {
+    category1: 'শ্ৰৱ্য গ্ৰন্থ',
+    category2: 'ই-গ্ৰন্থ',
+    label1: 'সৰ্বাধিক শুনা শ্ৰৱ্য গ্ৰন্থ',
+    label2: 'সৰ্বাধিক চোৱা ই-গ্ৰন্থ',
+    header1: 'শ্ৰৱ্য গ্ৰন্থ',
+    header2: 'ই-গ্ৰন্থ',
+    footer: {
+      about: 'আমাৰ বিষয়ে',
+      terms: 'নিয়ম আৰু চৰ্তাৱলী',
+      privacy: 'গোপনীয়তা নীতি',
+      contact: 'যোগাযোগ',
+      howToOrder: 'কেনেকৈ অর্ডাৰ কৰিব',
+      team: 'আমাৰ সহকৰ্মীসকল',
+      copyright: 'কপিৰাইট © ২০২৫। সকলো অধিকাৰ সংৰক্ষিত। গ্ৰন্থকথা',
+    },
+  },
+}
