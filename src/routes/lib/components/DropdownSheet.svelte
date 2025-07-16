@@ -30,7 +30,7 @@
   }
 </script>
 
-<div class="space-y-1">
+<div class="space-y-1 max-w-md mx-auto">
   {#if isIconButton}
     <button
       class="p-3 text-sm flex items-center justify-center"
@@ -66,13 +66,13 @@
 
 {#if showSheet}
   <div
-    class="fixed inset-0 z-40 -top-10 bg-black/30"
+    class="fixed inset-0 z-40 -top-10 bg-black/30 max-w-md mx-auto"
     on:click={() => (showSheet = false)}
   ></div>
 
   <div
     style="scrollbar-width: none;"
-    class="fixed bottom-0 px-5 pb-5 left-0 right-0 z-50 bg-white dark:bg-slate-800 rounded-t-3xl overflow-y-scroll max-h-[60%] shadow-2xl transition-all"
+    class="fixed max-w-md mx-auto bottom-0 px-5 pb-5 left-0 right-0 z-50 bg-white dark:bg-slate-800 rounded-t-3xl overflow-y-scroll max-h-[60%] shadow-2xl transition-all"
     transition:fly={{ y: 300, duration: 250 }}
   >
     <div

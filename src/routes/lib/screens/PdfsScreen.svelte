@@ -67,7 +67,7 @@
 
   <div class="grid grid-cols-2 gap-3">
     {#if loading}
-      {#each Array(5) as _, i}
+      {#each Array(4) as _, i}
         <PdfSkeleton />
       {/each}
     {:else if pdfs.length === 0}

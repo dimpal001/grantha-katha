@@ -63,7 +63,7 @@
 
   <div class="grid grid-cols-2 gap-3">
     {#if loading}
-      {#each Array(5) as _, i}
+      {#each Array(4) as _, i}
         <AudioSkeleton />
       {/each}
     {:else if audios.length === 0}

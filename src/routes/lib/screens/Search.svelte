@@ -108,7 +108,7 @@
       <div class="flex flex-wrap gap-2">
         {#each suggestions as tag}
           <span
-            class="px-3 py-1 font-serif bg-[#cecae2] dark:bg-[#6257a5] text-[#6257a5] dark:text-[#6257a5] rounded-md text-sm transition hover:scale-105 cursor-pointer"
+            class="px-3 py-1 font-serif bg-[#cecae2] dark:bg-[#6257a5] text-[#6257a5] dark:text-white rounded-md text-sm transition hover:scale-105 cursor-pointer"
             on:click={() => selectSuggestion(tag)}
           >
             #{tag}
