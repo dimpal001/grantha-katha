@@ -20,7 +20,7 @@
 
   $: user = useAuthUser()
 
-  let footerLinks = [
+  $: footerLinks = [
     {
       label: 'About Us',
       href: `/about-us?lang=${$language}`,

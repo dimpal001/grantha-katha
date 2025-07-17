@@ -8,9 +8,9 @@
 
   const links = [
     { label: 'About Us', href: `/about-us?lang=${lang}` },
+    { label: 'Terms & Conditions', href: `/terms-and-conditions?lang=${lang}` },
     { label: 'Privacy Policy', href: `/privacy-policy?lang=${lang}` },
     { label: 'Piracy Policy', href: `/piracy-policy?lang=${lang}` },
-    { label: 'Terms & Conditions', href: `/terms-and-conditions?lang=${lang}` },
   ]
 
   let pathname = ''
@@ -39,7 +39,7 @@
       class={`py-3 px-5 w-full text-start font-semibold transition-colors duration-200
         ${
           pathname === getPathname(link.href)
-            ? 'bg-[#6257a5] text-white dark:bg-indigo-500 dark:text-white'
+            ? 'bg-[#6257a5] text-white dark:bg-[#6257a5] dark:text-white'
             : 'bg-transparent text-black dark:text-white/80 hover:bg-black/5 dark:hover:bg-white/10'
         }`}
     >

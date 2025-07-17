@@ -15,6 +15,9 @@
     } else if (pathname === '/privacy-policy') {
       document.title = 'Privacy Policy - Grantha Katha'
       headerTitle = 'Privacy Policy'
+    } else if (pathname === '/piracy-policy') {
+      document.title = 'Piracy Policy - Grantha Katha'
+      headerTitle = 'Piracy Policy'
     } else if (pathname === '/terms-and-conditions') {
       document.title = 'Terms & Conditions - Grantha Katha'
       headerTitle = 'Terms & Conditions'
@@ -44,7 +47,7 @@
       class="bg-white dark:bg-slate-800 shadow p-4 flex gap-3 items-center"
     >
       <BackButton onClick={() => goto('/')} />
-      <h1 class="font-bold text-lg pt-1 text-[#6257a5] dark:text-indigo-300">
+      <h1 class="font-bold text-lg">
         {headerTitle}
       </h1>
     </header>

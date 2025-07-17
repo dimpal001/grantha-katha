@@ -6,8 +6,10 @@
   import { afterNavigate } from '$app/navigation'
   import { translations } from '../../utils/translations'
   import Loading from '../lib/components/Loading.svelte'
+  import { get } from 'svelte/store'
+  import { language } from '../../stores/appStore'
 
-  let lang = 'en'
+  let lang = get(language) || 'en'
   let aboutUs = {}
   let loading = true
 
