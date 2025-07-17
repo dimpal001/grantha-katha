@@ -23,28 +23,32 @@
   let footerLinks = [
     {
       label: 'About Us',
-      href: 'https://granthakatha.com/aboutus',
+      href: `/about-us?lang=${$language}`,
     },
     {
       label: 'Terms & Conditions',
-      href: 'https://granthakatha.com/termsandconditions',
+      href: `/terms-and-conditions?lang=${$language}`,
     },
     {
       label: 'Privacy Policy',
-      href: 'https://granthakatha.com/privacypolicy',
+      href: `/privacy-policy?lang=${$language}`,
     },
     {
-      label: 'Contact Us',
-      href: 'https://granthakatha.com/contacts',
+      label: 'Piracy Policy',
+      href: `/piracy-policy?lang=${$language}`,
     },
-    {
-      label: 'How to Order',
-      href: 'https://granthakatha.com/howtoorder',
-    },
-    {
-      label: 'Our Team',
-      href: 'https://granthakatha.com/ourteam',
-    },
+    // {
+    //   label: 'Contact Us',
+    //   href: 'https://granthakatha.com/contacts',
+    // },
+    // {
+    //   label: 'How to Order',
+    //   href: 'https://granthakatha.com/howtoorder',
+    // },
+    // {
+    //   label: 'Our Team',
+    //   href: 'https://granthakatha.com/ourteam',
+    // },
   ]
 
   let showDeleteAccountSheet = false
@@ -172,8 +176,6 @@
         {#each footerLinks as link}
           <a
             href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
             class="flex items-center justify-between px-5 py-5 hover:bg-gray-300 dark:hover:bg-slate-700 transition-colors duration-150"
           >
             <span>{link.label}</span>

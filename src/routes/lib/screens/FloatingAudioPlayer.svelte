@@ -242,7 +242,7 @@
       ></div>
 
       <div
-        class="relative z-30 h-full shadow-xl w-full max-w-md mx-auto text-white overflow-hidden animate-fade-in backdrop-blur-md bg-white/10 border border-white/10"
+        class="relative flex flex-col justify-between pb-10 z-30 h-full shadow-xl w-full max-w-md mx-auto text-white overflow-hidden animate-fade-in backdrop-blur-md bg-white/10 border border-white/10"
       >
         <div
           class="flex justify-between items-center p-4 border-b border-white/10"
@@ -261,15 +261,15 @@
           </div>
         </div>
 
-        <div class="flex justify-center py-8">
+        <div class="flex justify-center py-8 h-64">
           <img
             src={state?.thumbnail}
             alt="Thumbnail"
-            class={`w-64 h-64 md:w-40 md:h-40 rounded-xl shadow-2xl object-cover border-4 border-white/30 `}
+            class={`h-full aspect-square rounded-xl shadow-2xl object-cover`}
           />
         </div>
 
-        <div class="flex justify-center mb-4">
+        <div class="flex justify-center mb-2">
           {#if state.isPlaying}
             <SongPlayingAnimation />
           {:else}
@@ -282,7 +282,7 @@
           {/if}
         </div>
 
-        <div class="text-center px-6 mb-4">
+        <div class="text-center px-6 mb-2">
           <h2 class="text-2xl font-bold font-serif line-clamp-2">
             {state.title}
           </h2>
@@ -308,7 +308,7 @@
           </div>
         </div>
 
-        <div class="flex items-center justify-center gap-6 py-6">
+        <div class="flex items-center justify-center gap-6 py-4">
           <button on:click={() => seekBackward(15)}>
             <Icon
               icon="mdi:skip-backward-outline"
@@ -335,7 +335,7 @@
           </button>
         </div>
 
-        <div class="flex items-center justify-center gap-3 pb-6 px-6">
+        <div class="flex items-center justify-center gap-3 px-6">
           <Icon icon="mdi:volume-low" width="20" class="text-white/70" />
           <input
             type="range"

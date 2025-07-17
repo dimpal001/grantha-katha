@@ -19,7 +19,7 @@
 </script>
 
 <nav
-  class="fixed bottom-0 max-w-md mx-auto left-0 right-0 z-30 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-md"
+  class="fixed bottom-bar bottom-0 max-w-md mx-auto left-0 right-0 z-30 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-md"
 >
   <div class="flex justify-around items-center h-[75px] px-4">
     {#each items as item}
@@ -49,3 +49,9 @@
     {/each}
   </div>
 </nav>
+
+<style>
+  .bottom-bar {
+    padding-bottom: max(env(safe-area-inset-bottom), 0.2rem);
+  }
+</style>
