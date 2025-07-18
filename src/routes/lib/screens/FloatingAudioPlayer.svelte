@@ -346,6 +346,11 @@
               class="text-white hover:scale-110 transition-transform"
             />
           </button>
+          <!-- preload both icons (hidden) -->
+          <div style="display: none">
+            <Icon icon="mdi:play-circle" />
+            <Icon icon="mdi:pause-circle" />
+          </div>
 
           <button on:click={togglePlay}>
             <Icon
