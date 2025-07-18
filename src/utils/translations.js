@@ -18,7 +18,7 @@ export const translations = {
     privacy: {
       title: 'Privacy Policy – GranthaKatha',
       intro: [
-        'granthakatha.com is committed to protecting your privacy. This privacy statement discloses what information we gather about you when you visit the granthakatha.com Site and describes how we use that information. Our policy is to keep the personal information we receive from our Site completely confidential. We would like to assure you that the information we gather from you will not be shared, sold, reused in lists, or used for any other purpose than to complete a transaction or address a customer service concern.',
+        'Grantha Katha is committed to protecting your privacy. This privacy statement discloses what information we gather about you when you visit Grantha Katha and describes how we use that information. Our policy is to keep the personal information we receive from our Site completely confidential. We would like to assure you that the information we gather from you will not be shared, sold, reused in lists, or used for any other purpose than to complete a transaction or address a customer service concern.',
         'Our Privacy Policy is a part of our general Terms of Service and has been extracted for your convenience.',
       ],
       sections: [
@@ -72,7 +72,7 @@ export const translations = {
         'This Piracy Policy (“Policy”) sets forth the process for addressing copyright infringement issues related to content hosted, streamed, or otherwise made available via the GranthaKatha mobile application and website (“GranthaKatha” / “We” / “Us” / “Our”). This Policy is to be read in conjunction with the Terms of Service and Privacy Policy, and applies to all current and future platforms owned or operated by GranthaKatha.',
       sections: [
         {
-          title: '1. Collection & Display of Content',
+          title: 'Collection & Display of Content',
           content: [
             'GranthaKatha allows original Assamese audio books and content, both created by us and uploaded by users or third-party contributors (“You” / “User”), to be accessed on our platform. We define “Content” to include but not be limited to:',
             [
@@ -94,7 +94,7 @@ export const translations = {
           ],
         },
         {
-          title: '2. Infringement & Enforcement',
+          title: 'Infringement & Enforcement',
           content: [
             'GranthaKatha is committed to protecting the intellectual property rights of creators. We act upon all valid complaints in accordance with applicable copyright law.',
             [
@@ -106,7 +106,7 @@ export const translations = {
           ],
         },
         {
-          title: '3. Types of Copyright Infringement',
+          title: 'Types of Copyright Infringement',
           subSections: [
             {
               subtitle: 'A. Content copied and uploaded on GranthaKatha',
@@ -145,7 +145,7 @@ export const translations = {
           ],
         },
         {
-          title: '4. Filing a Complaint (DMCA Notice)',
+          title: 'Filing a Complaint (DMCA Notice)',
           content: [
             'To report a copyright violation, send a Copyright Infringement Notification with the following:',
             [
@@ -164,7 +164,7 @@ export const translations = {
           ],
         },
         {
-          title: '5. Counter-Notification',
+          title: 'Counter-Notification',
           content: [
             'If your content has been wrongfully taken down:',
             [
@@ -183,7 +183,7 @@ export const translations = {
           ],
         },
         {
-          title: '6. Account Termination',
+          title: 'Account Termination',
           content: [
             'GranthaKatha may suspend or terminate User accounts for repeated copyright violations or serious breaches of the Terms of Service. This includes, but is not limited to:',
             [
@@ -193,7 +193,7 @@ export const translations = {
           ],
         },
         {
-          title: '7. Updates to the Policy',
+          title: 'Updates to the Policy',
           content: [
             'GranthaKatha reserves the right to modify or update this Piracy Policy at any time. Changes will be effective immediately upon publication. Continued use of the platform constitutes acceptance of any updates.',
           ],
@@ -206,16 +206,16 @@ export const translations = {
         {
           title: 'Website Terms of Use',
           subSections: [
-            'You warrant to us that you are an individual of 18 years of age or over or that you are visiting the Website under the supervision of a parent or legal representative. Subject to the terms and conditions of this Agreement, granthakatha.com grants you a limited, revocable, irrevocable, and general permission to use the Website solely for your own personal needs. This permission is not granted for any commercial purpose or use by third parties. If you violate this rule, this permission will be revoked immediately.',
-            "Without the foregoing permission, you may not distribute, display, sell, rent, transmit, modify, infringe, deconstruct, adapt, or otherwise use this website or any portion thereof, unless granthakatha.com grants permission in writing. Also, you may not use website information for commercial purposes, unless granthakatha.com grants permission in advance. For any reason, granthakatha.com reserves the right to refuse to provide its services, terminate accounts, and cancel orders at any time without notice, especially if the customer's conduct violates the agreement or harms granthakatha.com's interests.",
+            'You warrant to us that you are an individual of 18 years of age or over or that you are visiting the Website under the supervision of a parent or legal representative. Subject to the terms and conditions of this Agreement, Grantha Katha grants you a limited, revocable, irrevocable, and general permission to use the Website solely for your own personal needs. This permission is not granted for any commercial purpose or use by third parties. If you violate this rule, this permission will be revoked immediately.',
+            "Without the foregoing permission, you may not distribute, display, sell, rent, transmit, modify, infringe, deconstruct, adapt, or otherwise use this website or any portion thereof, unless Grantha Katha grants permission in writing. Also, you may not use website information for commercial purposes, unless Grantha Katha grants permission in advance. For any reason, Grantha Katha reserves the right to refuse to provide its services, terminate accounts, and cancel orders at any time without notice, especially if the customer's conduct violates the agreement or harms Grantha Katha's interests.",
             'You may not upload, distribute, or publish any information on this website, if it— (a) infringes a copyright, patent, trademark, or any other proprietary right, (b) is threatening, defamatory, obscene, immoral, or unlawful, (c) contains viruses, Trojan horses, or other harmful code.',
-            'granthakatha.com will provide you with a login and password so that you can access particular areas of the website. When using this login method, you will be treated as a valid user. You are responsible for keeping your access information secure. In the event of any unauthorized use, please notify granthakatha.com immediately.',
+            'Grantha Katha will provide you with a login and password so that you can access particular areas of the website. When using this login method, you will be treated as a valid user. You are responsible for keeping your access information secure. In the event of any unauthorized use, please notify Grantha Katha immediately.',
           ],
         },
         {
           title: 'Surveys and Comments',
           subSections: [
-            'Any comments, suggestions, or reviews submitted by you will become the property of granthakatha.com. granthakatha.com reserves the right to edit, reproduce, distribute, modify, sell, or publish that information. You should ensure that any content you submit does not infringe the rights of any third party. You may not use a fake email address or impersonate another person. granthakatha.com reserves the right to delete or edit any comment or entry.',
+            'Any comments, suggestions, or reviews submitted by you will become the property of Grantha Katha. Grantha Katha reserves the right to edit, reproduce, distribute, modify, sell, or publish that information. You should ensure that any content you submit does not infringe the rights of any third party. You may not use a fake email address or impersonate another person. Grantha Katha reserves the right to delete or edit any comment or entry.',
           ],
         },
         {
@@ -234,7 +234,7 @@ export const translations = {
         {
           title: 'Error Correction',
           subSections: [
-            'The website may contain any spelling errors, informational errors or inconsistencies. granthakatha.com may check and correct these errors at any time, but does not guarantee that errors will be corrected.',
+            'It may contain any spelling errors, informational errors or inconsistencies. Grantha Katha may check and correct these errors at any time, but does not guarantee that errors will be corrected.',
           ],
         },
       ],
@@ -293,7 +293,7 @@ export const translations = {
     privacy: {
       title: 'গোপনীয়তা নীতি',
       intro: [
-        'granthakatha.com আপোনাৰ গোপনীয়তা সংৰক্ষণ কৰিবলৈ প্ৰতিশ্ৰুতিবদ্ধ। এই গোপনীয়তা নীতিৰ জৰিয়তে, আপুনি granthakatha.com ৱেবছাইটত বিচৰণ কৰা সময়ত আমি আপোনাৰ তথ্য কেনেকৈ সংগ্ৰহ কৰোঁ আৰু সেয়া কেনেদৰে ব্যৱহাৰ কৰা হয়, তাৰ বিৱৰণ দিয়া হৈছে। আমাৰ নীতি হৈছে গ্ৰাহকৰ ব্যক্তিগত তথ্য সম্পূৰ্ণ গোপনীয়তা সুৰক্ষিতভাৱে ৰখা। আমি আপোনাক নিশ্চিতি প্ৰদান কৰিছোঁ যে আপোনাৰ তথ্য কোনো পৰিস্থিতিত বিক্ৰী, বিনিময়, পুনৰ ব্যৱহাৰ বা অন্য কোনো উদ্দেশ্যে ব্যৱহাৰ কৰা নহ’ব, বাহিৰত হস্তান্তৰ কৰা নহ’ব, বাহিৰত বিতৰণ কৰা নহ’ব, বা গ্ৰাহক সেৱাৰ সমস্যাৰ সমাধানৰ বাহিৰে কোনো উদ্দেশ্যে ব্যৱহাৰ কৰা নহ’ব।',
+        'গ্ৰন্থকথাত আপোনাৰ গোপনীয়তা সংৰক্ষণ কৰিবলৈ প্ৰতিশ্ৰুতিবদ্ধ। এই গোপনীয়তা নীতিৰ জৰিয়তে, আপুনি গ্ৰন্থকথাত বিচৰণ কৰা সময়ত আমি আপোনাৰ তথ্য কেনেকৈ সংগ্ৰহ কৰোঁ আৰু সেয়া কেনেদৰে ব্যৱহাৰ কৰা হয়, তাৰ বিৱৰণ দিয়া হৈছে। আমাৰ নীতি হৈছে গ্ৰাহকৰ ব্যক্তিগত তথ্য সম্পূৰ্ণ গোপনীয়তা সুৰক্ষিতভাৱে ৰখা। আমি আপোনাক নিশ্চিতি প্ৰদান কৰিছোঁ যে আপোনাৰ তথ্য কোনো পৰিস্থিতিত বিক্ৰী, বিনিময়, পুনৰ ব্যৱহাৰ বা অন্য কোনো উদ্দেশ্যে ব্যৱহাৰ কৰা নহ’ব, বাহিৰত হস্তান্তৰ কৰা নহ’ব, বাহিৰত বিতৰণ কৰা নহ’ব, বা গ্ৰাহক সেৱাৰ সমস্যাৰ সমাধানৰ বাহিৰে কোনো উদ্দেশ্যে ব্যৱহাৰ কৰা নহ’ব।',
         'আমাৰ গোপনীয়তা নীতি নিয়ম আৰু চৰ্তাৱলীৰ অংশবিশেষ, আৰু আপোনাৰ সুবিধাৰ বাবে ইয়াত পৃথকভাৱে উপস্থাপন কৰা হৈছে।',
       ],
       sections: [
@@ -348,9 +348,9 @@ export const translations = {
 
       sections: [
         {
-          title: '1. বিষয়বস্তু সংগ্ৰহ আৰু প্ৰদৰ্শন',
+          title: 'বিষয়বস্তু সংগ্ৰহ আৰু প্ৰদৰ্শন',
           content: [
-            'গ্ৰন্থকথাই আমাৰ দ্বাৰা সৃষ্টি কৰা আৰু ব্যৱহাৰকাৰী বা তৃতীয় পক্ষৰ অৱদানকাৰী (“আপুনি” / “ব্যৱহাৰকাৰী””)ৰ দ্বাৰা আপলোড কৰা মূল অসমীয়া অডিঅ’ কিতাপ আৰু বিষয়বস্তু আমাৰ প্লেটফৰ্মত প্ৰৱেশৰ অনুমতি দিয়ে। আমি “সামগ্ৰী”ক অন্তৰ্ভুক্ত কৰিবলৈ সংজ্ঞায়িত কৰোঁ কিন্তু ইয়াৰ মাজতে সীমাবদ্ধ নহয়:',
+            'গ্ৰন্থকথায় আমাৰ দ্বাৰা সৃষ্টি কৰা আৰু ব্যৱহাৰকাৰী বা তৃতীয় পক্ষৰ অৱদানকাৰী (“আপুনি” / “ব্যৱহাৰকাৰী””)ৰ দ্বাৰা আপলোড কৰা মূল অসমীয়া অডিঅ’ কিতাপ আৰু বিষয়বস্তু আমাৰ প্লেটফৰ্মত প্ৰৱেশৰ অনুমতি দিয়ে। আমি “সামগ্ৰী”ক অন্তৰ্ভুক্ত কৰিবলৈ সংজ্ঞায়িত কৰোঁ কিন্তু ইয়াৰ মাজতে সীমাবদ্ধ নহয়:',
             [
               'অডিঅ’বুক',
               'পডকাষ্ট',
@@ -371,9 +371,9 @@ export const translations = {
         },
 
         {
-          title: '2. লঙ্ঘন আৰু প্ৰয়োগ',
+          title: 'লঙ্ঘন আৰু প্ৰয়োগ',
           content: [
-            'গ্ৰন্থকথাই সৃষ্টিকৰ্তাৰ বৌদ্ধিক সম্পত্তিৰ অধিকাৰ সুৰক্ষিত কৰাৰ বাবে প্ৰতিশ্ৰুতিবদ্ধ। আমি প্ৰযোজ্য কপিৰাইট আইন অনুসৰি সকলো বৈধ অভিযোগৰ ওপৰত কাম কৰোঁ।',
+            'গ্ৰন্থকথায় সৃষ্টিকৰ্তাৰ বৌদ্ধিক সম্পত্তিৰ অধিকাৰ সুৰক্ষিত কৰাৰ বাবে প্ৰতিশ্ৰুতিবদ্ধ। আমি প্ৰযোজ্য কপিৰাইট আইন অনুসৰি সকলো বৈধ অভিযোগৰ ওপৰত কাম কৰোঁ।',
             [
               'একাধিক লঙ্ঘন ঘটিলে একাউণ্ট স্থগিত বা বন্ধ হ’ব পাৰে।',
               'অভিযোগত স্বত্বদৰ্শন আৰু লঙ্ঘন স্পষ্টভাৱে যুক্তিৰ প্ৰমাণ আৱশ্যক।',
@@ -384,7 +384,7 @@ export const translations = {
         },
 
         {
-          title: '3. কপিৰাইট লঙ্ঘনৰ প্ৰকাৰসমূহ',
+          title: 'কপিৰাইট লঙ্ঘনৰ প্ৰকাৰসমূহ',
           subSections: [
             {
               subtitle: 'A. গ্ৰন্থকথাত নকল কন্টেন্ট আপল’ড',
@@ -423,7 +423,7 @@ export const translations = {
         },
 
         {
-          title: '4. অভিযোগ দাখিল (DMCA নোটিশ)',
+          title: 'অভিযোগ দাখিল (DMCA নোটিশ)',
           content: [
             'কপিৰাইট লঙ্ঘনৰ অভিযোগ দাখিলৰ বাবে নিম্নলিখিত তথ্যসহ Copyright Infringement Notification প্ৰেৰণ কৰক:',
             [
@@ -443,7 +443,7 @@ export const translations = {
         },
 
         {
-          title: '৫. প্ৰতিদাৱী-বিজ্ঞানপত্র',
+          title: 'প্ৰতিদাৱী-বিজ্ঞানপত্র',
           content: [
             'আপোনাৰ সামগ্রী ভুলভাৱে আঁতৰ কৰা হ’লে:',
             [
@@ -463,7 +463,7 @@ export const translations = {
         },
 
         {
-          title: '6. একাউণ্ট সমাপ্তি',
+          title: 'একাউণ্ট সমাপ্তি',
           content: [
             'একাধিক কপিৰাইট লঙ্ঘন বা গুরুতৰ সেৱা চৰ্ত ভঙ্গৰ বাবে গ্ৰন্থকথা একাউণ্ট স্থগিত বা সমাপ্তি কৰিব পাৰে। উদাহৰণস্বৰূপ:',
             [
@@ -474,7 +474,7 @@ export const translations = {
         },
 
         {
-          title: '7. নীতিৰ সংস্কৰণসমূহ',
+          title: 'নীতিৰ সংস্কৰণসমূহ',
           content: [
             'গ্ৰন্থকথা যিকোনো সময়ে এই পাইৰেছী নীতি সংশোধন বা হালনাগাদ কৰাৰ অধিকার সংরক্ষণ কৰে। প্রকাশিত হোৱাৰ লগে লগে যিকোনো পৰিবর্তন বলবৎ হ’ব। প্লেটফৰ্ম ব্যৱহাৰ অব্যাহত ৰাখিলে আপুনি এই আপডেটসমূহ গ্ৰহণ কৰিছিল বুলি গণ্য কৰা হ’ব।',
           ],
@@ -488,16 +488,16 @@ export const translations = {
           title: 'ৱেবছাইট ব্যৱহাৰৰ নিয়মাৱলী',
           subSections: [
             'আপুনি আমাক নিশ্চিত প্ৰদান কৰিছে যে আপুনি বয়সত ১৮ বা তাৰ ঊৰ্ধৰ এগৰাকী ব্যক্তি অথবা আপুনি আপোনাৰ কোনো অভিভাৱক অথবা আইনী প্ৰতিনিধিৰ তত্ত্বাৱধানত ৱেবছাইটটো পৰিদৰ্শন কৰি আছে।',
-            'এই চুক্তিৰ নিয়ম আৰু চর্তসমূহৰ আধাৰত, granthakatha.com আপোনাক সীমিত, বাতিলযোগ্য, অপৰিৱর্তনযোগ্য, আৰু সাধাৰণ অনুমতি প্ৰদান কৰে যাতে আপুনি কেৱল নিজৰ ব্যক্তিগত প্ৰয়োজনৰ বাবে ৱেবছাইটটো ব্যৱহাৰ কৰিব পাৰে। এই অনুমতি কোনো ধৰণৰ বাণিজ্যিক উদ্দেশ্য বা তৃতীয় পক্ষৰ ব্যৱহাৰৰ বাবে প্ৰদান কৰা নহয়। যদি আপুনি এই নিয়ম উলংঘা কৰে, তেন্তে এই অনুমতি তৎক্ষণাত বাতিল কৰা হ’ব।',
-            'উপৰোক্ত অনুমতি অবিহনে, আপুনি এই ৱেবছাইট বা ইয়াৰ কোনো অংশ বিতৰণ, প্ৰদৰ্শন, বিক্ৰী, ভাড়া, প্ৰেৰণ, সংশোধন, উলংঘন, বিনিৰ্মাণ, সংযোজন, বা অন্য কোনো ধৰণে ব্যৱহাৰ কৰিব নোৱাৰে, যদি granthakatha.com লিখিতভাৱে অনুমতি প্ৰদান নকৰে। লগতে, আপুনি ৱেবছাইটৰ তথ্য বাণিজ্যিক উদ্দেশ্যত ব্যৱহাৰ কৰিব নোৱাৰে, যদি granthakatha.com পূৰ্বে অনুমতি প্ৰদান নকৰে। যিকোনো কাৰণত, যিকোনো সময়ত কোনো জাননী নিদিয়াকৈ granthakatha.com এ ইয়াৰ সেৱা প্ৰদান নাকচ কৰিবলৈ, একাউণ্ট বন্ধ কৰিবলৈ, আৰু অর্ডাৰ বাতিল কৰিৰ অধিকাৰ নিজৰ লগত ৰাখিছে, বিশেষকৈ যদি গ্ৰাহকৰ আচৰণে চুক্তি লংঘন কৰে বা granthakatha.com-ৰ স্বাৰ্থৰ ক্ষতি কৰে।',
+            'এই চুক্তিৰ নিয়ম আৰু চর্তসমূহৰ আধাৰত, গ্ৰন্থকথা আপোনাক সীমিত, বাতিলযোগ্য, অপৰিৱর্তনযোগ্য, আৰু সাধাৰণ অনুমতি প্ৰদান কৰে যাতে আপুনি কেৱল নিজৰ ব্যক্তিগত প্ৰয়োজনৰ বাবে ব্যৱহাৰ কৰিব পাৰে। এই অনুমতি কোনো ধৰণৰ বাণিজ্যিক উদ্দেশ্য বা তৃতীয় পক্ষৰ ব্যৱহাৰৰ বাবে প্ৰদান কৰা নহয়। যদি আপুনি এই নিয়ম উলংঘা কৰে, তেন্তে এই অনুমতি তৎক্ষণাত বাতিল কৰা হ’ব।',
+            'উপৰোক্ত অনুমতি অবিহনে, আপুনি এই ৱেবছাইট বা ইয়াৰ কোনো অংশ বিতৰণ, প্ৰদৰ্শন, বিক্ৰী, ভাড়া, প্ৰেৰণ, সংশোধন, উলংঘন, বিনিৰ্মাণ, সংযোজন, বা অন্য কোনো ধৰণে ব্যৱহাৰ কৰিব নোৱাৰে, যদি গ্ৰন্থকথায় লিখিতভাৱে অনুমতি প্ৰদান নকৰে। লগতে, আপুনি ৱেবছাইটৰ তথ্য বাণিজ্যিক উদ্দেশ্যত ব্যৱহাৰ কৰিব নোৱাৰে, যদি গ্ৰন্থকথায় পূৰ্বে অনুমতি প্ৰদান নকৰে। যিকোনো কাৰণত, যিকোনো সময়ত কোনো জাননী নিদিয়াকৈ গ্ৰন্থকথা এ ইয়াৰ সেৱা প্ৰদান নাকচ কৰিবলৈ, একাউণ্ট বন্ধ কৰিবলৈ, আৰু অর্ডাৰ বাতিল কৰিৰ অধিকাৰ নিজৰ লগত ৰাখিছে, বিশেষকৈ যদি গ্ৰাহকৰ আচৰণে চুক্তি লংঘন কৰে বা গ্ৰন্থকথাৰ স্বাৰ্থৰ ক্ষতি কৰে।',
             'আপুনি এই ৱেবছাইটত কোনো তথ্য আপলোড, বিতৰণ, বা প্ৰকাশ কৰিব নোৱাৰে, যদি সেয়া— (a) কপিৰাইট, পেটেণ্ট, ট্ৰেডমাৰ্ক, বা অন্য কোনো স্বত্বাধিকাৰ লংঘন কৰে, (b) ভাবুকি দিয়া, অপমানজনক, অশ্লীল, অনৈতিক, বা বেআইনী হয়, (c) ভাইৰাছ, ট্ৰজান হ’ৰ্চ, বা অন্য কোনো ক্ষতিকাৰক কোড অন্তর্ভুক্ত কৰে।',
-            'granthakatha.com আপোনাক লগইন আৰু পাছৱৰ্ড প্ৰদান কৰিব যাতে আপুনি ৱেবছাইটৰ বিশেষ অংশসমূহ ব্যৱহাৰ কৰিব পাৰে। এই প্ৰৱেশ পদ্ধতি ব্যৱহাৰ কৰাৰ সময়ত, আপোনাক বৈধ ব্যৱহাৰকাৰী হিচাপে গণ্য কৰা হব। আপুনি আপোনাৰ প্ৰৱেশাধিকাৰ তথ্য সুৰক্ষিত ৰাখিবলৈ দায়বদ্ধ। কোনো অননুমোদিত ব্যৱহাৰ হলে, অনুগ্ৰহ কৰি granthakatha.com-ক তৎক্ষণাত জনাব।',
+            'গ্ৰন্থকথায় আপোনাক লগইন আৰু পাছৱৰ্ড প্ৰদান কৰিব যাতে আপুনি ৱেবছাইটৰ বিশেষ অংশসমূহ ব্যৱহাৰ কৰিব পাৰে। এই প্ৰৱেশ পদ্ধতি ব্যৱহাৰ কৰাৰ সময়ত, আপোনাক বৈধ ব্যৱহাৰকাৰী হিচাপে গণ্য কৰা হব। আপুনি আপোনাৰ প্ৰৱেশাধিকাৰ তথ্য সুৰক্ষিত ৰাখিবলৈ দায়বদ্ধ। কোনো অননুমোদিত ব্যৱহাৰ হলে, অনুগ্ৰহ কৰি গ্ৰন্থকথাক তৎক্ষণাত জনাব।',
           ],
         },
         {
           title: 'সমীক্ষা আৰু মন্তব্য',
           subSections: [
-            'আপুনি দাখিল কৰা যিকোনো ধৰণৰ মন্তব্য, পৰামৰ্শ, বা সমীক্ষা granthakatha.com-ৰ সম্পত্তি হৈ পৰিব। granthakatha.com সেই তথ্য সম্পাদনা, পুনৰুৎপাদন, বিতৰণ, সংশোধন, বিক্ৰী, বা প্ৰকাশ কৰিবলৈ অধিকাৰ প্ৰাপ্ত হয় । আপুনি নিশ্চিত কৰিব লাগে যে আপুনি দাখিল কৰা যিকোনো সমল কোনো তৃতীয় পক্ষৰ অধিকাৰ লংঘন নকৰে। আপুনি ভুৱা ইমেইল ঠিকনা ব্যৱহাৰ কৰিব নোৱাৰে বা আন কোনো ব্যক্তিৰ স্বৰূপ গ্ৰহণ কৰিব নোৱাৰে। granthakatha.com যিকোনো মন্তব্য বা প্ৰৱিষ্টি মচি পেলাবলৈ বা সম্পাদনা কৰিবলৈ অধিকাৰ প্ৰাপ্ত হয় ।',
+            'আপুনি দাখিল কৰা যিকোনো ধৰণৰ মন্তব্য, পৰামৰ্শ, বা সমীক্ষা গ্ৰন্থকথাৰ সম্পত্তি হৈ পৰিব। গ্ৰন্থকথায় সেই তথ্য সম্পাদনা, পুনৰুৎপাদন, বিতৰণ, সংশোধন, বিক্ৰী, বা প্ৰকাশ কৰিবলৈ অধিকাৰ প্ৰাপ্ত হয় । আপুনি নিশ্চিত কৰিব লাগে যে আপুনি দাখিল কৰা যিকোনো সমল কোনো তৃতীয় পক্ষৰ অধিকাৰ লংঘন নকৰে। আপুনি ভুৱা ইমেইল ঠিকনা ব্যৱহাৰ কৰিব নোৱাৰে বা আন কোনো ব্যক্তিৰ স্বৰূপ গ্ৰহণ কৰিব নোৱাৰে। গ্ৰন্থকথায় যিকোনো মন্তব্য বা প্ৰৱিষ্টি মচি পেলাবলৈ বা সম্পাদনা কৰিবলৈ অধিকাৰ প্ৰাপ্ত হয় ।',
           ],
         },
         {
@@ -516,7 +516,7 @@ export const translations = {
         {
           title: 'ভুল সংশোধন',
           subSections: [
-            'ৱেবছাইটত কোনো বানানৰ ভুল, তথ্যগত ভুল বা অসংগতি থাকিব পাৰে। granthakatha.com যিকোনো সময়ত এই ভুলসমূহ সমপৰীক্ষণ কৰি সংশোধন কৰিব পাৰে, কিন্তু ভুল সংশোধন হব বুলি নিশ্চিতি প্ৰদান নকৰে।',
+            'ৱেবছাইটত কোনো বানানৰ ভুল, তথ্যগত ভুল বা অসংগতি থাকিব পাৰে। গ্ৰন্থকথায় যিকোনো সময়ত এই ভুলসমূহ সমপৰীক্ষণ কৰি সংশোধন কৰিব পাৰে, কিন্তু ভুল সংশোধন হব বুলি নিশ্চিতি প্ৰদান নকৰে।',
           ],
         },
       ],

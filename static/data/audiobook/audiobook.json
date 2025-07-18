@@ -6,7 +6,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/1.jpg",
     "plays": 1423,
-    "url": "1752244150974-f68598830e7456cb6993a48b72f1dd7b",
+    "urls": ["1752244150974-f68598830e7456cb6993a48b72f1dd7b"],
     "is_favourite": 0
   },
   {
@@ -16,7 +16,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/2.jpg",
     "plays": 1884,
-    "url": "1752352882275-62fe461e155886a68022c267c45c4f54",
+    "urls": ["1752352882275-62fe461e155886a68022c267c45c4f54"],
     "is_favourite": 0
   },
   {
@@ -26,7 +26,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/3.jpg",
     "plays": 1231,
-    "url": "1752352928961-344f6314f33530fdd22b5199e4f793c0",
+    "urls": ["1752352928961-344f6314f33530fdd22b5199e4f793c0"],
     "is_favourite": 0
   },
   {
@@ -36,7 +36,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/4.jpg",
     "plays": 1720,
-    "url": "1752352824063-11c5f259bbb7e6dddf2b73213c256c93",
+    "urls": ["1752352824063-11c5f259bbb7e6dddf2b73213c256c93"],
     "is_favourite": 0
   },
   {
@@ -46,7 +46,7 @@
     "price": "Subscription Required",
     "thumbnail": "./data/audiobook/5.jpg",
     "plays": 2085,
-    "url": "1751157521012-deeplina-deka-hit-songs",
+    "urls": ["1751157521012-deeplina-deka-hit-songs"],
     "is_favourite": 0
   },
   {
@@ -56,7 +56,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/6.jpg",
     "plays": 1356,
-    "url": "1752525905557-3f9e4299128137b0364c16e2f772773d",
+    "urls": ["1752525905557-3f9e4299128137b0364c16e2f772773d"],
     "is_favourite": 0
   },
   {
@@ -66,7 +66,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/7.jpg",
     "plays": 1010,
-    "url": "1752525261688-229e08dcf0ce704015c28719b9ec2d84",
+    "urls": ["1752525261688-229e08dcf0ce704015c28719b9ec2d84"],
     "is_favourite": 0
   },
   {
@@ -76,7 +76,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/8.jpg",
     "plays": 950,
-    "url": "1752526327170-a243b3feddb8cd9a33d972e8c89e66ba",
+    "urls": ["1752526327170-a243b3feddb8cd9a33d972e8c89e66ba"],
     "is_favourite": 0
   },
   {
@@ -86,7 +86,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/9.jpg",
     "plays": 1648,
-    "url": "1752526161256-c51986f313ddc31b80d07a550028c053",
+    "urls": ["1752526161256-c51986f313ddc31b80d07a550028c053"],
     "is_favourite": 0
   },
   {
@@ -96,7 +96,7 @@
     "price": "Subscription Required",
     "thumbnail": "./data/audiobook/10.jpg",
     "plays": 1943,
-    "url": "1751157521012-deeplina-deka-hit-songs",
+    "urls": ["1751157521012-deeplina-deka-hit-songs"],
     "is_favourite": 0
   },
   {
@@ -106,7 +106,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/11.jpg",
     "plays": 1122,
-    "url": "1752527872741-45f93af897fe08bfc64adec6fb77f6ac",
+    "urls": ["1752527872741-45f93af897fe08bfc64adec6fb77f6ac"],
     "is_favourite": 0
   },
   {
@@ -116,7 +116,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/12.jpg",
     "plays": 875,
-    "url": "1752528482428-7ed8586f7bf71ce7e6dd5e25d188ad88",
+    "urls": ["1752528482428-7ed8586f7bf71ce7e6dd5e25d188ad88"],
     "is_favourite": 0
   },
   {
@@ -126,7 +126,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/13.jpg",
     "plays": 1456,
-    "url": "1751157521012-deeplina-deka-hit-songs",
+    "urls": ["1751157521012-deeplina-deka-hit-songs"],
     "is_favourite": 0
   },
   {
@@ -136,7 +136,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/14.jpg",
     "plays": 1080,
-    "url": "1752528338766-ce2a1a19e54488e55c55db8995ec5a70",
+    "urls": ["1752528338766-ce2a1a19e54488e55c55db8995ec5a70"],
     "is_favourite": 0
   },
   {
@@ -146,7 +146,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/15.jpg",
     "plays": 1989,
-    "url": "1751157521012-deeplina-deka-hit-songs",
+    "urls": ["1751157521012-deeplina-deka-hit-songs"],
     "is_favourite": 0
   },
   {
@@ -156,7 +156,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/16.jpg",
     "plays": 1190,
-    "url": "1751157521012-deeplina-deka-hit-songs",
+    "urls": ["1751157521012-deeplina-deka-hit-songs"],
     "is_favourite": 0
   },
   {
@@ -166,7 +166,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/17.jpg",
     "plays": 1532,
-    "url": "1751157521012-deeplina-deka-hit-songs",
+    "urls": ["1751157521012-deeplina-deka-hit-songs"],
     "is_favourite": 0
   },
   {
@@ -176,7 +176,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/18.jpg",
     "plays": 1324,
-    "url": "1751157521012-deeplina-deka-hit-songs",
+    "urls": ["1751157521012-deeplina-deka-hit-songs"],
     "is_favourite": 0
   },
   {
@@ -186,7 +186,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/19.jpg",
     "plays": 2120,
-    "url": "1752244193576-fab462bba383a09bb9a9cff5f6407979",
+    "urls": ["1752244193576-fab462bba383a09bb9a9cff5f6407979"],
     "is_favourite": 0
   },
   {
@@ -196,7 +196,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/20.jpg",
     "plays": 860,
-    "url": "1751157521012-deeplina-deka-hit-songs",
+    "urls": ["1751157521012-deeplina-deka-hit-songs"],
     "is_favourite": 0
   },
   {
@@ -206,7 +206,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/21.jpg",
     "plays": 1405,
-    "url": "1751157521012-deeplina-deka-hit-songs",
+    "urls": ["1751157521012-deeplina-deka-hit-songs"],
     "is_favourite": 0
   },
   {
@@ -216,7 +216,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/22.jpg",
     "plays": 1234,
-    "url": "1751157521012-deeplina-deka-hit-songs",
+    "urls": ["1751157521012-deeplina-deka-hit-songs"],
     "is_favourite": 0
   },
   {
@@ -226,7 +226,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/23.jpg",
     "plays": 1749,
-    "url": "1751157521012-deeplina-deka-hit-songs",
+    "urls": ["1751157521012-deeplina-deka-hit-songs"],
     "is_favourite": 0
   },
   {
@@ -236,7 +236,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/24.jpg",
     "plays": 1167,
-    "url": "1751157521012-deeplina-deka-hit-songs",
+    "urls": ["1751157521012-deeplina-deka-hit-songs"],
     "is_favourite": 0
   },
   {
@@ -246,17 +246,17 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/25.jpg",
     "plays": 1341,
-    "url": "1751157521012-deeplina-deka-hit-songs",
+    "urls": ["1751157521012-deeplina-deka-hit-songs"],
     "is_favourite": 0
   },
   {
     "id": 26,
     "category": "ধর্মীয়",
     "name": "নামঘোষা",
-    "price": "Subscription Required",
+    "price": "FREE",
     "thumbnail": "./data/audiobook/26.jpg",
     "plays": 1870,
-    "url": "1751157521012-deeplina-deka-hit-songs",
+    "urls": ["1751157521012-deeplina-deka-hit-songs"],
     "is_favourite": 0
   },
   {
@@ -266,7 +266,7 @@
     "price": "Subscription Required",
     "thumbnail": "./data/audiobook/27.jpg",
     "plays": 1623,
-    "url": "1751157521012-deeplina-deka-hit-songs",
+    "urls": ["1751157521012-deeplina-deka-hit-songs"],
     "is_favourite": 0
   },
   {
@@ -276,7 +276,7 @@
     "price": "FREE",
     "thumbnail": "./data/audiobook/28.jpg",
     "plays": 1376,
-    "url": "1751157521012-deeplina-deka-hit-songs",
+    "urls": ["1751157521012-deeplina-deka-hit-songs"],
     "is_favourite": 0
   }
 ]

@@ -52,6 +52,6 @@
 
 <style>
   .bottom-bar {
-    padding-bottom: max(env(safe-area-inset-bottom), 0.2rem);
+    padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
   }
 </style>

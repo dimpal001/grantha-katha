@@ -16,9 +16,13 @@
   let duration = writable(0)
   let isExpanded = true
   let lastPlayedUrl = null
+  let currentUrlIndex = 0
   let state
   $: state = $audioPlayerStore
   $: progress = $duration ? ($currentTime / $duration) * 100 : 0
+
+  $: currentEpisode = currentUrlIndex + 1
+  $: totalEpisodes = state.urls?.length || 1
 
   function getStreamUrl(url: string) {
     if (!url) return ''
@@ -29,19 +33,20 @@
     return `${baseUrl}/audios/${audioId}/stream`
   }
 
-  $: if (state.url && state.isPlaying && audioRef) {
-    const streamUrl = getStreamUrl(state.url)
+  $: if (state.urls?.length && state.isPlaying && audioRef) {
+    const currentUrl = state.urls[currentUrlIndex]
+    const streamUrl = getStreamUrl(currentUrl)
 
     isExpanded = true
 
     const needsNewPlay =
-      state.url !== lastPlayedUrl || !audioRef.src || audioRef.src === ''
+      currentUrl !== lastPlayedUrl || !audioRef.src || audioRef.src === ''
 
     if (needsNewPlay) {
       playAudio(streamUrl)
       audioRef.addEventListener('timeupdate', updateTime)
       audioRef.addEventListener('loadedmetadata', updateDuration)
-      lastPlayedUrl = state.url
+      lastPlayedUrl = currentUrl
     } else if (audioRef.paused) {
       audioRef.play().catch(console.error)
     }
@@ -50,11 +55,10 @@
   onMount(async () => {
     Hls = (await import('hls.js')).default
 
-    if (audioRef && state.url) {
-      const streamUrl = getStreamUrl(state.url)
+    if (audioRef && state.urls?.length) {
+      const streamUrl = getStreamUrl(state.urls[currentUrlIndex])
       playAudio(streamUrl)
     }
-    console.log(state)
   })
 
   onDestroy(() => {
@@ -128,9 +132,9 @@
       audioRef.pause()
     } else {
       if (audioRef.src === '' || audioRef.readyState === 0) {
-        const streamUrl = getStreamUrl(state.url)
+        const streamUrl = getStreamUrl(state.urls[currentUrlIndex])
         playAudio(streamUrl)
-        lastPlayedUrl = state.url
+        lastPlayedUrl = state.urls[currentUrlIndex]
       } else {
         audioRef.play().catch(console.error)
       }
@@ -152,16 +156,18 @@
     }
 
     lastPlayedUrl = null
+    currentUrlIndex = 0
 
     audioPlayerStore.set({
       id: null,
       title: '',
       artist: '',
       category: '',
-      url: '',
+      urls: [],
       isVisible: false,
       isPlaying: false,
       isFavourite: false,
+      thumbnail: '',
     })
 
     isExpanded = false
@@ -187,17 +193,9 @@
 
   async function toggleIsFavourite() {
     const response = await toggleFavourite(state.id, !state.is_favourite)
-    console.log(response)
     if (!response.err) {
       audioPlayerStore.set({
-        id: state.id,
-        title: state.title,
-        artist: state.artist,
-        category: state.category,
-        isPlaying: state.isPlaying,
-        isVisible: state.isVisible,
-        thumbnail: state.thumbnail,
-        url: state.url,
+        ...state,
         isFavourite: !state.is_favourite,
       })
     }
@@ -227,6 +225,22 @@
         .catch((e) => console.error('Seek backward play error:', e))
     }
   }
+
+  function playNextAudio() {
+    if (!state.urls?.length) return
+    currentUrlIndex = (currentUrlIndex + 1) % state.urls.length
+    playAudio(getStreamUrl(state.urls[currentUrlIndex]))
+    lastPlayedUrl = state.urls[currentUrlIndex]
+  }
+
+  function playPreviousAudio() {
+    if (!state.urls?.length) return
+    currentUrlIndex =
+      (currentUrlIndex - 1 + state.urls.length) % state.urls.length
+    const streamUrl = getStreamUrl(state.urls[currentUrlIndex])
+    playAudio(streamUrl)
+    lastPlayedUrl = state.urls[currentUrlIndex]
+  }
 </script>
 
 {#if state.isVisible}
@@ -248,8 +262,9 @@
           class="flex justify-between items-center p-4 border-b border-white/10"
         >
           <span class="font-semibold text-sm text-white/80">
-            Playing episode 1 of 1
+            Playing episode {currentEpisode} of {totalEpisodes}
           </span>
+
           <div class="flex items-center gap-4">
             <Icon
               onclick={toggleExpand}
@@ -286,7 +301,9 @@
           <h2 class="text-2xl font-bold font-serif line-clamp-2">
             {state.title}
           </h2>
-          <p class="text-sm font-medium text-white/60 mt-1">Episode 1</p>
+          <p class="text-sm font-medium text-white/60 mt-1">
+            Episode {currentEpisode}
+          </p>
         </div>
 
         <div class="w-full px-6">
@@ -309,7 +326,20 @@
         </div>
 
         <div class="flex items-center justify-center gap-6 py-4">
+          <!-- <button on:click={playPreviousAudio} disabled={totalEpisodes === 1}>
+            <Icon
+              icon="mdi:skip-previous"
+              width="28"
+              class="text-white hover:scale-110 transition-transform"
+            />
+          </button> -->
+
           <button on:click={() => seekBackward(15)}>
+            <!-- <Icon
+              icon="mdi:rewind"
+              width="28"
+              class="text-white hover:scale-110 transition-transform"
+            /> -->
             <Icon
               icon="mdi:skip-backward-outline"
               width="28"
@@ -327,12 +357,25 @@
           </button>
 
           <button on:click={() => seekForward(15)}>
+            <!-- <Icon
+              icon="mdi:fast-forward"
+              width="28"
+              class="text-white hover:scale-110 transition-transform"
+            /> -->
             <Icon
               icon="mdi:skip-forward-outline"
               width="28"
               class="text-white hover:scale-110 transition-transform"
             />
           </button>
+
+          <!-- <button on:click={playNextAudio} disabled={totalEpisodes === 1}>
+            <Icon
+              icon="mdi:skip-next"
+              width="28"
+              class="text-white hover:scale-110 transition-transform"
+            />
+          </button> -->
         </div>
 
         <div class="flex items-center justify-center gap-3 px-6">

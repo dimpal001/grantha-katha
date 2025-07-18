@@ -8,14 +8,12 @@
 <button
   on:click={() => {
     if (audio.price.toLowerCase() === 'free') {
-      const slug =
-        audio?.url?.split('/').pop() || '1751157521012-deeplina-deka-hit-songs'
       audioPlayerStore.set({
         id: audio?.id,
         thumbnail: audio?.thumbnail,
         category: audio?.category,
         title: audio.name,
-        url: slug,
+        urls: audio.urls,
         artist: audio.artist || 'Unknown',
         isFavourite: audio.is_favourite || 0,
         isVisible: true,

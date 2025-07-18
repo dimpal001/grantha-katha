@@ -8,7 +8,7 @@ export const audioPlayerStore = writable({
   thumbnail: '',
   category: '',
   artist: '',
-  url: '',
+  urls: [],
   isVisible: false,
   isPlaying: false,
   isFavourite: false,

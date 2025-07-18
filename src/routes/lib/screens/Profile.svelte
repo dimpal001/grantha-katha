@@ -37,18 +37,6 @@
       label: 'Piracy Policy',
       href: `/piracy-policy?lang=${$language}`,
     },
-    // {
-    //   label: 'Contact Us',
-    //   href: 'https://granthakatha.com/contacts',
-    // },
-    // {
-    //   label: 'How to Order',
-    //   href: 'https://granthakatha.com/howtoorder',
-    // },
-    // {
-    //   label: 'Our Team',
-    //   href: 'https://granthakatha.com/ourteam',
-    // },
   ]
 
   let showDeleteAccountSheet = false
