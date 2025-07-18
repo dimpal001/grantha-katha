@@ -35,7 +35,11 @@
     <NavigationBlock />
     <div class={`py-5 px-3 ${lang === 'as' && 'font-serif'}`}>
       {#if policy}
-        <p class="mb-6">{policy.intro}</p>
+        <div class="mb-6 space-y-3">
+          {#each policy.intro as item}
+            <p>{item}</p>
+          {/each}
+        </div>
 
         {#each policy.sections as section}
           <h2 class="text-xl font-semibold mt-4 mb-2 text-[#6257a5]">

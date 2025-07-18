@@ -68,8 +68,11 @@ export const translations = {
     },
     piracy: {
       title: 'Piracy Policy – GranthaKatha',
-      intro:
-        'This Piracy Policy (“Policy”) sets forth the process for addressing copyright infringement issues related to content hosted, streamed, or otherwise made available via the GranthaKatha mobile application and website (“GranthaKatha” / “We” / “Us” / “Our”). This Policy is to be read in conjunction with the Terms of Service and Privacy Policy, and applies to all current and future platforms owned or operated by GranthaKatha.',
+      intro: [
+        'All content available through our audiobook app, including but not limited to audiobooks, descriptions, artwork, and related metadata, is provided by Tale Tunex Private Limited and/or our authorized content partners. We take full responsibility for the content hosted and distributed through our platform.',
+        'Google, Apple, or any other third-party service providers (including app stores and distribution platforms) are not responsible for the content provided on this app. These third parties do not control, endorse, or assume any liability for the accuracy, legality, or appropriateness of any content available through our app.',
+        'For any concerns or complaints regarding specific content, please contact us directly at contact@granthakatha.com.',
+      ],
       sections: [
         {
           title: 'Collection & Display of Content',
@@ -343,8 +346,11 @@ export const translations = {
     },
     piracy: {
       title: 'পাইৰেছী নীতি – গ্ৰন্থকথা',
-      intro:
-        'এই পাইৰেছী নীতিত (“নীতি”) গ্ৰন্থকথা মোবাইল এপ্‌লিকেশ্বন আৰু ৱেবছাইট (“গ্রন্থকথা”/“আমাৰ”)ত উপলব্ধ বিষয়বস্তুসমূহৰ কপিৰাইট লঙ্ঘনৰ বিষয়সমূহ সমাধানৰ প্ৰক্ৰিয়া বৰ্ণনা কৰা হৈছে। এই নীতিখন সেৱা চৰ্ত আৰু গোপনীয়তা নীতিসমূহৰ সৈতে একেলগে প্ৰযোজ্য আৰু গ্ৰন্থকথা দ্বাৰা কৰ্তৃত্বপূর্ণ সমস্ত বৰ্তমান আৰু ভৱিষ্যৎ প্লেটফৰ্মসমূহত বলবৎ থাকিব।',
+      intro: [
+        "আমাৰ অডিঅ'বুক এপৰ জৰিয়তে উপলব্ধ সকলো বিষয়বস্তু, অডিঅ'বুক, বিৱৰণ, আৰ্টৱৰ্ক, আৰু সম্পৰ্কীয় মেটাডাটাকে ধৰি কিন্তু ইয়াত সীমাবদ্ধ নহয়, Tale Tunex Private Limited আৰু/বা আমাৰ অনুমোদিত বিষয়বস্তু অংশীদাৰসকলে প্ৰদান কৰে। আমাৰ প্লেটফৰ্মৰ জৰিয়তে হ’ষ্ট কৰা আৰু বিতৰণ কৰা বিষয়বস্তুৰ বাবে আমি সম্পূৰ্ণ দায়িত্ব লওঁ।",
+        "Google, Apple, বা অন্য কোনো তৃতীয় পক্ষ সেৱা প্ৰদানকাৰী (এপ ষ্ট'ৰ আৰু বিতৰণ প্লেটফৰ্মকে ধৰি) এই এপত প্ৰদান কৰা বিষয়বস্তুৰ বাবে দায়বদ্ধ নহয়। এই তৃতীয় পক্ষসমূহে আমাৰ এপৰ জৰিয়তে উপলব্ধ কোনো বিষয়বস্তুৰ সঠিকতা, বৈধতা বা উপযুক্ততাৰ বাবে কোনো ধৰণৰ দায়িত্ব নিয়ন্ত্ৰণ, সমৰ্থন বা গ্ৰহণ নকৰে৷",
+        'নিৰ্দিষ্ট বিষয়বস্তুৰ সম্পৰ্কে কোনো উদ্বেগ বা অভিযোগৰ বাবে, অনুগ্ৰহ কৰি আমাৰ সৈতে পোনপটীয়াকৈ contact@granthakatha.com ত যোগাযোগ কৰক।',
+      ],
 
       sections: [
         {
