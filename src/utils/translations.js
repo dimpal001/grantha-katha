@@ -13,10 +13,10 @@ export const translations = {
       contact: 'Contact',
       howToOrder: 'How to Order',
       team: 'Our Team',
-      copyright: 'Copyright © 2025. All rights reserved. GranthaKatha',
+      copyright: 'Copyright © 2025. All rights reserved. Grantha Katha',
     },
     privacy: {
-      title: 'Privacy Policy – GranthaKatha',
+      title: 'Privacy Policy – Grantha Katha',
       intro: [
         'Grantha Katha is committed to protecting your privacy. This privacy statement discloses what information we gather about you when you visit Grantha Katha and describes how we use that information. Our policy is to keep the personal information we receive from our Site completely confidential. We would like to assure you that the information we gather from you will not be shared, sold, reused in lists, or used for any other purpose than to complete a transaction or address a customer service concern.',
         'Our Privacy Policy is a part of our general Terms of Service and has been extracted for your convenience.',
@@ -67,7 +67,7 @@ export const translations = {
       ],
     },
     piracy: {
-      title: 'Piracy Policy – GranthaKatha',
+      title: 'Piracy Policy – Grantha Katha',
       intro: [
         'All content available through our audiobook app, including but not limited to audiobooks, descriptions, artwork, and related metadata, is provided by Tale Tunex Private Limited and/or our authorized content partners. We take full responsibility for the content hosted and distributed through our platform.',
         'Google, Apple, or any other third-party service providers (including app stores and distribution platforms) are not responsible for the content provided on this app. These third parties do not control, endorse, or assume any liability for the accuracy, legality, or appropriateness of any content available through our app.',
@@ -77,7 +77,7 @@ export const translations = {
         {
           title: 'Collection & Display of Content',
           content: [
-            'GranthaKatha allows original Assamese audio books and content, both created by us and uploaded by users or third-party contributors (“You” / “User”), to be accessed on our platform. We define “Content” to include but not be limited to:',
+            'Grantha Katha allows original Assamese audio books and content, both created by us and uploaded by users or third-party contributors (“You” / “User”), to be accessed on our platform. We define “Content” to include but not be limited to:',
             [
               'Audio books',
               'Podcasts',
@@ -93,13 +93,13 @@ export const translations = {
               'Unapproved Content – Flagged for infringement or concerns, and inaccessible',
               'Unreviewed Content – Pending screening',
             ],
-            'Only Undisputed Content is searchable and accessible on the GranthaKatha platform.',
+            'Only Undisputed Content is searchable and accessible on the Grantha Katha platform.',
           ],
         },
         {
           title: 'Infringement & Enforcement',
           content: [
-            'GranthaKatha is committed to protecting the intellectual property rights of creators. We act upon all valid complaints in accordance with applicable copyright law.',
+            'Grantha Katha is committed to protecting the intellectual property rights of creators. We act upon all valid complaints in accordance with applicable copyright law.',
             [
               'Repeat infringement may result in account suspension or termination.',
               'Complaints must include clear proof of ownership and violation.',
@@ -112,9 +112,9 @@ export const translations = {
           title: 'Types of Copyright Infringement',
           subSections: [
             {
-              subtitle: 'A. Content copied and uploaded on GranthaKatha',
+              subtitle: 'A. Content copied and uploaded on Grantha Katha',
               content: [
-                'When a User uploads content copied from another original content published on GranthaKatha:',
+                'When a User uploads content copied from another original content published on Grantha Katha:',
                 [
                   'Upon valid Complaint and proof from the Original Owner, the copied content (“Disputed Content”) will be removed within 36 hours.',
                   'The uploader will be notified and given a chance to respond.',
@@ -126,9 +126,9 @@ export const translations = {
             },
             {
               subtitle:
-                'B. Content copied from external platforms and uploaded to GranthaKatha',
+                'B. Content copied from external platforms and uploaded to Grantha Katha',
               content: [
-                'If content hosted externally is uploaded to GranthaKatha without permission:',
+                'If content hosted externally is uploaded to Grantha Katha without permission:',
                 [
                   'Upon Complaint and verification, access to the content will be blocked for 21 days.',
                   'A court order must be submitted within this time to maintain the block.',
@@ -136,9 +136,9 @@ export const translations = {
               ],
             },
             {
-              subtitle: 'C. GranthaKatha content copied to external platforms',
+              subtitle: 'C. Grantha Katha content copied to external platforms',
               content: [
-                'If GranthaKatha’s original content is found on unauthorized external platforms:',
+                'If Grantha Katha’s original content is found on unauthorized external platforms:',
                 [
                   'We will attempt to takedown such content.',
                   'If external platforms fail to comply, we may initiate legal action, though we are not obligated to do so.',
@@ -162,7 +162,7 @@ export const translations = {
             'Submit to:',
             [
               'Email: copyright@granthakatha.in',
-              'Mailing Address: GranthaKatha Team, Assam, India',
+              'Mailing Address: Grantha Katha Team, Assam, India',
             ],
           ],
         },
@@ -180,7 +180,7 @@ export const translations = {
             [
               "Name: [Insert designated grievance officer's name]",
               'Email: copyright@granthakatha.in',
-              'Mailing Address: GranthaKatha Team, Assam, India',
+              'Mailing Address: Grantha Katha Team, Assam, India',
             ],
             'If a court order is not submitted by the complainant within 21 days, content may be reinstated.',
           ],
@@ -188,7 +188,7 @@ export const translations = {
         {
           title: 'Account Termination',
           content: [
-            'GranthaKatha may suspend or terminate User accounts for repeated copyright violations or serious breaches of the Terms of Service. This includes, but is not limited to:',
+            'Grantha Katha may suspend or terminate User accounts for repeated copyright violations or serious breaches of the Terms of Service. This includes, but is not limited to:',
             [
               'Multiple confirmed infringements',
               'Upload of illegal, pornographic, or excessively long unauthorized content',
@@ -198,7 +198,7 @@ export const translations = {
         {
           title: 'Updates to the Policy',
           content: [
-            'GranthaKatha reserves the right to modify or update this Piracy Policy at any time. Changes will be effective immediately upon publication. Continued use of the platform constitutes acceptance of any updates.',
+            'Grantha Katha reserves the right to modify or update this Piracy Policy at any time. Changes will be effective immediately upon publication. Continued use of the platform constitutes acceptance of any updates.',
           ],
         },
       ],
@@ -443,7 +443,7 @@ export const translations = {
             'প্ৰেৰণ কৰিব:',
             [
               'ইমেইল: copyright@granthakatha.in',
-              'মেইলিং ঠিকনা: GranthaKatha Team, [আপোনাৰ কোম্পানীৰ ঠিকনা], Assam, India',
+              'মেইলিং ঠিকনা: Grantha Katha Team, [আপোনাৰ কোম্পানীৰ ঠিকনা], Assam, India',
             ],
           ],
         },
@@ -462,7 +462,7 @@ export const translations = {
             [
               'নাম: [নিযুক্ত অভিযোগ নিষ্পত্তি বিষয়া]',
               'ইমেইল: copyright@granthakatha.in',
-              'চিঠিৰ ঠিকনা: GranthaKatha Team, অসম, ভাৰত',
+              'চিঠিৰ ঠিকনা: Grantha Katha Team, অসম, ভাৰত',
             ],
             'অভিযোগকাৰীয়ে ২১ দিনৰ ভিতৰত আদালতৰ নিৰ্দেশনা দাখিল নকৰিলে, সামগ্রী পুনৰ স্থাপন কৰা হ’ব পাৰে।',
           ],
