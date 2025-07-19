@@ -240,6 +240,12 @@ export const translations = {
             'It may contain any spelling errors, informational errors or inconsistencies. Grantha Katha may check and correct these errors at any time, but does not guarantee that errors will be corrected.',
           ],
         },
+        {
+          title: 'Account and User Data Deletion',
+          subSections: [
+            'To request the deletion of your account or any personal data associated with your usage of the Grantha Katha platform, please send an email to contact@granthakatha.com. Our support team will process your request in accordance with our privacy policies and applicable data protection laws.',
+          ],
+        },
       ],
     },
     aboutUs: {
@@ -523,6 +529,12 @@ export const translations = {
           title: 'ভুল সংশোধন',
           subSections: [
             'ৱেবছাইটত কোনো বানানৰ ভুল, তথ্যগত ভুল বা অসংগতি থাকিব পাৰে। গ্ৰন্থকথায় যিকোনো সময়ত এই ভুলসমূহ সমপৰীক্ষণ কৰি সংশোধন কৰিব পাৰে, কিন্তু ভুল সংশোধন হব বুলি নিশ্চিতি প্ৰদান নকৰে।',
+          ],
+        },
+        {
+          title: 'একাউণ্ট আৰু ব্যৱহাৰকাৰীৰ তথ্য মচা',
+          subSections: [
+            'গ্ৰন্থকথা প্লেটফৰ্ম ব্যৱহাৰৰ সৈতে জড়িত আপোনাৰ একাউণ্ট বা ব্যক্তিগত তথ্য মচি পেলাবৰ বাবে অনুৰোধ জনাবলৈ, অনুগ্ৰহ কৰি contact@granthakatha.com ইমেইল ঠিকনালৈ এখন ইমেইল পঠিয়াব। আমাৰ সহায়ক দলে গোপনীয়তা নীতি আৰু প্ৰযোজ্য তথ্য সুৰক্ষা বিধি অনুসৰি আপোনাৰ অনুৰোধ প্ৰক্ৰিয়া কৰিব।',
           ],
         },
       ],
